@@ -1,0 +1,1 @@
+ALTER TABLE products ADD UNIQUE KEY uq_products_name (name);

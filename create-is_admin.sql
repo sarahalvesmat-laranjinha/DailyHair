@@ -1,0 +1,2 @@
+ALTER TABLE daily_hair.users
+ADD COLUMN is_admin TINYINT(1) NOT NULL DEFAULT 0;

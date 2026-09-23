@@ -1,0 +1,2 @@
+ALTER TABLE users
+ADD COLUMN wash_days VARCHAR(50) NULL;

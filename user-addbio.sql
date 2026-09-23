@@ -1,0 +1,3 @@
+USE daily_hair;
+ALTER TABLE users
+ADD COLUMN bio VARCHAR(150) NULL;

@@ -1,0 +1,290 @@
+/* =====================================================
+   PRODUCT-FORM.CSS
+   Estilos usados só na página product-form.php
+   (.panel, .review-form, .rating-field (layout em coluna),
+   .comment-field (layout em coluna), .alert, .btn
+   já vêm do style.css — aqui só o que faltava)
+===================================================== */
+
+.rating-field input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 13px 15px;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    background: #ffffff;
+    color: var(--text);
+    outline: none;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.rating-field input[type="text"]:focus,
+.comment-field textarea:focus {
+    border-color: var(--terracotta);
+    box-shadow: 0 0 0 3px rgba(198, 83, 47, .08);
+}
+
+.upload-box {
+    border: 1.5px dashed var(--line);
+    width: 300px;
+    height: 280px;
+    border-radius: 16px;
+    background: #ffffff;
+    padding: 50px 20px;
+    margin: 0 auto 30px;
+    text-align: center;
+    color: var(--muted);
+    cursor: pointer;
+    transition: border-color .2s ease, background .2s ease;
+    position: relative;
+}
+
+.upload-box:hover {
+    border-color: var(--terracotta);
+    background: #fff4ef;
+}
+
+.upload-box .plus {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: #f4e7df;
+    color: var(--terracotta);
+    display: grid;
+    place-items: center;
+    margin: 0 auto 10px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.upload-box strong {
+    display: block;
+    color: var(--text);
+    font-size: 14px;
+    margin-bottom: 3px;
+}
+
+.upload-box span {
+    font-size: 12px;
+}
+
+.upload-box input[type="file"] {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+}
+
+.upload-hint {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: -12px;
+    display: block;
+}
+/* =====================================================
+   PERFIL PÚBLICO
+===================================================== */
+
+.public-profile {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+}
+
+.public-profile-header {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding: 35px;
+    margin-top: 20px;
+}
+
+.public-profile-photo {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: #ecd3c8;
+    display: grid;
+    place-items: center;
+    color: var(--terracotta);
+    font-size: 42px;
+    font-weight: 700;
+}
+
+.public-profile-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.public-profile-info h1 {
+    margin: 6px 0 8px;
+}
+
+.public-profile-bio {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 600px;
+}
+
+.public-profile-bio.muted {
+    opacity: .7;
+}
+
+
+/* =====================================================
+   SEÇÕES
+===================================================== */
+
+.public-profile-section {
+    margin-top: 45px;
+}
+
+.hair-profile-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.hair-profile-card {
+    padding: 22px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.hair-profile-card span {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.hair-profile-card strong {
+    color: var(--text);
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   AVALIAÇÕES DO PERFIL
+===================================================== */
+
+.public-reviews {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.public-review {
+    padding: 22px;
+}
+
+.public-review-product {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.public-review-product img {
+ width: 100%;
+    height: 220px;
+    background: #f2ddd1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.public-review-product > div {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.public-review-product-name {
+    color: var(--text);
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.public-review-product-name:hover {
+    color: var(--terracotta);
+}
+
+.public-review-rating {
+    margin-top: 12px;
+}
+
+.public-review > p {
+    margin: 14px 0 0;
+    color: #604e47;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   USUÁRIO DA AVALIAÇÃO
+===================================================== */
+
+.review-user {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+}
+
+.review-avatar-link {
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.review-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background: #ecd3c8;
+}
+
+.review-avatar-letter {
+    display: grid;
+    place-items: center;
+    color: var(--terracotta);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+.review-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 0;
+}
+
+.review-name {
+    color: var(--text);
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.review-name:hover {
+    color: var(--terracotta);
+}
+
+.review-user-info span {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.review-user .stars {
+    margin-left: auto;
+}
