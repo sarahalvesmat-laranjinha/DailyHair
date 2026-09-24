@@ -113,14 +113,14 @@ INSERT INTO products (name,brand,category,description,image) VALUES
 
 ON DUPLICATE KEY UPDATE name=VALUES(name);
 
--- Usuário de demonstração. A senha abaixo é: 123456
+-- Usuário de demonstração. A senha abaixo é: ........
 INSERT INTO users (name,email,password,hair_type,curl_pattern,porosity,thickness,needs) VALUES
-('Sara Demo','demo@dailyhair.com','$2y$10$3d6lYf6fH1oG9W7x9gk2QeXQv4kHfYw4f0M3YQmVYVYfM4e9Z7a6K','Cacheado','3A','Alta','Média','frizz, ressecamento, definição')
+('-----------','***********.com','$2y$10$3d6lYf6fH1oG9W7x9gk2QeXQv4kHfYw4f0M3YQmVYVYfM4e9Z7a6K','Cacheado','3A','Alta','Média','frizz, ressecamento, definição')
 ON DUPLICATE KEY UPDATE email=VALUES(email);
 
 -- Avaliações iniciais para demonstrar o filtro por perfis.
 INSERT INTO reviews (product_id,user_id,rating,comment)
-SELECT p.id,u.id,5,'Meu cabelo ficou macio e com bastante definição. Gostei muito para dias de ressecamento.' FROM products p JOIN users u ON u.email='demo@dailyhair.com' WHERE p.name='Máscara Hidratação Intensa' AND NOT EXISTS (SELECT 1 FROM reviews r WHERE r.product_id=p.id AND r.user_id=u.id);
+SELECT p.id,u.id,5,'Meu cabelo ficou macio e com bastante definição. Gostei muito para dias de ressecamento.' FROM products p JOIN users u ON u.email='**********.com' WHERE p.name='Máscara Hidratação Intensa' AND NOT EXISTS (SELECT 1 FROM reviews r WHERE r.product_id=p.id AND r.user_id=u.id);
 INSERT INTO reviews (product_id,user_id,rating,comment)
-SELECT p.id,u.id,4,'Nutriu bem e ajudou no frizz. Usei pouca quantidade para não pesar.' FROM products p JOIN users u ON u.email='demo@dailyhair.com' WHERE p.name='Máscara Nutrição de Óleos' AND NOT EXISTS (SELECT 1 FROM reviews r WHERE r.product_id=p.id AND r.user_id=u.id);
+SELECT p.id,u.id,4,'Nutriu bem e ajudou no frizz. Usei pouca quantidade para não pesar.' FROM products p JOIN users u ON u.email='*********.com' WHERE p.name='Máscara Nutrição de Óleos' AND NOT EXISTS (SELECT 1 FROM reviews r WHERE r.product_id=p.id AND r.user_id=u.id);
 
