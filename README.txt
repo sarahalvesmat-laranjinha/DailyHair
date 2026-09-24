@@ -19,9 +19,9 @@ A configuração presente no projeto utiliza:
 
 * Banco: `daily_hair`
 * Host: `localhost`
-* Usuário: `root`
-* Porta utilizada diretamente em `db.php`: `3307`
-* Codificação: `utf8mb4`
+* Usuário: `****`
+* Porta utilizada diretamente em `____`: `****`
+* Codificação: `_____`
 
 >Importante: `config.php` possui a senha `1234`, mas a conexão efetivamente realizada em `db.php` utiliza uma senha vazia (`""`) e a porta `3307`. Caso a configuração do MySQL seja diferente, ajuste o arquivo `db.php`.
 
