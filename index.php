@@ -5,6 +5,7 @@ if (!empty($_SESSION['user_id'])) {
     header('Location: dashboard.php');
     exit;
 }
+$_SESSION['auth_csrf'] ??= bin2hex(random_bytes(32));
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = trim($_POST['email'] ?? '');
@@ -17,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt->execute();
         $found = $stmt->get_result()->fetch_assoc();
         if ($found && password_verify($password, $found['password'])) {
+            session_regenerate_id(true);
             $_SESSION['user_id'] = (int) $found['id'];
             header('Location: dashboard.php');
             exit;
@@ -32,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <head>
     <meta charset="utf-8">
+    <meta name="auth-csrf" content="<?= e($_SESSION['auth_csrf']) ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Entrar — Daily Hair</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="auth-page">
+<body class="auth-page" data-auth-page="login">
     <div class="auth-top"></div>
     <section class="auth-card">
         <div class="logo-circle">
@@ -55,6 +58,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php if (!empty($_GET['registered'])): ?>
             <div class="alert success">Conta criada! Agora é só entrar.</div><?php endif; ?>
 
+        <div id="firebase-message" class="alert error" hidden></div>
         <form method="post" class="auth-form">
             <label for="email">Email:</label>
             <input id="email" name="email" type="email" autocomplete="email" required>
@@ -63,8 +67,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <p class="create-account"><a href="senha.php">Esqueci minha senha</a></p>
             <button class="btn primary wide" type="submit">Entrar</button>
         </form>
+        <button id="google-login" class="btn wide" type="button">Entrar com Google</button>
+        <p class="create-account"><a href="index.php?legacy=1">Entrar com conta anterior</a></p>
         <p class="create-account">Ainda nao tem uma conta? <a href="register.php">Criar conta</a></p>
     </section>
+    <script type="module" src="firebase-auth.js"></script>
 </body>
 
 </html>
