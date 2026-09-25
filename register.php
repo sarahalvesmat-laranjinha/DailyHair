@@ -7,79 +7,8 @@ if (!empty($_SESSION['user_id'])) {
     exit;
 }
 
+$_SESSION['auth_csrf'] ??= bin2hex(random_bytes(32));
 $error = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
-    $name = trim($_POST['name'] ?? '');
-    $email = trim($_POST['email'] ?? '');
-    $password = $_POST['password'] ?? '';
-    $confirm = $_POST['confirm'] ?? '';
-
-    $hair_type = $_POST['hair_type'] ?? 'Liso';
-    $curl_pattern = trim($_POST['curl_pattern'] ?? '');
-    $porosity = $_POST['porosity'] ?? 'Média';
-    $thickness = $_POST['thickness'] ?? 'Média';
-
-    $needs_array = $_POST['needs'] ?? [];
-    $needs = is_array($needs_array)
-        ? implode(', ', $needs_array)
-        : trim($needs_array);
-
-    if (!$name || !$email || strlen($password) < 6) {
-    $error = 'Informe nome, e-mail e uma senha com pelo menos 6 caracteres.';
-} elseif (empty($needs)) {
-    $error = 'Selecione pelo menos uma necessidade do seu cabelo.';
-} elseif ($password !== $confirm) {
-
-        $error = 'As senhas não coincidem.';
-
-    } else {
-
-        $check = db()->prepare(
-            'SELECT id FROM users WHERE email = ? LIMIT 1'
-        );
-
-        $check->bind_param('s', $email);
-        $check->execute();
-
-        if ($check->get_result()->fetch_assoc()) {
-
-            $error = 'Este e-mail já está cadastrado.';
-
-        } else {
-
-            $hash = password_hash($password, PASSWORD_DEFAULT);
-
-            $stmt = db()->prepare(
-                'INSERT INTO users 
-                (name, email, password, hair_type, curl_pattern, porosity, thickness, needs) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?)'
-            );
-
-            $stmt->bind_param(
-                'ssssssss',
-                $name,
-                $email,
-                $hash,
-                $hair_type,
-                $curl_pattern,
-                $porosity,
-                $thickness,
-                $needs
-            );
-
-            if ($stmt->execute()) {
-
-                header('Location: index.php?registered=1');
-                exit;
-
-            }
-
-            $error = 'Não foi possível criar a conta.';
-        }
-    }
-}
 
 ?>
 
@@ -90,6 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
 
     <meta charset="utf-8">
+    <meta name="auth-csrf" content="<?= e($_SESSION['auth_csrf']) ?>">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -112,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 </head>
 
-<body class="auth-page">
+<body class="auth-page" data-auth-page="register">
 
     <div class="auth-top"></div>
 
@@ -143,6 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <?php endif; ?>
 
+        <div id="firebase-message" class="alert error" hidden></div>
         <form method="post" class="auth-form grid-form">
 
             <label>
@@ -345,7 +276,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </form>
 
     
-<p class="create-account">Já tem uma conta? <a href="index.php">Entrar</a></p>
+<button id="google-login" class="btn wide" type="button">Criar conta com Google</button>
+        <p class="create-account">Já tem uma conta? <a href="index.php">Entrar</a></p>
            
 
         
@@ -361,6 +293,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </section>
 
 
+    <script type="module" src="firebase-auth.js"></script>
 </body>
 
 </html>
