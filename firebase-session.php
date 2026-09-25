@@ -66,6 +66,9 @@ try {
                 fail_login(409, 'Não foi possível vincular esta conta.');
             }
         } else {
+            if (empty($data['registration'])) {
+                fail_login(409, 'Para sua primeira entrada, crie a conta pela página de cadastro.');
+            }
             $profile = is_array($data['profile'] ?? null) ? $data['profile'] : [];
             $name = trim((string) ($profile['name'] ?? $identity->displayName ?? ''));
             $name = mb_substr($name !== '' ? $name : strstr($email, '@', true), 0, 120);
