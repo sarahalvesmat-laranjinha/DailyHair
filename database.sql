@@ -6,6 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
   name VARCHAR(120) NOT NULL,
   email VARCHAR(180) NOT NULL UNIQUE,
   password VARCHAR(255) NOT NULL,
+  firebase_uid VARCHAR(128) NULL UNIQUE,
   hair_type ENUM('Liso','Ondulado','Cacheado','Crespo') NOT NULL DEFAULT 'Liso',
   curl_pattern VARCHAR(20) DEFAULT '',
   porosity ENUM('Baixa','Média','Alta') NOT NULL DEFAULT 'Média',
