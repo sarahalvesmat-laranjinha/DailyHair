@@ -26,7 +26,8 @@ async function openPhpSession(user, profile = {}) {
     body: JSON.stringify({
       idToken: await user.getIdToken(),
       csrf: document.querySelector('meta[name="auth-csrf"]').content,
-      profile
+      profile,
+      registration: page === 'register'
     })
   });
   const result = await response.json();
