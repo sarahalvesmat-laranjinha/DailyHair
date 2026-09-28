@@ -1,0 +1,11 @@
+Options -Indexes
+
+<FilesMatch "(?i)^(?:\.env.*|Dockerfile|render\.yaml|composer\.(?:json|lock)|supabase\.config\.php|firebase-service-account\.json)$">
+    Require all denied
+</FilesMatch>
+
+<FilesMatch "(?i)\.(?:sql|dump|md|txt|log|ini|ya?ml)$">
+    Require all denied
+</FilesMatch>
+
+RedirectMatch 404 ^/(?:scripts|supabase|tests|backups)(?:/|$)
