@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: dailyhair
+    runtime: docker
+    branch: desenvolvimento
+    autoDeploy: true
+    healthCheckPath: /health.php
+    envVars:
+      - key: SUPABASE_DB_HOST
+        sync: false
+      - key: SUPABASE_DB_USER
+        sync: false
+      - key: SUPABASE_DB_PASSWORD
+        sync: false
+      - key: SUPABASE_DB_PORT
+        value: "5432"
+      - key: SUPABASE_DB_NAME
+        value: postgres
+      - key: SUPABASE_DB_SSLMODE
+        value: require
+      - key: SUPABASE_DB_SCHEMA
+        value: dailyhair
+      - key: FIREBASE_WEB_API_KEY
+        sync: false
+      - key: FIREBASE_WEB_AUTH_DOMAIN
+        sync: false
+      - key: FIREBASE_WEB_PROJECT_ID
+        sync: false
+      - key: FIREBASE_WEB_APP_ID
+        sync: false
+      - key: FIREBASE_SERVICE_ACCOUNT_JSON
+        sync: false
