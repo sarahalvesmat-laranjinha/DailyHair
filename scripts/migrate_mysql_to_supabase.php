@@ -54,11 +54,21 @@ try {
     $source->exec('SET SESSION TRANSACTION ISOLATION LEVEL REPEATABLE READ');
     $source->exec('SET TRANSACTION READ ONLY');
     $source->beginTransaction();
+
     $tables = ['users', 'products', 'reviews', 'aprove_products', 'wash_routines'];
+    // A recuperação de senha passou a ser feita pelo Firebase; esta tabela antiga não é migrada.
+    $ignoredTables = ['password_resets'];
+
     $inventory = $source->query('SELECT TABLE_NAME, TABLE_TYPE, ENGINE FROM information_schema.TABLES WHERE TABLE_SCHEMA = DATABASE()')->fetchAll();
     $present = [];
     foreach ($inventory as $table) {
         $tableName = $table['TABLE_NAME'];
+
+        if (in_array($tableName, $ignoredTables, true)) {
+            echo "$tableName: ignorada; a recuperação de senha usa Firebase.\n";
+            continue;
+        }
+
         if ($table['TABLE_TYPE'] !== 'BASE TABLE' || $table['ENGINE'] !== 'InnoDB') {
             throw new RuntimeException("Objeto não suportado: $tableName. Migre-o explicitamente antes de prosseguir; nada será omitido.");
         }
