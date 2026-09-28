@@ -17,8 +17,9 @@ WORKDIR /var/www/html
 COPY . .
 
 RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader \
+    && chmod +x /var/www/html/render-entrypoint.sh \
     && chown -R www-data:www-data /var/www/html
 
 EXPOSE 10000
 
-CMD ["sh", "-c", "PORT=${PORT:-10000}; sed -ri 's/^Listen .*/Listen '${PORT}'/' /etc/apache2/ports.conf; sed -ri 's/<VirtualHost \\*:[0-9]+>/<VirtualHost *:'${PORT}'>/' /etc/apache2/sites-available/000-default.conf; exec apache2-foreground"]
+CMD ["/var/www/html/render-entrypoint.sh"]
