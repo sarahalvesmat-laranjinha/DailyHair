@@ -9,6 +9,8 @@ RUN apt-get update \
         libonig-dev \
     && docker-php-ext-install -j"$(nproc)" pdo_pgsql mbstring \
     && a2enmod rewrite headers \
+    && printf '<Directory /var/www/html>\n    AllowOverride All\n    Require all granted\n</Directory>\n' > /etc/apache2/conf-available/dailyhair.conf \
+    && a2enconf dailyhair \
     && rm -rf /var/lib/apt/lists/*
 
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
