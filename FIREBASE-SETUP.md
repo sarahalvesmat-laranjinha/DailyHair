@@ -2,13 +2,29 @@
 
 Esta integração está na branch `desenvolvimento`. O Firebase autentica por e-mail/senha ou Google; o PHP valida o ID token e mantém a sessão e os perfis no PostgreSQL do Supabase.
 
-1. No [Firebase Console](https://console.firebase.google.com/), crie ou selecione um projeto, registre um aplicativo Web e ative **Authentication > Sign-in method > Email/Password** e **Google**. Em **Authorized domains**, adicione o domínio onde o site roda (e `localhost` para testes locais, se necessário).
-2. Copie `firebase-config.example.js` para `firebase-config.js` e preencha com a configuração Web do **mesmo projeto**. Essa configuração é pública, mas o arquivo real fica fora do Git para facilitar a troca de ambiente.
-3. Em **Project settings > Service accounts**, gere uma chave privada para a conta de serviço. Guarde o JSON **fora de `htdocs`/`public_html`**, por exemplo em `C:\xampp\firebase-service-account.json`. Configure a variável de ambiente `FIREBASE_CREDENTIALS` com esse caminho no processo do Apache/PHP. Nunca publique o JSON no GitHub nem em diretório servido pela web.
-4. Instale PHP 8.1+ com `pdo_pgsql`, `mbstring`, `openssl` e Composer. Na pasta do projeto execute `composer install`. Se o servidor não tiver Composer, execute na sua máquina e envie `vendor/` junto com o site por FTP; não inclua `vendor/` no Git. O pacote PHP usa `kreait/firebase-php` 7.x por compatibilidade com PHP 8.1/8.2.
-5. Siga `SUPABASE-SETUP.md` para a conexão e migração. O schema PostgreSQL já inclui `firebase_uid`. Não execute `firebase-migration.sql` no Supabase. A sessão é iniciada por `bootstrap.php`.
-6. Publique também `firebase-config.js` e teste: cadastro por e-mail, login por e-mail, login pelo Google, sair e recuperação de senha. Os e-mails de recuperação são enviados pelo Firebase.
+## Produção no Render
 
-Contas antigas que só existem no MySQL continuam acessíveis por **Entrar com conta anterior**. Uma conta antiga pode ser vinculada ao Firebase ao entrar com um Google que tenha o mesmo e-mail verificado. Para migrar senhas locais em massa ao Firebase, é preciso um processo separado; não copie senhas ou hashes manualmente entre os dois sistemas.
+1. No Firebase Console, crie ou selecione um projeto, registre um aplicativo Web e ative **Authentication > Sign-in method > Email/Password** e **Google**.
+2. Em **Project settings > General > Your apps > Web app**, copie os valores do aplicativo Web e configure no Render:
+   - `FIREBASE_WEB_API_KEY`
+   - `FIREBASE_WEB_AUTH_DOMAIN`
+   - `FIREBASE_WEB_PROJECT_ID`
+   - `FIREBASE_WEB_APP_ID`
+3. O arquivo `firebase-config.php` gera a configuração Web em tempo de execução. Em produção não é necessário criar `firebase-config.js`.
+4. Em **Project settings > Service accounts**, gere uma chave privada JSON da conta de serviço e salve o JSON inteiro no Render como `FIREBASE_SERVICE_ACCOUNT_JSON`. Nunca publique esse JSON no GitHub.
+5. Depois do primeiro deploy, adicione o hostname `*.onrender.com` específico do seu serviço em **Authentication > Settings > Authorized domains**.
+6. Siga `SUPABASE-SETUP.md` e `RENDER-SETUP.md` para a conexão PostgreSQL e o deploy.
 
-**Antes de usar em produção:** configure e teste a conexão Supabase e o Firebase no servidor conforme `SUPABASE-SETUP.md`.
+## Desenvolvimento local
+
+O backend também aceita `FIREBASE_CREDENTIALS` apontando para um arquivo JSON local fora da pasta pública. Para o frontend, você pode definir as variáveis `FIREBASE_WEB_*` no ambiente do Apache/PHP.
+
+Instale PHP 8.1+ com `pdo_pgsql`, `mbstring`, `openssl` e Composer. Na pasta do projeto execute `composer install`.
+
+## Contas antigas
+
+Contas antigas que vieram do MySQL continuam acessíveis por **Entrar com conta anterior** usando o hash de senha preservado no Supabase. Uma conta antiga pode ser vinculada ao Firebase ao entrar com um Google que tenha o mesmo e-mail verificado.
+
+Os e-mails de recuperação de senha são enviados pelo Firebase. A tabela antiga `password_resets` não é necessária para esse fluxo.
+
+Nunca copie senhas, hashes, chaves privadas ou JSON de conta de serviço para o GitHub.
