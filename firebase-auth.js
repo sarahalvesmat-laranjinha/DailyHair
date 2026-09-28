@@ -4,7 +4,7 @@ import {
   signInWithEmailAndPassword, createUserWithEmailAndPassword,
   GoogleAuthProvider, signInWithPopup, sendPasswordResetEmail, signOut
 } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
-import { firebaseConfig } from './firebase-config.js';
+import { firebaseConfig } from './firebase-config.php';
 
 const auth = getAuth(initializeApp(firebaseConfig));
 const page = document.body.dataset.authPage;
@@ -48,7 +48,9 @@ function friendlyError(error) {
 }
 
 if (page && form) {
-  if (firebaseConfig.apiKey === 'COLE_API_KEY') show('Configure firebase-config.js antes de usar o Firebase.');
+  if (!firebaseConfig.apiKey || !firebaseConfig.authDomain || !firebaseConfig.projectId || !firebaseConfig.appId) {
+    show('Configure as variáveis FIREBASE_WEB_* no servidor antes de usar o Firebase.');
+  }
 
   form.addEventListener('submit', async (event) => {
     if (page === 'login' && new URLSearchParams(location.search).has('legacy')) return;
