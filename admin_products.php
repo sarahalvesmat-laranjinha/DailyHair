@@ -28,6 +28,8 @@ APROVAR OU REPROVAR PRODUTO
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
+    $conn->beginTransaction();
+    try {
     $request_id = (int) ($_POST['request_id'] ?? 0);
     $acao = $_POST['acao'] ?? '';
 
@@ -43,35 +45,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             // Busca o produto que está em análise
             $stmt = $conn->prepare("
-                SELECT name, brand, category, description, image
+                SELECT name, brand, category, type, description, image, created_by
                 FROM aprove_products
                 WHERE id = ?
                 AND status = 'Em análise'
+                FOR UPDATE
             ");
 
-            $stmt->bind_param('i', $request_id);
+            $stmt->bindValue(1, $request_id, PDO::PARAM_INT);
             $stmt->execute();
 
-            $produto = $stmt->get_result()->fetch_assoc();
+            $produto = $stmt->fetch();
 
             if ($produto) {
 
                 // Coloca o produto na tabela oficial
                 $stmtInsert = $conn->prepare("
                     INSERT INTO products
-                    (name, brand, category, description, image)
-                    VALUES (?, ?, ?, ?, ?)
+                    (name, brand, category, description, image, type, created_by)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
                 ");
 
-                $stmtInsert->bind_param(
-                    'sssss',
-                    $produto['name'],
-                    $produto['brand'],
-                    $produto['category'],
-                    $produto['description'],
-                    $produto['images']
-                );
+                $stmtInsert->bindValue(1, $produto['name'], PDO::PARAM_STR);
+                $stmtInsert->bindValue(2, $produto['brand'], PDO::PARAM_STR);
+                $stmtInsert->bindValue(3, $produto['category'], PDO::PARAM_STR);
+                $stmtInsert->bindValue(4, $produto['description'], PDO::PARAM_STR);
+                $stmtInsert->bindValue(5, $produto['image'], PDO::PARAM_STR);
 
+                $stmtInsert->bindValue(6, $produto['type'], PDO::PARAM_STR);
+                $stmtInsert->bindValue(7, $produto['created_by'], PDO::PARAM_INT);
                 $stmtInsert->execute();
 
                 // Marca a solicitação como aprovada
@@ -81,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     WHERE id = ?
                 ");
 
-                $stmtUpdate->bind_param('i', $request_id);
+                $stmtUpdate->bindValue(1, $request_id, PDO::PARAM_INT);
                 $stmtUpdate->execute();
             }
         }
@@ -100,7 +102,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 AND status = 'Em análise'
             ");
 
-            $stmt->bind_param('i', $request_id);
+            $stmt->bindValue(1, $request_id, PDO::PARAM_INT);
             $stmt->execute();
         }
     }
@@ -109,6 +111,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     Evita reenviar o formulário ao atualizar a página
     */
 
+    $conn->commit();
+    } catch (Throwable $e) {
+        if ($conn->inTransaction()) $conn->rollBack();
+        http_response_code(500);
+        exit('Não foi possível salvar a aprovação. Nenhuma alteração foi aplicada.');
+    }
     header('Location: admin_products.php');
     exit;
 }
@@ -138,7 +146,7 @@ $stmt = $conn->prepare("
 
 $stmt->execute();
 
-$produtos = $stmt->get_result();
+$produtos = $stmt->fetchAll();
 
 
 /*
@@ -170,7 +178,7 @@ require_once __DIR__ . '/header.php';
     </div>
 
 
-    <?php if ($produtos->num_rows === 0): ?>
+    <?php if (count($produtos) === 0): ?>
 
         <section class="admin-empty panel">
 
@@ -186,7 +194,7 @@ require_once __DIR__ . '/header.php';
 
         <section class="admin-products-grid">
 
-            <?php while ($produto = $produtos->fetch_assoc()): ?>
+            <?php foreach ($produtos as $produto): ?>
 
                 <article class="admin-product-card panel">
 
@@ -285,7 +293,7 @@ require_once __DIR__ . '/header.php';
 
                 </article>
 
-            <?php endwhile; ?>
+            <?php endforeach; ?>
 
         </section>
 

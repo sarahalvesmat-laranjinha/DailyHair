@@ -13,10 +13,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (!$email || !$password) {
         $error = 'Preencha seu e-mail e sua senha.';
     } else {
-        $stmt = db()->prepare('SELECT id, password FROM users WHERE email = ? LIMIT 1');
-        $stmt->bind_param('s', $email);
+        $stmt = db()->prepare('SELECT id, password FROM users WHERE lower(email) = lower(?) LIMIT 1');
+        $stmt->bindValue(1, $email, PDO::PARAM_STR);
         $stmt->execute();
-        $found = $stmt->get_result()->fetch_assoc();
+        $found = $stmt->fetch();
         if ($found && password_verify($password, $found['password'])) {
             session_regenerate_id(true);
             $_SESSION['user_id'] = (int) $found['id'];

@@ -3,3 +3,9 @@
 /firebase-service-account.json
 /config.php
 /.env
+
+
+/supabase.config.php
+/backups/
+*.dump
+.env.*

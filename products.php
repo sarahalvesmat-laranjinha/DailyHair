@@ -13,7 +13,7 @@ $conn = db();
 $stmt = $conn->prepare('SELECT * FROM products ORDER BY name');
 $stmt->execute();
 
-$products = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+$products = $stmt->fetchAll();
 
 ?>
 

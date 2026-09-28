@@ -61,16 +61,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
          WHERE id=?'
     );
 
-    $stmt->bind_param(
-        'ssssssi',
-        $hair_type,
-        $curl,
-        $por,
-        $thick,
-        $needs,
-        $wash_days,
-        $_SESSION['user_id']
-    );
+    $stmt->bindValue(1, $hair_type, PDO::PARAM_STR);
+    $stmt->bindValue(2, $curl, PDO::PARAM_STR);
+    $stmt->bindValue(3, $por, PDO::PARAM_STR);
+    $stmt->bindValue(4, $thick, PDO::PARAM_STR);
+    $stmt->bindValue(5, $needs, PDO::PARAM_STR);
+    $stmt->bindValue(6, $wash_days, PDO::PARAM_STR);
+    $stmt->bindValue(7, $_SESSION['user_id'], PDO::PARAM_INT);
 
     $stmt->execute();
 

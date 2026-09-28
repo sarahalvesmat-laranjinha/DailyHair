@@ -5,7 +5,7 @@ $page_title = 'Início';
 require_once __DIR__ . '/header.php';
 $user = current_user();
 $conn = db();
-$products = $conn->query('SELECT p.*, COALESCE(AVG(r.rating),0) avg_rating, COUNT(r.id) review_count FROM products p LEFT JOIN reviews r ON r.product_id=p.id GROUP BY p.id ORDER BY avg_rating DESC, p.name LIMIT 4')->fetch_all(MYSQLI_ASSOC);
+$products = $conn->query('SELECT p.*, COALESCE(AVG(r.rating),0) avg_rating, COUNT(r.id) review_count FROM products p LEFT JOIN reviews r ON r.product_id=p.id GROUP BY p.id ORDER BY avg_rating DESC, p.name LIMIT 4')->fetchAll();
 $month = date('n');
 $year = date('Y');
 $days = (int) date('t');

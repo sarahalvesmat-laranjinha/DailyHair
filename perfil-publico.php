@@ -44,13 +44,13 @@ $stmt = $conn->prepare(
 );
 
 if (!$stmt) {
-    die('Erro ao buscar perfil: ' . $conn->error);
+    die('Erro ao buscar perfil: ' . 'Consulte o log do servidor.');
 }
 
-$stmt->bind_param('i', $id);
+$stmt->bindValue(1, $id, PDO::PARAM_INT);
 $stmt->execute();
 
-$profile = $stmt->get_result()->fetch_assoc();
+$profile = $stmt->fetch();
 
 
 if (!$profile) {
@@ -109,10 +109,10 @@ $stmt = $conn->prepare(
      ORDER BY r.created_at DESC'
 );
 
-$stmt->bind_param('i', $id);
+$stmt->bindValue(1, $id, PDO::PARAM_INT);
 $stmt->execute();
 
-$reviews = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+$reviews = $stmt->fetchAll();
 
 ?>
 

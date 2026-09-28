@@ -35,14 +35,14 @@ $stmt = $conn->prepare('
 ');
 
 if (!$stmt) {
-    die('Erro na consulta do produto: ' . $conn->error);
+    die('Erro na consulta do produto: ' . 'Consulte o log do servidor.');
 }
 
-$stmt->bind_param('i', $id);
+$stmt->bindValue(1, $id, PDO::PARAM_INT);
 
 $stmt->execute();
 
-$p = $stmt->get_result()->fetch_assoc();
+$p = $stmt->fetch();
 
 
 /* =====================================================
@@ -92,14 +92,14 @@ $stmt = $conn->prepare('
 ');
 
 if (!$stmt) {
-    die('Erro na consulta de avaliações: ' . $conn->error);
+    die('Erro na consulta de avaliações: ' . 'Consulte o log do servidor.');
 }
 
-$stmt->bind_param('i', $id);
+$stmt->bindValue(1, $id, PDO::PARAM_INT);
 
 $stmt->execute();
 
-$reviews = $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+$reviews = $stmt->fetchAll();
 
 
 /* =====================================================

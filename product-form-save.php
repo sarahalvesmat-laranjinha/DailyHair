@@ -164,23 +164,20 @@ $stmt = $conn->prepare("
 
 
 if (!$stmt) {
-    die('Erro ao preparar cadastro: ' . $conn->error);
+    die('Erro ao preparar cadastro: ' . 'Consulte o log do servidor.');
 }
 
 
-$stmt->bind_param(
-    'sssssi',
-    $name,
-    $brand,
-    $category,
-    $description,
-    $image_name,
-    $created_by
-);
+$stmt->bindValue(1, $name, PDO::PARAM_STR);
+$stmt->bindValue(2, $brand, PDO::PARAM_STR);
+$stmt->bindValue(3, $category, PDO::PARAM_STR);
+$stmt->bindValue(4, $description, PDO::PARAM_STR);
+$stmt->bindValue(5, $image_name, PDO::PARAM_STR);
+$stmt->bindValue(6, $created_by, PDO::PARAM_INT);
 
 
 if (!$stmt->execute()) {
-    die('Erro ao cadastrar produto: ' . $stmt->error);
+    die('Erro ao cadastrar produto: ' . 'Consulte o log do servidor.');
 }
 
 

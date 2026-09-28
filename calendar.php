@@ -93,6 +93,8 @@ if (
 
         $conn = db();
 
+        $conn->beginTransaction();
+        try {
         /*
         | Remove a rotina antiga daquele dia
         */
@@ -102,11 +104,8 @@ if (
              WHERE user_id = ? AND weekday = ?'
         );
 
-        $delete->bind_param(
-            'ii',
-            $_SESSION['user_id'],
-            $weekday
-        );
+        $delete->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
+        $delete->bindValue(2, $weekday, PDO::PARAM_INT);
 
         $delete->execute();
 
@@ -130,20 +129,22 @@ if (
                 continue;
             }
 
-            $insert->bind_param(
-                'iiis',
-                $_SESSION['user_id'],
-                $weekday,
-                $order,
-                $step
-            );
+            $insert->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
+            $insert->bindValue(2, $weekday, PDO::PARAM_INT);
+            $insert->bindValue(3, $order, PDO::PARAM_INT);
+            $insert->bindValue(4, $step, PDO::PARAM_STR);
 
             $insert->execute();
 
             $order++;
         }
 
+        $conn->commit();
         $msg = 'Rotina atualizada com sucesso!';
+        } catch (Throwable $e) {
+            if ($conn->inTransaction()) $conn->rollBack();
+            $msg = 'Não foi possível salvar. Sua rotina anterior foi preservada.';
+        }
     }
 }
 
@@ -266,16 +267,13 @@ $stmtRoutine = db()->prepare(
      ORDER BY weekday, step_order'
 );
 
-$stmtRoutine->bind_param(
-    'i',
-    $_SESSION['user_id']
-);
+$stmtRoutine->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
 
 $stmtRoutine->execute();
 
-$resultRoutine = $stmtRoutine->get_result();
+$resultRoutine = $stmtRoutine;
 
-while ($row = $resultRoutine->fetch_assoc()) {
+while ($row = $resultRoutine->fetch()) {
 
     $weekday = (int) $row['weekday'];
 
@@ -1010,8 +1008,8 @@ if (isset($_GET['day'])):
                     description,
                     image
                  FROM products
-                 WHERE LOWER(category) LIKE "%máscara%"
-                    OR LOWER(name) LIKE "%máscara%"
+                 WHERE LOWER(category) LIKE \'%máscara%\'
+                    OR LOWER(name) LIKE \'%máscara%\'
                  ORDER BY id DESC
                  LIMIT 3'
             );
@@ -1027,12 +1025,12 @@ if (isset($_GET['day'])):
                     description,
                     image
                  FROM products
-                 WHERE LOWER(category) LIKE CONCAT("%", LOWER(?), "%")
+                 WHERE LOWER(category) LIKE CONCAT(\'%\', LOWER(CAST(? AS text)), \'%\')
                  ORDER BY id DESC
                  LIMIT 3'
             );
 
-            $stmtProducts->bind_param('s', $productStep);
+            $stmtProducts->bindValue(1, $productStep, PDO::PARAM_STR);
 
         } else {
 
@@ -1049,20 +1047,21 @@ if (isset($_GET['day'])):
                     description,
                     image
                  FROM products
-                 WHERE LOWER(category) LIKE CONCAT("%", LOWER(?), "%")
-                    OR LOWER(name) LIKE CONCAT("%", LOWER(?), "%")
+                 WHERE LOWER(category) LIKE CONCAT(\'%\', LOWER(CAST(? AS text)), \'%\')
+                    OR LOWER(name) LIKE CONCAT(\'%\', LOWER(CAST(? AS text)), \'%\')
                  ORDER BY id DESC
                  LIMIT 3'
             );
 
-            $stmtProducts->bind_param('ss', $productStep, $productStep);
+            $stmtProducts->bindValue(1, $productStep, PDO::PARAM_STR);
+            $stmtProducts->bindValue(2, $productStep, PDO::PARAM_STR);
         }
 
         $stmtProducts->execute();
 
-        $resultProducts = $stmtProducts->get_result();
+        $resultProducts = $stmtProducts;
 
-        while ($product = $resultProducts->fetch_assoc()) {
+        while ($product = $resultProducts->fetch()) {
             $recommendedProducts[] = $product;
         }
     }

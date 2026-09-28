@@ -15,7 +15,10 @@ if (!$product_id || !$comment) {
     exit;
 }
 $stmt = db()->prepare('INSERT INTO reviews(product_id,user_id,rating,comment) VALUES(?,?,?,?)');
-$stmt->bind_param('iiis', $product_id, $user_id, $rating, $comment);
+$stmt->bindValue(1, $product_id, PDO::PARAM_INT);
+$stmt->bindValue(2, $user_id, PDO::PARAM_INT);
+$stmt->bindValue(3, $rating, PDO::PARAM_INT);
+$stmt->bindValue(4, $comment, PDO::PARAM_STR);
 $stmt->execute();
 header('Location: product.php?id=' . $product_id . '#avaliar');
 exit;

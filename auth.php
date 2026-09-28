@@ -14,9 +14,9 @@ function current_user(): ?array
     if (empty($_SESSION['user_id']))
         return null;
     $stmt = db()->prepare('SELECT * FROM users WHERE id = ? LIMIT 1');
-    $stmt->bind_param('i', $_SESSION['user_id']);
+    $stmt->bindValue(1, $_SESSION['user_id'], PDO::PARAM_INT);
     $stmt->execute();
-    return $stmt->get_result()->fetch_assoc() ?: null;
+    return $stmt->fetch() ?: null;
 }
 
 function e(string $value): string

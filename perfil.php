@@ -205,18 +205,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $error =
                 'Erro ao atualizar o perfil: ' .
-                $conn->error;
+                'Consulte o log do servidor.';
 
         } else {
 
-            $stmt->bind_param(
-                'ssssi',
-                $name,
-                $curl_pattern,
-                $bio,
-                $profile_image,
-                $user['id']
-            );
+            $stmt->bindValue(1, $name, PDO::PARAM_STR);
+            $stmt->bindValue(2, $curl_pattern, PDO::PARAM_STR);
+            $stmt->bindValue(3, $bio, PDO::PARAM_STR);
+            $stmt->bindValue(4, $profile_image, PDO::PARAM_STR);
+            $stmt->bindValue(5, $user['id'], PDO::PARAM_INT);
 
 
             if ($stmt->execute()) {

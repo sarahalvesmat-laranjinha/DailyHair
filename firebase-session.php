@@ -40,29 +40,30 @@ try {
 
     $conn = db();
     $byUid = $conn->prepare('SELECT id FROM users WHERE firebase_uid = ? LIMIT 1');
-    $byUid->bind_param('s', $uid);
+    $byUid->bindValue(1, $uid, PDO::PARAM_STR);
     $byUid->execute();
-    $user = $byUid->get_result()->fetch_assoc();
+    $user = $byUid->fetch();
 
     if (!$user) {
-        $byEmail = $conn->prepare('SELECT id, firebase_uid FROM users WHERE email = ? LIMIT 1');
-        $byEmail->bind_param('s', $email);
+        $byEmail = $conn->prepare('SELECT id, firebase_uid FROM users WHERE lower(email) = lower(?) LIMIT 1');
+        $byEmail->bindValue(1, $email, PDO::PARAM_STR);
         $byEmail->execute();
-        $existing = $byEmail->get_result()->fetch_assoc();
+        $existing = $byEmail->fetch();
         if ($existing) {
             if ($existing['firebase_uid'] !== null) {
                 fail_login(409, 'Este e-mail já está vinculado a outra conta.');
             }
             // Uma conta Firebase de e-mail/senha recém-criada não pode assumir
-            // um perfil MySQL antigo sem comprovar a posse do e-mail.
+            // um perfil antigo sem comprovar a posse do e-mail.
             if (!$identity->emailVerified) {
                 fail_login(409, 'Conta antiga: entre com sua senha anterior ou use um Google com o mesmo e-mail.');
             }
             $id = (int) $existing['id'];
             $link = $conn->prepare('UPDATE users SET firebase_uid = ? WHERE id = ? AND firebase_uid IS NULL');
-            $link->bind_param('si', $uid, $id);
+            $link->bindValue(1, $uid, PDO::PARAM_STR);
+            $link->bindValue(2, $id, PDO::PARAM_INT);
             $link->execute();
-            if ($link->affected_rows !== 1) {
+            if ($link->rowCount() !== 1) {
                 fail_login(409, 'Não foi possível vincular esta conta.');
             }
         } else {
@@ -81,10 +82,18 @@ try {
             $needs = mb_substr($needs, 0, 255);
             // A senha aleatória não é conhecida pelo usuário; Google não ganha uma senha local.
             $unusablePassword = password_hash(bin2hex(random_bytes(32)), PASSWORD_DEFAULT);
-            $insert = $conn->prepare('INSERT INTO users (name,email,password,hair_type,curl_pattern,porosity,thickness,needs,firebase_uid) VALUES (?,?,?,?,?,?,?,?,?)');
-            $insert->bind_param('sssssssss', $name, $email, $unusablePassword, $hair, $curl, $porosity, $thickness, $needs, $uid);
+            $insert = $conn->prepare('INSERT INTO users (name,email,password,hair_type,curl_pattern,porosity,thickness,needs,firebase_uid) VALUES (?,?,?,?,?,?,?,?,?) RETURNING id');
+            $insert->bindValue(1, $name, PDO::PARAM_STR);
+            $insert->bindValue(2, $email, PDO::PARAM_STR);
+            $insert->bindValue(3, $unusablePassword, PDO::PARAM_STR);
+            $insert->bindValue(4, $hair, PDO::PARAM_STR);
+            $insert->bindValue(5, $curl, PDO::PARAM_STR);
+            $insert->bindValue(6, $porosity, PDO::PARAM_STR);
+            $insert->bindValue(7, $thickness, PDO::PARAM_STR);
+            $insert->bindValue(8, $needs, PDO::PARAM_STR);
+            $insert->bindValue(9, $uid, PDO::PARAM_STR);
             $insert->execute();
-            $id = $conn->insert_id;
+            $id = (int) $insert->fetchColumn();
         }
     } else {
         $id = (int) $user['id'];
@@ -100,3 +109,4 @@ try {
     error_log('Firebase login: ' . $e->getMessage());
     fail_login(500, 'Não foi possível concluir o login. Confira a configuração do servidor.');
 }
+

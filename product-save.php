@@ -159,18 +159,15 @@ $stmt = $conn->prepare(
      WHERE id = ?'
 );
 
-$stmt->bind_param(
-    'sssssi',
-    $name,
-    $brand,
-    $category,
-    $description,
-    $image_name,
-    $id
-);
+$stmt->bindValue(1, $name, PDO::PARAM_STR);
+$stmt->bindValue(2, $brand, PDO::PARAM_STR);
+$stmt->bindValue(3, $category, PDO::PARAM_STR);
+$stmt->bindValue(4, $description, PDO::PARAM_STR);
+$stmt->bindValue(5, $image_name, PDO::PARAM_STR);
+$stmt->bindValue(6, $id, PDO::PARAM_INT);
 
 if (!$stmt->execute()) {
-    die('Erro ao atualizar produto: ' . $stmt->error);
+    die('Erro ao atualizar produto: ' . 'Consulte o log do servidor.');
 }
 
 header('Location: products.php');
