@@ -18,6 +18,8 @@ COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 WORKDIR /var/www/html
 COPY . .
 
+RUN printf 'upload_max_filesize=5M\npost_max_size=8M\n' > /usr/local/etc/php/conf.d/uploads.ini
+
 RUN composer install --no-dev --prefer-dist --no-interaction --no-progress --optimize-autoloader \
     && chmod +x /var/www/html/render-entrypoint.sh \
     && chown -R www-data:www-data /var/www/html
