@@ -18,7 +18,7 @@ $types = ['Hidratação', 'Nutrição', 'Umectação', 'Reconstrução'];
     <div><span class="eyebrow">SEU CUIDADO, DO SEU JEITO</span>
         <h1>Olá, <?= e(explode(' ', $user['name'])[0]) ?>!</h1>
         <p>Seu Daily Hair está pronto para ajudar você a cuidar do seu cabelo.</p>
-    </div><a class="btn primary" href="profile.php">Atualizar meu perfil</a>
+    </div><a class="btn primary" href="perfil.php">Atualizar meu perfil</a>
 </div>
 
 <section class="dashboard-grid">
@@ -45,7 +45,7 @@ $types = ['Hidratação', 'Nutrição', 'Umectação', 'Reconstrução'];
         <div class="profile-tags"><span><?= e($user['porosity']) ?> porosidade</span><span>Espessura
                 <?= e($user['thickness']) ?></span></div>
         <p><?= e($user['needs'] ?: 'Você ainda não cadastrou suas principais necessidades.') ?></p><a class="text-link"
-            href="profile.php">Editar perfil →</a>
+            href="meucabelo.php">Editar perfil →</a>
     </div>
 
 </section>
