@@ -8,7 +8,7 @@ $page_title = 'Perfil';
 
 $extra_css = 'style.css';
 
-require_once __DIR__ . '/header.php';
+
 
 
 $conn = db();
@@ -57,7 +57,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if ($_FILES['image']['error'] !== UPLOAD_ERR_OK) {
 
-            $error = 'Não foi possível enviar a foto.';
+            $error = in_array($_FILES['image']['error'], [UPLOAD_ERR_INI_SIZE, UPLOAD_ERR_FORM_SIZE], true)
+                ? 'A foto deve ter no máximo 5 MB.'
+                : 'Não foi possível enviar a foto. Tente novamente.';
 
         } else {
 
@@ -237,6 +239,8 @@ exit;
 
 }
 
+require_once __DIR__ . '/header.php';
+
 ?>
 
 
@@ -295,6 +299,13 @@ exit;
 </div>
 
 <center>
+    <div id="profile-preview" class="profile-current-photo" aria-live="polite">
+        <?php if (!empty($user['profile_image'])): ?>
+            <img src="uploads/profiles/<?= e(basename($user['profile_image'])) ?>" alt="Foto de perfil">
+        <?php else: ?>
+            <?= e(mb_strtoupper(mb_substr($user['name'], 0, 1))) ?>
+        <?php endif; ?>
+    </div>
 
                 <div
                     class="upload-box"
@@ -306,12 +317,6 @@ exit;
                         id="image"
                         name="image"
                         accept="image/jpeg,image/png"
-                        onchange="
-                            document.getElementById('upload-label').textContent =
-                            this.files[0]
-                            ? this.files[0].name
-                            : 'Foto de perfil';
-                        "
                     >
 
                     <strong id="upload-label">
@@ -516,6 +521,7 @@ imageInput.addEventListener('change', function () {
     const reader = new FileReader();
 
     reader.onload = function (e) {
+        if (imageInput.files[0] !== file) return;
 
         preview.innerHTML = `
             <img
