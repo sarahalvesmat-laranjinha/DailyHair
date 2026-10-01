@@ -7,6 +7,7 @@ import {
 import { firebaseConfig } from './firebase-config.php';
 
 const auth = getAuth(initializeApp(firebaseConfig));
+auth.languageCode = 'pt-BR';
 const page = document.body.dataset.authPage;
 const form = document.querySelector('form.auth-form');
 const message = document.querySelector('#firebase-message');
