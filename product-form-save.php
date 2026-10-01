@@ -96,7 +96,7 @@ if (!empty($_FILES['image']['name'])) {
         header(
             'Location: product-form.php?error=' .
             urlencode(
-                'Formato de imagem inválido. Use JPG, PNG ou WEBP.'
+                'Formato de imagem inválido. Use JPG ou PNG.'
             )
         );
 
@@ -121,16 +121,30 @@ if (!empty($_FILES['image']['name'])) {
     // Cria nome único para a imagem
     $image_name = uniqid('prod_', true) . '.' . $ext;
 
-    $destination = __DIR__ . 'images/' . $image_name;
+    $upload_dir = __DIR__ . '/images';
+
+    if (
+        (!is_dir($upload_dir) && !@mkdir($upload_dir, 0755, true) && !is_dir($upload_dir))
+        || !is_writable($upload_dir)
+    ) {
+        error_log('Cadastro de produto: pasta images indisponível para escrita.');
+        header('Location: product-form.php?error=' . urlencode(
+            'Não foi possível salvar a imagem. Tente novamente mais tarde.'
+        ));
+        exit;
+    }
+
+    $destination = $upload_dir . '/' . $image_name;
 
 
     // Salva a imagem
     if (
-        !move_uploaded_file(
+        !@move_uploaded_file(
             $_FILES['image']['tmp_name'],
             $destination
         )
     ) {
+        error_log('Cadastro de produto: falha ao mover imagem para a pasta images.');
 
         header(
             'Location: product-form.php?error=' .
