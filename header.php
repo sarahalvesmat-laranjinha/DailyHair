@@ -31,10 +31,13 @@ $page = basename($_SERVER['PHP_SELF']);
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="mobile.css">
 
-    <?php if (!empty($extra_css)): ?>
+    <?php if (!empty($extra_css) && $extra_css !== 'style.css'): ?>
         <link rel="stylesheet" href="<?= e($extra_css) ?>">
     <?php endif; ?>
+
+    <script src="mobile-nav.js" defer></script>
 
 </head>
 
@@ -55,7 +58,7 @@ $page = basename($_SERVER['PHP_SELF']);
 
 
         <!-- MENU -->
-        <nav class="nav">
+        <nav class="nav" id="main-nav">
 
             <a
                 class="<?= $page === 'dashboard.php' ? 'active' : '' ?>"
@@ -99,15 +102,15 @@ $page = basename($_SERVER['PHP_SELF']);
         <div class="user-menu">
 
             <a class="avatar" href="perfil-publico.php?id=<?= (int)$user['id'] ?>">
-    <?php if ($user && !empty($user['profile_image'])): ?>
-        <img
-            src="uploads/profiles/<?= e($user['profile_image']) ?>"
-            alt="<?= e($user['name']) ?>"
-        >
-    <?php else: ?>
-        <?= $user ? e(mb_strtoupper(mb_substr($user['name'], 0, 1))) : '?' ?>
-    <?php endif; ?>
-</a>
+                <?php if ($user && !empty($user['profile_image'])): ?>
+                    <img
+                        src="uploads/profiles/<?= e($user['profile_image']) ?>"
+                        alt="<?= e($user['name']) ?>"
+                    >
+                <?php else: ?>
+                    <?= $user ? e(mb_strtoupper(mb_substr($user['name'], 0, 1))) : '?' ?>
+                <?php endif; ?>
+            </a>
 
             <?php if ($user): ?>
 
@@ -122,6 +125,18 @@ $page = basename($_SERVER['PHP_SELF']);
             </a>
 
         </div>
+
+        <button
+            class="menu-toggle"
+            type="button"
+            aria-label="Abrir menu"
+            aria-controls="main-nav"
+            aria-expanded="false"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
 
     </header>
 
