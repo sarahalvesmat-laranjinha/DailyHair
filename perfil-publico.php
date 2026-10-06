@@ -129,22 +129,23 @@ $reviews = $stmt->fetchAll();
 
         <div class="public-profile-photo">
 
-            <?php if (!empty($profile['profile_image'])): ?>
+            <?php
+                $profile_photo_url = profile_image_url($profile);
+                $profile_initial = mb_strtoupper(mb_substr($profile['name'], 0, 1));
+            ?>
+
+            <?php if ($profile_photo_url): ?>
 
                 <img
-                    src="uploads/profiles/<?= e($profile['profile_image']) ?>"
+                    src="<?= e($profile_photo_url) ?>"
                     alt="<?= e($profile['name']) ?>"
+                    onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
                 >
+                <span hidden><?= e($profile_initial) ?></span>
 
             <?php else: ?>
 
-                <span>
-                    <?= e(
-                        mb_strtoupper(
-                            mb_substr($profile['name'], 0, 1)
-                        )
-                    ) ?>
-                </span>
+                <span><?= e($profile_initial) ?></span>
 
             <?php endif; ?>
 
