@@ -65,116 +65,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $file = $_FILES['image'];
 
-
-            /* Limite de 5 MB */
-
             if ($file['size'] > 5 * 1024 * 1024) {
 
                 $error = 'A foto deve ter no máximo 5 MB.';
 
             } else {
 
-                /* Verifica o tipo real da imagem */
-
                 $finfo = new finfo(FILEINFO_MIME_TYPE);
-
                 $mime = $finfo->file($file['tmp_name']);
 
-
                 $allowed = [
-                    'image/jpeg' => 'jpg',
-                    'image/png'  => 'png',
-                    
+                    'image/jpeg',
+                    'image/png',
                 ];
 
+                if (!in_array($mime, $allowed, true)) {
 
-                if (!isset($allowed[$mime])) {
-
-                    $error = 'Escolha uma imagem JPG, PNG .';
+                    $error = 'Escolha uma imagem JPG ou PNG.';
 
                 } else {
 
+                    $bytes = file_get_contents($file['tmp_name']);
 
-                    /* =================================
-                       CRIAR PASTA
-                    ================================== */
-
-                    $upload_dir = __DIR__ . '/uploads/profiles';
-
-
-                    if (!is_dir($upload_dir)) {
-
-                        mkdir($upload_dir, 0755, true);
-
-                    }
-
-
-                    /* =================================
-                       NOME DO ARQUIVO
-                    ================================== */
-
-                    $extension = $allowed[$mime];
-
-                    $filename =
-                        'profile_' .
-                        $user['id'] .
-                        '_' .
-                        time() .
-                        '.' .
-                        $extension;
-
-
-                    $destination =
-                        $upload_dir .
-                        '/' .
-                        $filename;
-
-
-                    /* =================================
-                       SALVAR IMAGEM
-                    ================================== */
-
-                    if (
-                        move_uploaded_file(
-                            $file['tmp_name'],
-                            $destination
-                        )
-                    ) {
-
-                        /* Apaga a foto antiga */
-
-                        if (!empty($profile_image)) {
-
-                            $old_file =
-                                $upload_dir .
-                                '/' .
-                                basename($profile_image);
-
-
-                            if (
-                                is_file($old_file) &&
-                                $old_file !== $destination
-                            ) {
-
-                                unlink($old_file);
-
-                            }
-
-                        }
-
-
-                        /*
-                         * Aqui está o ponto principal:
-                         * o nome da nova imagem passa a ser
-                         * o profile_image do usuário.
-                         */
-
-                        $profile_image = $filename;
-
+                    if ($bytes === false) {
+                        $error = 'Não foi possível ler a foto enviada.';
                     } else {
-
-                        $error = 'Não foi possível salvar a foto.';
-
+                        /*
+                         * Guarda a própria imagem no banco como Data URI.
+                         * Isso evita perder a foto quando o Render reinicia
+                         * ou faz um novo deploy.
+                         */
+                        $profile_image =
+                            'data:' .
+                            $mime .
+                            ';base64,' .
+                            base64_encode($bytes);
                     }
 
                 }
@@ -293,48 +218,60 @@ require_once __DIR__ . '/header.php';
         ================================================== -->
 
         <div class="rating-field">
-         <label for="name">
-                Foto de perfil:
-            </label>
-</div>
+            <label for="image">Foto de perfil:</label>
+        </div>
 
-<center>
-    <div id="profile-preview" class="profile-current-photo" aria-live="polite">
-        <?php if (!empty($user['profile_image'])): ?>
-            <img src="uploads/profiles/<?= e(basename($user['profile_image'])) ?>" alt="Foto de perfil">
-        <?php else: ?>
-            <?= e(mb_strtoupper(mb_substr($user['name'], 0, 1))) ?>
-        <?php endif; ?>
-    </div>
+        <?php
+            $current_photo_url = profile_image_url($user);
+            $profile_initial = mb_strtoupper(mb_substr($user['name'], 0, 1));
+        ?>
 
-                <div
-                    class="upload-box"
-                    id="upload-box"
-                >
+        <div class="profile-photo-picker">
 
-                    <input
-                        type="file"
-                        id="image"
-                        name="image"
-                        accept="image/jpeg,image/png"
-                    >
+            <label class="profile-photo-label" for="image">
 
-                    <strong id="upload-label">
-                        Foto de perfil
-                    </strong>
+                <div id="profile-preview" class="profile-current-photo" aria-live="polite">
+
+                    <?php if ($current_photo_url): ?>
+
+                        <img
+                            src="<?= e($current_photo_url) ?>"
+                            alt="Foto de perfil"
+                            onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+                        >
+                        <span class="profile-photo-fallback" hidden>
+                            <?= e($profile_initial) ?>
+                        </span>
+
+                    <?php else: ?>
+
+                        <span class="profile-photo-fallback">
+                            <?= e($profile_initial) ?>
+                        </span>
+
+                    <?php endif; ?>
 
                 </div>
 
-            
+                <span class="profile-photo-action">
+                    Clique para escolher outra foto
+                </span>
 
+            </label>
+
+            <input
+                class="profile-photo-input"
+                type="file"
+                id="image"
+                name="image"
+                accept="image/jpeg,image/png"
+            >
 
             <div class="upload-hint">
-
-                Clique ou arraste o arquivo aqui
-
+                JPG ou PNG, até 5 MB
             </div>
-</center>
-        
+
+        </div>
 
 
         <!-- =================================================
@@ -426,52 +363,71 @@ require_once __DIR__ . '/header.php';
 </div>
 
 <style>
-
-.profile-upload-area {
+.profile-photo-picker {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 20px;
-    margin-top: 10px;
+    gap: 10px;
+    margin: 8px 0 30px;
+}
+
+.profile-photo-label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
 }
 
 .profile-current-photo {
-    width: 90px;
-    height: 90px;
-    min-width: 90px;
-
+    width: 150px;
+    height: 150px;
+    min-width: 150px;
     border-radius: 50%;
     overflow: hidden;
-
     background: #ecd3c8;
-
+    border: 2px solid #ead9d0;
     display: flex;
     align-items: center;
     justify-content: center;
-
     color: var(--terracotta);
-    font-size: 30px;
+    font-size: 42px;
     font-weight: 700;
+    box-shadow: 0 10px 28px rgba(83, 55, 43, .08);
+    transition: border-color .2s ease, transform .2s ease;
+}
+
+.profile-photo-label:hover .profile-current-photo {
+    border-color: var(--terracotta);
+    transform: translateY(-2px);
 }
 
 .profile-current-photo img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     display: block;
 }
 
-.upload-box {
-    position: relative;
+.profile-photo-action {
+    color: var(--terracotta);
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.upload-box input[type="file"] {
-    cursor: pointer;
+.profile-photo-input {
+    position: fixed;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
 }
 
 .upload-hint {
-    margin-top: 8px;
     color: var(--muted);
     font-size: 12px;
+    text-align: center;
 }
 
 .profile-message {
@@ -493,47 +449,41 @@ require_once __DIR__ . '/header.php';
 }
 
 @media (max-width: 600px) {
-
-    .profile-upload-area {
-        flex-direction: column;
-        align-items: flex-start;
+    .profile-current-photo {
+        width: 130px;
+        height: 130px;
+        min-width: 130px;
+        font-size: 36px;
     }
-
 }
-
 </style>
 
 <script>
 const imageInput = document.getElementById('image');
 const preview = document.getElementById('profile-preview');
-const uploadLabel = document.getElementById('upload-label');
 
-imageInput.addEventListener('change', function () {
-
+imageInput?.addEventListener('change', function () {
     const file = this.files[0];
 
     if (!file) {
         return;
     }
 
-    uploadLabel.textContent = file.name;
-
     const reader = new FileReader();
 
-    reader.onload = function (e) {
-        if (imageInput.files[0] !== file) return;
+    reader.onload = function (event) {
+        if (imageInput.files[0] !== file) {
+            return;
+        }
 
-        preview.innerHTML = `
-            <img
-                src="${e.target.result}"
-                alt="Foto de perfil"
-            >
-        `;
+        const image = document.createElement('img');
+        image.src = event.target.result;
+        image.alt = 'Prévia da foto de perfil';
 
+        preview.replaceChildren(image);
     };
 
     reader.readAsDataURL(file);
-
 });
 </script>
 
