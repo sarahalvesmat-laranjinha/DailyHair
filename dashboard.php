@@ -11,6 +11,11 @@ $year = date('Y');
 $days = (int) date('t');
 $first = (int) date('N', strtotime("$year-$month-01"));
 $types = ['Hidratação', 'Nutrição', 'Umectação', 'Reconstrução'];
+$month_names = [
+    1 => 'Janeiro', 2 => 'Fevereiro', 3 => 'Março', 4 => 'Abril',
+    5 => 'Maio', 6 => 'Junho', 7 => 'Julho', 8 => 'Agosto',
+    9 => 'Setembro', 10 => 'Outubro', 11 => 'Novembro', 12 => 'Dezembro'
+];
 ?>
 
 
@@ -26,7 +31,7 @@ $types = ['Hidratação', 'Nutrição', 'Umectação', 'Reconstrução'];
         <div class="panel-head">
             <div>
                 <h2>Seu calendário</h2>
-                <p><?= strftime('%B', mktime(0, 0, 0, $month, 1, $year)) ?> de <?= $year ?></p>
+                <p><?= e($month_names[$month]) ?> de <?= $year ?></p>
             </div><a href="calendar.php">Ver tudo →</a>
         </div>
         <div class="weekdays">
