@@ -102,13 +102,24 @@ $page = basename($_SERVER['PHP_SELF']);
         <div class="user-menu">
 
             <a class="avatar" href="perfil-publico.php?id=<?= (int)$user['id'] ?>">
-                <?php if ($user && !empty($user['profile_image'])): ?>
-                    <img
-                        src="uploads/profiles/<?= e($user['profile_image']) ?>"
-                        alt="<?= e($user['name']) ?>"
-                    >
+                <?php if ($user): ?>
+                    <?php
+                        $avatar_url = profile_image_url($user);
+                        $avatar_initial = mb_strtoupper(mb_substr($user['name'], 0, 1));
+                    ?>
+
+                    <?php if ($avatar_url): ?>
+                        <img
+                            src="<?= e($avatar_url) ?>"
+                            alt="<?= e($user['name']) ?>"
+                            onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
+                        >
+                        <span hidden><?= e($avatar_initial) ?></span>
+                    <?php else: ?>
+                        <?= e($avatar_initial) ?>
+                    <?php endif; ?>
                 <?php else: ?>
-                    <?= $user ? e(mb_strtoupper(mb_substr($user['name'], 0, 1))) : '?' ?>
+                    ?
                 <?php endif; ?>
             </a>
 
