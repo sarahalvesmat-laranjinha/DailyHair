@@ -467,3 +467,208 @@ canvas {
         font-size: 18px;
     }
 }
+
+
+/* =====================================================
+   REFINAMENTO MOBILE - MAIS RESPIRO E PROPORÇÃO
+===================================================== */
+
+@media (max-width: 600px) {
+
+    /* Mais margem nas laterais da tela */
+    .container {
+        padding: 30px 24px 58px;
+    }
+
+    /* Cabeçalhos e títulos menos "zoomados" */
+    .page-title {
+        margin-bottom: 34px;
+    }
+
+    .hero h1,
+    .page-title h1 {
+        font-size: 30px;
+        line-height: 1.15;
+        margin-top: 10px;
+    }
+
+    .page-title p,
+    .hero p {
+        font-size: 15px;
+        line-height: 1.55;
+    }
+
+    .eyebrow {
+        font-size: 10px;
+        letter-spacing: 1.9px;
+    }
+
+    /* Mais distância entre blocos do dashboard */
+    .dashboard-grid {
+        gap: 28px;
+    }
+
+    .section-head {
+        margin: 54px 0 26px;
+        gap: 14px;
+    }
+
+    .section-head h1,
+    .section-head h2 {
+        font-size: 27px;
+        line-height: 1.18;
+        margin-top: 8px;
+    }
+
+    .section-head > a {
+        margin-top: 5px;
+    }
+
+    /* Cards um pouco menores e com mais espaço entre eles */
+    .products-grid {
+        gap: 24px;
+    }
+
+    .product-card {
+        border-radius: 20px;
+    }
+
+    .product-image {
+        height: 185px;
+    }
+
+    .product-image img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .product-body {
+        padding: 20px 18px 22px;
+    }
+
+    .product-body h2,
+    .product-body h3 {
+        font-size: 17px;
+        line-height: 1.4;
+        margin-top: 8px;
+        margin-bottom: 9px;
+    }
+
+    .product-body .compatibility {
+        margin-top: 14px;
+    }
+
+    .product-body .btn.primary {
+        margin-top: 16px;
+    }
+
+    /* Cards gerais com mais respiro interno */
+    .calendar-mini,
+    .profile-card,
+    .profile-form,
+    .review-form {
+        padding: 23px;
+    }
+
+    /* Calendário mais compacto e com mais espaço ao redor */
+    .calendar-large {
+        padding: 24px 18px 28px;
+        border-radius: 22px;
+    }
+
+    .calendar-toolbar {
+        gap: 12px;
+        margin-bottom: 24px;
+    }
+
+    .calendar-toolbar h2 {
+        font-size: 19px;
+        line-height: 1.2;
+    }
+
+    .calendar-toolbar .icon-btn {
+        width: 40px;
+        height: 40px;
+        min-height: 40px;
+        flex-shrink: 0;
+    }
+
+    .calendar-large .weekdays,
+    .calendar-large .calendar-days {
+        min-width: 0;
+        width: 100%;
+    }
+
+    .calendar-large .weekdays {
+        margin-top: 0;
+        margin-bottom: 9px;
+    }
+
+    .calendar-days.large {
+        gap: 7px;
+    }
+
+    .calendar-days .day.large {
+        min-height: 58px;
+        padding: 7px 3px;
+        border-radius: 10px;
+    }
+
+    .day.large > span {
+        min-height: 26px;
+    }
+
+    .day.large .calendar-icon {
+        width: 21px;
+        height: 21px;
+    }
+
+    .legend {
+        margin-top: 22px;
+        margin-bottom: 28px;
+        gap: 14px 18px;
+    }
+
+    /* Formulários e detalhes não encostam nas bordas */
+    .review-section {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .back-link {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .detail-info {
+        padding: 28px 22px;
+    }
+}
+
+@media (max-width: 380px) {
+
+    /* Mantém respiro mesmo em celulares bem pequenos */
+    .container {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .hero h1,
+    .page-title h1 {
+        font-size: 28px;
+    }
+
+    .section-head h1,
+    .section-head h2 {
+        font-size: 25px;
+    }
+
+    .calendar-large {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+    .calendar-days.large {
+        gap: 5px;
+    }
+}
