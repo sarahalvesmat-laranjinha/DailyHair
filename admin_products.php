@@ -200,14 +200,16 @@ require_once __DIR__ . '/header.php';
 
                     <div class="admin-product-image">
 
-                        <?php if (!empty($produto['image'])): ?>
+                        <?php $product_image_url = product_image_url($produto['image'] ?? null); ?>
 
-                            <img src="images/<?= e($produto['image']) ?>" alt="<?= e($produto['name']) ?>">
+                        <?php if ($product_image_url): ?>
+
+                            <img src="<?= e($product_image_url) ?>" alt="<?= e($produto['name']) ?>">
 
                         <?php else: ?>
 
                             <div class="no-image">
-                                Sem imagem
+                                Imagem indisponível
                             </div>
 
                         <?php endif; ?>
