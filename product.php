@@ -599,6 +599,45 @@ foreach ($reviews as $r) {
                     </p>
 
 
+                    <!-- EXCLUIR A PRÓPRIA AVALIAÇÃO -->
+
+                    <?php if ((int) $r['user_id'] === (int) $user['id']): ?>
+
+                        <form
+                            class="review-delete-form"
+                            method="post"
+                            action="review.php"
+                            onsubmit="return confirm('Tem certeza que deseja excluir seu comentário?');"
+                        >
+                            <input
+                                type="hidden"
+                                name="action"
+                                value="delete"
+                            >
+
+                            <input
+                                type="hidden"
+                                name="review_id"
+                                value="<?= (int) $r['id'] ?>"
+                            >
+
+                            <input
+                                type="hidden"
+                                name="product_id"
+                                value="<?= (int) $p['id'] ?>"
+                            >
+
+                            <button
+                                class="review-delete-btn"
+                                type="submit"
+                            >
+                                Excluir comentário
+                            </button>
+                        </form>
+
+                    <?php endif; ?>
+
+
                     <!-- PERFIL SEMELHANTE -->
 
                     <?php if (
