@@ -1116,6 +1116,38 @@ textarea {
 
 
 /* =====================================================
+   EXCLUIR A PRÓPRIA AVALIAÇÃO
+===================================================== */
+
+.review-delete-form {
+    display: flex;
+    justify-content: flex-end;
+    margin: 14px 0 0;
+}
+
+.review-delete-btn {
+    border: 1px solid #d9b8aa;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--terracotta);
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background .2s ease,
+        border-color .2s ease,
+        transform .2s ease;
+}
+
+.review-delete-btn:hover {
+    background: #f8e9e1;
+    border-color: var(--terracotta);
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
    PERFIL SEMELHANTE
 ===================================================== */
 
@@ -1515,6 +1547,10 @@ select[multiple] {
     border-radius: 17px;
     margin-top: 23px;
     font-size: 16px;
+}
+
+#google-login {
+    margin-top: 14px;
 }
 
 .create-account {
