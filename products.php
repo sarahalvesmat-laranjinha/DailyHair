@@ -99,12 +99,18 @@ $products = $stmt->fetchAll();
 
             <div class="product-image">
 
-                <?php if (!empty($p['image'])): ?>
+                <?php $product_image_url = product_image_url($p['image'] ?? null); ?>
+
+                <?php if ($product_image_url): ?>
 
                     <img
-                        src="images/<?= e($p['image']) ?>"
+                        src="<?= e($product_image_url) ?>"
                         alt="<?= e($p['name']) ?>"
                     >
+
+                <?php else: ?>
+
+                    <span class="no-image">Imagem indisponível</span>
 
                 <?php endif; ?>
 
