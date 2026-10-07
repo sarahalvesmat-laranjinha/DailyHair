@@ -78,69 +78,15 @@ if (!empty($errors)) {
 $image_name = $current_image;
 
 if (!empty($_FILES['image']['name'])) {
-
-    $allowed_ext = [
-        'jpg',
-        'jpeg',
-        'png',
-        'webp'
-    ];
-
-    $ext = strtolower(
-        pathinfo(
-            $_FILES['image']['name'],
-            PATHINFO_EXTENSION
-        )
-    );
-
-    if (!in_array($ext, $allowed_ext, true)) {
-
+    try {
+        $image_name = uploaded_product_image_to_data_url($_FILES['image']);
+    } catch (RuntimeException $e) {
         header(
             'Location: product-form.php'
             . ($id ? "?id=$id" : '')
             . '&error='
-            . urlencode(
-                'Formato de imagem inválido. Use jpg ou png.'
-            )
+            . urlencode($e->getMessage())
         );
-
-        exit;
-    }
-
-    if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
-
-        header(
-            'Location: product-form.php'
-            . ($id ? "?id=$id" : '')
-            . '&error='
-            . urlencode(
-                'Imagem muito grande. Máximo de 5MB.'
-            )
-        );
-
-        exit;
-    }
-
-    $image_name = uniqid('prod_', true) . '.' . $ext;
-
-    $destination = __DIR__ . '/images/' . $image_name;
-
-    if (
-        !move_uploaded_file(
-            $_FILES['image']['tmp_name'],
-            $destination
-        )
-    ) {
-
-        header(
-            'Location: product-form.php'
-            . ($id ? "?id=$id" : '')
-            . '&error='
-            . urlencode(
-                'Falha ao enviar a imagem. Tente novamente.'
-            )
-        );
-
         exit;
     }
 }
