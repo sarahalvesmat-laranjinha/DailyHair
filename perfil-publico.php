@@ -323,10 +323,12 @@ $reviews = $stmt->fetchAll();
 
                         <div class="public-review-product">
 
-                            <?php if (!empty($review['product_image'])): ?>
+                            <?php $product_image_url = product_image_url($review['product_image'] ?? null); ?>
+
+                            <?php if ($product_image_url): ?>
 
                                 <img
-                                    src="images/<?= e($review['product_image']) ?>"
+                                    src="<?= e($product_image_url) ?>"
                                     alt="<?= e($review['product_name']) ?>"
                                 >
 
