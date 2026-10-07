@@ -245,10 +245,16 @@ require_once __DIR__ . '/header.php';
 
                             <p>
                                 <strong>Data:</strong>
-                                <?= date(
-                                    'd/m/Y H:i',
-                                    strtotime($produto['created_at'])
-                                ) ?>
+                                <?php
+                                $created_at_utc = new DateTimeImmutable(
+                                    $produto['created_at'],
+                                    new DateTimeZone('UTC')
+                                );
+
+                                echo $created_at_utc
+                                    ->setTimezone(new DateTimeZone('America/Sao_Paulo'))
+                                    ->format('d/m/Y H:i');
+                                ?>
                             </p>
 
                             <p>
