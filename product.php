@@ -141,16 +141,18 @@ foreach ($reviews as $r) {
 
     <div class="detail-image">
 
-        <?php if (!empty($p['image'])): ?>
+        <?php $product_image_url = product_image_url($p['image'] ?? null); ?>
 
-            <?php
-            $product_image = basename($p['image']);
-            ?>
+        <?php if ($product_image_url): ?>
 
             <img
-                src="images/<?= e($product_image) ?>"
+                src="<?= e($product_image_url) ?>"
                 alt="<?= e($p['name']) ?>"
             >
+
+        <?php else: ?>
+
+            <span class="no-image">Imagem indisponível</span>
 
         <?php endif; ?>
 
