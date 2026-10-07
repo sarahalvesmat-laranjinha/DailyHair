@@ -1270,14 +1270,19 @@ if (isset($_GET['day'])):
 
                                     <div class="recommended-product-image">
 
-                                        <?php if (!empty($product['image'])): ?>
+                                        <?php $product_image_url = product_image_url($product['image'] ?? null); ?>
 
-                                            <img src="images/<?= e($product['image']) ?>" alt="<?= e($product['name']) ?>">
+                                        <?php if ($product_image_url): ?>
+
+                                            <img
+                                                src="<?= e($product_image_url) ?>"
+                                                alt="<?= e($product['name']) ?>"
+                                            >
 
                                         <?php else: ?>
 
                                             <div class="no-product-image">
-                                                Sem imagem
+                                                Imagem indisponível
                                             </div>
 
                                         <?php endif; ?>
