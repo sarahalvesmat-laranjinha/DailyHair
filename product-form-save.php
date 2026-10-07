@@ -10,20 +10,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 $conn = db();
-
 $user = current_user();
-
 $created_by = (int) $user['id'];
 
 $name = trim($_POST['name'] ?? '');
 $brand = trim($_POST['brand'] ?? '');
 $category = trim($_POST['category'] ?? '');
 $description = trim($_POST['description'] ?? '');
-
-
-// =====================================================
-// VALIDAÇÃO
-// =====================================================
 
 $errors = [];
 
@@ -43,8 +36,6 @@ if ($description === '') {
     $errors[] = 'A descrição é obrigatória.';
 }
 
-
-// Apenas estas categorias são permitidas
 $categorias_permitidas = [
     'Nutrição',
     'Hidratação',
@@ -55,112 +46,27 @@ if (!in_array($category, $categorias_permitidas, true)) {
     $errors[] = 'Categoria inválida.';
 }
 
-
 if (!empty($errors)) {
-
-    $msg = implode(' ', $errors);
-
     header(
-        'Location: product-form.php?error=' . urlencode($msg)
+        'Location: product-form.php?error=' .
+        urlencode(implode(' ', $errors))
     );
-
     exit;
 }
-
-
-// =====================================================
-// UPLOAD DA IMAGEM
-// =====================================================
 
 $image_name = null;
 
 if (!empty($_FILES['image']['name'])) {
-
-    $allowed_ext = [
-        'jpg',
-        'jpeg',
-        'png'
-    ];
-
-    $ext = strtolower(
-        pathinfo(
-            $_FILES['image']['name'],
-            PATHINFO_EXTENSION
-        )
-    );
-
-
-    // Verifica extensão
-    if (!in_array($ext, $allowed_ext, true)) {
-
+    try {
+        $image_name = uploaded_product_image_to_data_url($_FILES['image']);
+    } catch (RuntimeException $e) {
         header(
             'Location: product-form.php?error=' .
-            urlencode(
-                'Formato de imagem inválido. Use JPG ou PNG.'
-            )
+            urlencode($e->getMessage())
         );
-
-        exit;
-    }
-
-
-    // Verifica tamanho máximo de 5MB
-    if ($_FILES['image']['size'] > 5 * 1024 * 1024) {
-
-        header(
-            'Location: product-form.php?error=' .
-            urlencode(
-                'Imagem muito grande. Máximo de 5MB.'
-            )
-        );
-
-        exit;
-    }
-
-
-    // Cria nome único para a imagem
-    $image_name = uniqid('prod_', true) . '.' . $ext;
-
-    $upload_dir = __DIR__ . '/images';
-
-    if (
-        (!is_dir($upload_dir) && !@mkdir($upload_dir, 0755, true) && !is_dir($upload_dir))
-        || !is_writable($upload_dir)
-    ) {
-        error_log('Cadastro de produto: pasta images indisponível para escrita.');
-        header('Location: product-form.php?error=' . urlencode(
-            'Não foi possível salvar a imagem. Tente novamente mais tarde.'
-        ));
-        exit;
-    }
-
-    $destination = $upload_dir . '/' . $image_name;
-
-
-    // Salva a imagem
-    if (
-        !@move_uploaded_file(
-            $_FILES['image']['tmp_name'],
-            $destination
-        )
-    ) {
-        error_log('Cadastro de produto: falha ao mover imagem para a pasta images.');
-
-        header(
-            'Location: product-form.php?error=' .
-            urlencode(
-                'Falha ao enviar a imagem. Tente novamente.'
-            )
-        );
-
         exit;
     }
 }
-
-
-// =====================================================
-// CADASTRAR NA TABELA DE APROVAÇÃO
-// =====================================================
 
 $stmt = $conn->prepare("
     INSERT INTO aprove_products
@@ -176,11 +82,9 @@ $stmt = $conn->prepare("
     VALUES (?, ?, ?, ?, ?, ?, 'Em análise')
 ");
 
-
 if (!$stmt) {
-    die('Erro ao preparar cadastro: ' . 'Consulte o log do servidor.');
+    die('Erro ao preparar cadastro: Consulte o log do servidor.');
 }
-
 
 $stmt->bindValue(1, $name, PDO::PARAM_STR);
 $stmt->bindValue(2, $brand, PDO::PARAM_STR);
@@ -189,15 +93,9 @@ $stmt->bindValue(4, $description, PDO::PARAM_STR);
 $stmt->bindValue(5, $image_name, PDO::PARAM_STR);
 $stmt->bindValue(6, $created_by, PDO::PARAM_INT);
 
-
 if (!$stmt->execute()) {
-    die('Erro ao cadastrar produto: ' . 'Consulte o log do servidor.');
+    die('Erro ao cadastrar produto: Consulte o log do servidor.');
 }
-
-
-// =====================================================
-// VOLTAR PARA A PÁGINA DE CADASTRO
-// =====================================================
 
 header('Location: product-form.php?sent=1');
 exit;
