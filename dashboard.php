@@ -67,10 +67,16 @@ $month_names = [
 
             <a href="product.php?id=<?= (int)$p['id'] ?>">
                 <div class="product-image">
-                    <img
-                        src="images/<?= e($p['image']) ?>"
-                        alt="<?= e($p['name']) ?>"
-                    >
+                    <?php $product_image_url = product_image_url($p['image'] ?? null); ?>
+
+                    <?php if ($product_image_url): ?>
+                        <img
+                            src="<?= e($product_image_url) ?>"
+                            alt="<?= e($p['name']) ?>"
+                        >
+                    <?php else: ?>
+                        <span class="no-image">Imagem indisponível</span>
+                    <?php endif; ?>
                 </div>
             </a>
 
