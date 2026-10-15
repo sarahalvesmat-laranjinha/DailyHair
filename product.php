@@ -145,10 +145,15 @@ foreach ($reviews as $r) {
 
         <?php if ($product_image_url): ?>
 
-            <img
-                src="<?= e($product_image_url) ?>"
-                alt="<?= e($p['name']) ?>"
-            >
+            <button type="button" class="product-image-zoom-trigger" id="product-image-zoom-trigger"
+                aria-label="Ampliar imagem de <?= e($p['name']) ?>"
+                aria-haspopup="dialog" aria-controls="product-image-modal">
+                <img
+                    src="<?= e($product_image_url) ?>"
+                    alt="<?= e($p['name']) ?>"
+                >
+                <span class="product-image-zoom-hint" aria-hidden="true">⌕ Ampliar imagem</span>
+            </button>
 
         <?php else: ?>
 
@@ -158,6 +163,13 @@ foreach ($reviews as $r) {
 
     </div>
 
+
+    <?php if ($product_image_url): ?>
+    <dialog id="product-image-modal" class="product-image-modal" aria-label="Imagem ampliada de <?= e($p['name']) ?>">
+        <button type="button" class="product-image-modal-close" aria-label="Fechar imagem ampliada">&times;</button>
+        <img src="<?= e($product_image_url) ?>" alt="<?= e($p['name']) ?>">
+    </dialog>
+    <?php endif; ?>
 
     <!-- INFORMAÇÕES -->
 
@@ -668,6 +680,104 @@ foreach ($reviews as $r) {
 
 </section>
 
+
+<!-- Zoom da imagem do produto -->
+<style>
+.detail-image .product-image-zoom-trigger {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 390px;
+    border: 0;
+    padding: 0;
+    background: transparent;
+    cursor: zoom-in;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.detail-image .product-image-zoom-trigger img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 25px;
+}
+.product-image-zoom-hint {
+    position: absolute;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 8px 13px;
+    border-radius: 999px;
+    background: rgba(64, 51, 49, .85);
+    color: white;
+    white-space: nowrap;
+    font-size: 12px;
+    opacity: 0;
+    transition: opacity .2s ease;
+}
+.product-image-zoom-trigger:hover .product-image-zoom-hint,
+.product-image-zoom-trigger:focus-visible .product-image-zoom-hint { opacity: 1; }
+.product-image-zoom-trigger:focus-visible { outline: 3px solid var(--terracotta); outline-offset: -4px; }
+.product-image-modal {
+    position: fixed;
+    inset: 0;
+    width: min(94vw, 950px);
+    max-width: 950px;
+    max-height: 94vh;
+    padding: 35px;
+    border: 0;
+    border-radius: 18px;
+    background: #fffaf6;
+    box-shadow: 0 18px 70px rgba(0,0,0,.25);
+    overflow: auto;
+}
+.product-image-modal::backdrop { background: rgba(24, 17, 14, .78); }
+.product-image-modal img {
+    display: block;
+    width: 100%;
+    max-height: calc(94vh - 70px);
+    object-fit: contain;
+}
+.product-image-modal-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    z-index: 1;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    background: #f1e7df;
+    color: #403331;
+    font-size: 28px;
+    line-height: 1;
+    cursor: pointer;
+}
+.product-image-modal-close:hover { background: #e6d5c9; }
+@media (max-width: 600px) {
+    .product-image-modal { width: 96vw; max-height: 90vh; padding: 35px 12px 16px; }
+    .product-image-modal img { max-height: calc(90vh - 55px); }
+    .product-image-zoom-hint { opacity: 1; }
+}
+</style>
+<script>
+(() => {
+    const trigger = document.getElementById('product-image-zoom-trigger');
+    const modal = document.getElementById('product-image-modal');
+    if (!trigger || !modal || typeof modal.showModal !== 'function') return;
+    const closeButton = modal.querySelector('.product-image-modal-close');
+    trigger.addEventListener('click', () => modal.showModal());
+    closeButton.addEventListener('click', () => modal.close());
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) {
+            const rect = modal.getBoundingClientRect();
+            if (event.clientX < rect.left || event.clientX > rect.right ||
+                event.clientY < rect.top || event.clientY > rect.bottom) modal.close();
+        }
+    });
+})();
+</script>
 
 <?php
 
