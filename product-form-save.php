@@ -10,6 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 verify_csrf();
+// Limite de envios por sessão; não substitui proteção por IP na infraestrutura.
+$times = array_values(array_filter($_SESSION['product_submit_times'] ?? [],
+    static fn($t) => is_int($t) && $t > time() - 3600));
+if (count($times) >= 10) {
+    http_response_code(429);
+    exit('Limite de produtos enviados. Tente novamente mais tarde.');
+}
+$_SESSION['product_submit_times'] = [...$times, time()];
 $conn = db();
 $user = current_user();
 $created_by = (int) $user['id'];
