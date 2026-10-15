@@ -36,6 +36,7 @@ $enviado = isset($_GET['sent']);
         action="product-form-save.php"
         enctype="multipart/form-data"
     >
+        <?= csrf_field() ?>
 
         <div class="rating-field">
             <label for="name">Nome do produto</label>
