@@ -84,6 +84,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="create-account">Ainda nao tem uma conta? <a href="register.php">Criar conta</a></p>
     </section>
     <script type="module" src="firebase-auth.js"></script>
+    <?php include __DIR__ . '/cookie-banner.php'; ?>
 </body>
 
 </html>
