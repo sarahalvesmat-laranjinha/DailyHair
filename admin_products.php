@@ -27,6 +27,7 @@ APROVAR OU REPROVAR PRODUTO
 */
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf();
 
     $conn->beginTransaction();
     try {
@@ -270,6 +271,7 @@ require_once __DIR__ . '/header.php';
                         <div class="admin-product-actions">
 
                             <form method="POST">
+                                <?= csrf_field() ?>
 
                                 <input type="hidden" name="request_id" value="<?= (int) $produto['id'] ?>">
 
