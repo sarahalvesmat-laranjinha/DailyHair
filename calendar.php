@@ -82,6 +82,7 @@ if (
     isset($_POST['save_routine'])
 ) {
 
+    verify_csrf();
     $weekday = (int) ($_POST['weekday'] ?? 0);
     $steps = $_POST['steps'] ?? [];
 
@@ -1165,6 +1166,7 @@ if (isset($_GET['day'])):
 
 
                     <form method="post" class="routine-form">
+        <?= csrf_field() ?>
 
                         <input type="hidden" name="save_routine" value="1">
 
