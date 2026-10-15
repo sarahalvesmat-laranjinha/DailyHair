@@ -297,6 +297,7 @@ foreach ($reviews as $r) {
             method="post"
             action="review.php"
         >
+            <?= csrf_field() ?>
 
 
             <!-- ID DO PRODUTO -->
@@ -623,6 +624,7 @@ foreach ($reviews as $r) {
                             action="review.php"
                             onsubmit="return confirm('Tem certeza que deseja excluir seu comentário?');"
                         >
+                            <?= csrf_field() ?>
                             <input
                                 type="hidden"
                                 name="action"
