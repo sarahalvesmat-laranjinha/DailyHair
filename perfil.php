@@ -24,6 +24,7 @@ $error = '';
 ===================================================== */
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf();
 
     $name = trim($_POST['name'] ?? '');
     $curl_pattern = trim($_POST['curl_pattern'] ?? '');
@@ -38,7 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
        VALIDAR NOME
     ================================================== */
 
-    if ($name === '') {
+    if ($name === '' || mb_strlen($name) > 120 || mb_strlen($bio) > 150 || mb_strlen($curl_pattern) > 20) {
 
         $error = 'Digite um nome para o perfil.';
 
@@ -65,7 +66,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             $file = $_FILES['image'];
 
-            if ($file['size'] > 5 * 1024 * 1024) {
+            if (!is_uploaded_file($file['tmp_name']) || $file['size'] <= 0 || $file['size'] > 5 * 1024 * 1024) {
 
                 $error = 'A foto deve ter no máximo 5 MB.';
 
@@ -211,6 +212,7 @@ require_once __DIR__ . '/header.php';
         action="perfil.php"
         enctype="multipart/form-data"
     >
+        <?= csrf_field() ?>
 
 
         <!-- =================================================
