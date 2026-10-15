@@ -8,6 +8,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 }
 
 verify_csrf();
+// Limite por sessão para reduzir spam automático de avaliações.
+if (($_POST['action'] ?? 'create') === 'create') {
+    $times = array_values(array_filter($_SESSION['review_submit_times'] ?? [],
+        static fn($t) => is_int($t) && $t > time() - 600));
+    if (count($times) >= 10) {
+        http_response_code(429);
+        exit('Muitas avaliações enviadas. Aguarde alguns minutos.');
+    }
+    $times[] = time();
+    $_SESSION['review_submit_times'] = $times;
+}
 $user_id = (int) $_SESSION['user_id'];
 $action = $_POST['action'] ?? 'create';
 
