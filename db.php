@@ -51,7 +51,10 @@ function db(): PDO
             PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
             PDO::ATTR_EMULATE_PREPARES => false,
         ]);
-        $conn->exec('SET search_path TO "' . $schema . '"');
+        // O nome do schema é passado como dado, nunca concatenado em SQL.
+        // quote_ident garante que PostgreSQL o interprete como identificador.
+        $schemaStmt = $conn->prepare("SELECT set_config('search_path', quote_ident(?), false)");
+        $schemaStmt->execute([$schema]);
         $conn->exec("SET TIME ZONE 'UTC'");
         return $conn;
     } catch (PDOException $e) {
