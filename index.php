@@ -8,6 +8,14 @@ if (!empty($_SESSION['user_id'])) {
 $_SESSION['auth_csrf'] ??= bin2hex(random_bytes(32));
 $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    verify_csrf();
+    $attempts = $_SESSION['login_attempts'] ?? [];
+    $attempts = array_values(array_filter($attempts, static fn($time) => is_int($time) && $time > time() - 900));
+    $_SESSION['login_attempts'] = $attempts;
+    if (count($attempts) >= 10) {
+        http_response_code(429);
+        $error = 'Muitas tentativas. Aguarde alguns minutos para entrar.';
+    } else {
     $email = trim($_POST['email'] ?? '');
     $password = $_POST['password'] ?? '';
     if (!$email || !$password) {
@@ -19,11 +27,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $found = $stmt->fetch();
         if ($found && password_verify($password, $found['password'])) {
             session_regenerate_id(true);
+            unset($_SESSION['login_attempts']);
             $_SESSION['user_id'] = (int) $found['id'];
             header('Location: dashboard.php');
             exit;
         }
+        $_SESSION['login_attempts'][] = time();
         $error = 'E-mail ou senha incorretos.';
+    }
     }
 }
 ?>
@@ -60,6 +71,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         <div id="firebase-message" class="alert error" hidden></div>
         <form method="post" class="auth-form">
+            <?= csrf_field() ?>
             <label for="email">Email:</label>
             <input id="email" name="email" type="email" autocomplete="email" required>
             <label for="password">Senha:</label>
