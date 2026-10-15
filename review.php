@@ -7,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+verify_csrf();
 $user_id = (int) $_SESSION['user_id'];
 $action = $_POST['action'] ?? 'create';
 
@@ -57,7 +58,7 @@ $product_id = (int) ($_POST['product_id'] ?? 0);
 $rating = max(1, min(5, (int) ($_POST['rating'] ?? 5)));
 $comment = trim($_POST['comment'] ?? '');
 
-if (!$product_id || !$comment) {
+if (!$product_id || !$comment || mb_strlen($comment) > 3000 || $rating < 1 || $rating > 5) {
     header('Location: product.php?id=' . $product_id . '&error=1#avaliar');
     exit;
 }
