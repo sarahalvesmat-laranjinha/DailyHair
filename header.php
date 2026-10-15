@@ -42,6 +42,7 @@ $page = basename($_SERVER['PHP_SELF']);
 </head>
 
 <body>
+    <?php include __DIR__ . '/cookie-banner.php'; ?>
 
     <header class="topbar">
 
