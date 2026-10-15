@@ -9,6 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
+verify_csrf();
 $conn = db();
 $user = current_user();
 $created_by = (int) $user['id'];
@@ -20,11 +21,11 @@ $description = trim($_POST['description'] ?? '');
 
 $errors = [];
 
-if ($name === '') {
+if ($name === '' || mb_strlen($name) > 160) {
     $errors[] = 'O nome do produto é obrigatório.';
 }
 
-if ($brand === '') {
+if ($brand === '' || mb_strlen($brand) > 120) {
     $errors[] = 'A marca é obrigatória.';
 }
 
@@ -32,7 +33,7 @@ if ($category === '') {
     $errors[] = 'A categoria é obrigatória.';
 }
 
-if ($description === '') {
+if ($description === '' || mb_strlen($description) > 3000) {
     $errors[] = 'A descrição é obrigatória.';
 }
 
