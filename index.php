@@ -48,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="auth-csrf" content="<?= e($_SESSION['auth_csrf']) ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Entrar — Daily Hair</title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="apple-touch-icon" href="Logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
