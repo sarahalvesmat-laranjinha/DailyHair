@@ -58,6 +58,7 @@ $products = $stmt->fetchAll();
         <select id="product-filter" aria-label="Filtrar produtos por característica">
             <option value="">Todos os produtos</option>
             <optgroup label="Tipo de produto">
+                <option value="tipo:kit">Kit capilar</option>
                 <option value="tipo:shampoo">Shampoo</option>
                 <option value="tipo:condicionador">Condicionador</option>
                 <option value="tipo:mascara">Máscara capilar</option>
