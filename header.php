@@ -21,6 +21,8 @@ $page = basename($_SERVER['PHP_SELF']);
     <title>
         <?= isset($page_title) ? e($page_title) . ' — Daily Hair' : 'Daily Hair' ?>
     </title>
+    <link rel="icon" type="image/png" href="Logo.png">
+    <link rel="apple-touch-icon" href="Logo.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
