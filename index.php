@@ -59,6 +59,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 
 <body class="auth-page" data-auth-page="login">
+    <style>
+      /* A página de entrada também recebe o rodapé, sem deslocar o cartão de login. */
+      body.auth-page{display:block;padding:0}
+      .dh-auth-entry{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:110px 20px 55px;position:relative}
+      .auth-top{z-index:0}
+    </style>
+    <main class="dh-auth-entry">
     <div class="auth-top"></div>
     <section class="auth-card">
         <div class="logo-circle">
@@ -85,8 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="create-account"><a href="index.php?legacy=1">Entrar com conta anterior</a></p>
         <p class="create-account">Ainda nao tem uma conta? <a href="register.php">Criar conta</a></p>
     </section>
+    </main>
     <script type="module" src="firebase-auth.js"></script>
     <?php include __DIR__ . '/cookie-banner.php'; ?>
-</body>
-
-</html>
+    <?php $dh_footer_without_main = true; include __DIR__ . '/footer.php'; ?>
