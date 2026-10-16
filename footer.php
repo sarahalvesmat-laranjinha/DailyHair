@@ -1,4 +1,4 @@
-</main>
+<?php if (empty($dh_footer_without_main)): ?></main><?php endif; ?>
 <style>
 /* Rodapé compartilhado Daily Hair: estilos isolados para não alterar as páginas. */
 .dh-site-footer{position:relative;overflow:hidden;background:linear-gradient(125deg,var(--cream,#f8f1e9) 0%,var(--card,#fffaf6) 58%,var(--cream-dark,#f1e7df) 100%);border-top:1px solid var(--line,#eaded4);color:var(--text,#403331)}
