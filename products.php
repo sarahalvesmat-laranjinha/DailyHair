@@ -69,7 +69,6 @@ $products = $stmt->fetchAll();
                 <option value="beneficio:hidratacao">Hidratação</option>
                 <option value="beneficio:nutricao">Nutrição</option>
                 <option value="beneficio:reconstrucao">Reconstrução</option>
-                <option value="beneficio:antifrizz">Controle de frizz</option>
                 <option value="beneficio:cachos">Definição de cachos</option>
                 <option value="beneficio:reparacao">Reparação e fortalecimento</option>
             </optgroup>
