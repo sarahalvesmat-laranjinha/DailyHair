@@ -64,6 +64,7 @@ if (page && form) {
         await sendPasswordResetEmail(auth, email);
         show('Se o e-mail estiver no Firebase, você receberá um link de redefinição.', true);
       } else if (page === 'register') {
+        if (!form.checkValidity()) { form.reportValidity(); throw new Error('Preencha os campos obrigatórios do cadastro.'); }
         if (data.get('password') !== data.get('confirm')) throw new Error('As senhas não coincidem.');
         if (!data.get('aceite_termos')) throw new Error('Aceite os termos para criar a conta.');
         await setPersistence(auth, inMemoryPersistence);
@@ -89,6 +90,11 @@ if (page && form) {
 
   const google = document.querySelector('#google-login');
   google?.addEventListener('click', async () => {
+    if (page === 'register' && !form.querySelector('[name="curl_pattern"]').value) {
+      form.querySelector('[name="curl_pattern"]').reportValidity();
+      show('Escolha a curvatura do seu cabelo antes de continuar com Google.');
+      return;
+    }
     if (page === 'register' && !form.querySelector('[name="aceite_termos"]').checked) {
       show('Aceite os termos para criar a conta.');
       return;
