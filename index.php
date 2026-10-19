@@ -93,6 +93,50 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <p class="create-account">Ainda nao tem uma conta? <a href="register.php">Criar conta</a></p>
     </section>
     </main>
+
+    <!-- Guia de curvaturas apresentado uma vez por navegador, no primeiro acesso ao login. -->
+    <aside id="dh-first-visit-curves" class="dh-login-curves" aria-label="Conheça as curvaturas capilares" hidden>
+      <div class="dh-login-curve dh-login-left dh-login-top"><strong>Tipo 1 · Liso</strong><span><b>1A:</b> fio bem reto. <b>1B:</b> liso com leve corpo. <b>1C:</b> liso encorpado, com pequenas curvas.</span></div>
+      <div class="dh-login-curve dh-login-left dh-login-bottom"><strong>Tipo 2 · Ondulado</strong><span><b>2A:</b> ondas suaves. <b>2B:</b> ondas em S visíveis. <b>2C:</b> ondas marcadas, às vezes próximas de cachos.</span></div>
+      <div class="dh-login-curve dh-login-right dh-login-top"><strong>Tipo 3 · Cacheado</strong><span><b>3A:</b> cachos largos. <b>3B:</b> espirais mais fechadas. <b>3C:</b> cachos pequenos e densos.</span></div>
+      <div class="dh-login-curve dh-login-right dh-login-bottom"><strong>Tipo 4 · Crespo</strong><span><b>4A:</b> espirais pequenas. <b>4B:</b> curvas em zigue-zague. <b>4C:</b> curvas compactas, com pouca definição aparente.</span></div>
+    </aside>
+    <style>
+      .dh-login-curves[hidden]{display:none!important}
+      .dh-login-curves{pointer-events:none}
+      .dh-login-curve{background:#fffaf6;color:#65473c;border:1px solid #d9a791;box-shadow:0 8px 22px #52352b13;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;text-align:center;padding:18px}
+      .dh-login-curve strong{font:600 16px 'Playfair Display',serif;color:#a94427}
+      .dh-login-curve span{font-size:11px;line-height:1.5}
+      @media(min-width:1200px){
+        .dh-login-curve{position:fixed;z-index:1;width:clamp(155px,12vw,205px);height:clamp(155px,12vw,205px);border-radius:50%}
+        .dh-login-left{left:clamp(15px,5vw,95px)}
+        .dh-login-right{right:clamp(15px,5vw,95px)}
+        .dh-login-top{top:15vh}
+        .dh-login-bottom{bottom:8vh}
+        .dh-auth-entry>.auth-card{position:relative;z-index:2}
+      }
+      @media(max-width:1199px){
+        .dh-login-curves{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 20px 25px;max-width:840px;margin:auto}
+        .dh-login-curve{border-radius:18px}
+        .dh-login-curve span{font-size:13px}
+      }
+      @media(max-width:550px){.dh-login-curves{grid-template-columns:1fr}}
+    </style>
+    <script>
+      (() => {
+        const guide = document.getElementById('dh-first-visit-curves');
+        const key = 'dailyhair_login_curves_seen_v1';
+        try {
+          if (localStorage.getItem(key) !== '1') {
+            guide.hidden = false;
+            localStorage.setItem(key, '1');
+          }
+        } catch (_) {
+          // Navegadores que bloqueiam armazenamento ainda exibem o conteúdo educativo.
+          guide.hidden = false;
+        }
+      })();
+    </script>
     <script type="module" src="firebase-auth.js"></script>
     <?php include __DIR__ . '/cookie-banner.php'; ?>
     <?php $dh_footer_without_main = true; include __DIR__ . '/footer.php'; ?>
