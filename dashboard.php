@@ -43,27 +43,89 @@ $month_names = [
 /* Guia complementar: não interfere no grid do dashboard. */
 @media (min-width: 1560px) {
   .dh-hair-bubble {
-    position: fixed; z-index: 3; width: clamp(162px, 11.8vw, 205px);
-    height: clamp(162px, 11.8vw, 205px); border-radius: 50%;
-    border: 1px solid #d9a791; background: #fffaf6;
-    box-shadow: 0 8px 22px #52352b13; padding: 19px 17px;
-    display: flex; flex-direction: column; align-items: center;
-    justify-content: center; gap: 7px; text-align: center; color: #65473c;
+    position: fixed;
+    z-index: 3;
+    width: clamp(210px, 14vw, 250px);
+    height: clamp(210px, 14vw, 250px);
+    border-radius: 50%;
+    border: 1.5px solid #d9a791;
+    background: #fffaf6;
+    box-shadow: 0 10px 26px rgba(82, 53, 43, 0.10);
+    padding: 24px 22px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    color: #65473c;
   }
-  .dh-hair-bubble strong { font: 600 16px 'Playfair Display',serif; color: #a94427; }
-  .dh-hair-bubble span { font-size: 11px; line-height: 1.45; }
-  .dh-guide-left { left: max(12px, calc((100vw - 1180px)/4 - 105px)); }
-  .dh-guide-right { right: max(12px, calc((100vw - 1180px)/4 - 105px)); }
-  .dh-guide-top { top: 19vh; }
-  .dh-guide-bottom { bottom: 8vh; }
+
+  .dh-hair-bubble strong {
+    font: 600 20px 'Playfair Display', serif;
+    color: #a94427;
+    line-height: 1.2;
+  }
+
+  .dh-hair-bubble span {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  .dh-guide-left {
+    left: max(18px, calc((100vw - 1180px) / 4 - 120px));
+  }
+
+  .dh-guide-right {
+    right: max(18px, calc((100vw - 1180px) / 4 - 120px));
+  }
+
+  .dh-guide-top {
+    top: 14vh;
+  }
+
+  .dh-guide-bottom {
+    bottom: 10vh;
+  }
 }
+
 @media (max-width: 1559px) {
-  .dh-hair-guides { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; margin: 0 0 24px; }
-  .dh-hair-bubble { padding: 15px 18px; background: #fffaf6; border: 1px solid #eaded4; border-radius: 18px; display: flex; flex-direction: column; gap: 7px; color: #65473c; }
-  .dh-hair-bubble strong { color:#a94427; font-family:'Playfair Display',serif; }
-  .dh-hair-bubble span { font-size: 13px; line-height: 1.5; }
+  .dh-hair-guides {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 0 0 28px;
+  }
+
+  .dh-hair-bubble {
+    padding: 20px 22px;
+    background: #fffaf6;
+    border: 1px solid #eaded4;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    color: #65473c;
+    box-shadow: 0 6px 18px rgba(82, 53, 43, 0.08);
+  }
+
+  .dh-hair-bubble strong {
+    color: #a94427;
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+  }
+
+  .dh-hair-bubble span {
+    font-size: 14px;
+    line-height: 1.6;
+  }
 }
-@media (max-width: 600px) { .dh-hair-guides { grid-template-columns: 1fr; } }
+
+@media (max-width: 600px) {
+  .dh-hair-guides {
+    grid-template-columns: 1fr;
+  }
+}
 </style>
 
 <div class="hero">
