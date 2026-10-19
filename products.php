@@ -21,7 +21,7 @@ $products = $stmt->fetchAll();
     <div>
         <span class="eyebrow">DAILY HAIR</span>
         <h1>Produtos</h1>
-        <p>Encontre produtos para o seu cabelo.</p>
+        <p>Encontre produtos para o seu cabelo. Pesquise por nome, marca ou palavras-chave; combine a busca com os filtros de tipo e benefício. Abra um produto para consultar sua descrição e as experiências compartilhadas pela comunidade.</p>
     </div>
 </div>
 
