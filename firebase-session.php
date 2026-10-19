@@ -75,6 +75,15 @@ try {
             $name = mb_substr($name !== '' ? $name : strstr($email, '@', true), 0, 120);
             $hair = in_array($profile['hair_type'] ?? null, ['Liso', 'Ondulado', 'Cacheado', 'Crespo'], true) ? $profile['hair_type'] : 'Liso';
             $curl = mb_substr((string) ($profile['curl_pattern'] ?? ''), 0, 20);
+            $validCurls = [
+                'Liso' => ['1A', '1B', '1C'],
+                'Ondulado' => ['2A', '2B', '2C'],
+                'Cacheado' => ['3A', '3B', '3C'],
+                'Crespo' => ['4A', '4B', '4C'],
+            ];
+            if (!in_array($curl, $validCurls[$hair], true)) {
+                fail_login(422, 'Selecione uma curvatura válida para o tipo de cabelo escolhido.');
+            }
             $porosity = in_array($profile['porosity'] ?? null, ['Baixa', 'Média', 'Alta'], true) ? $profile['porosity'] : 'Média';
             $thickness = in_array($profile['thickness'] ?? null, ['Fina', 'Média', 'Grossa'], true) ? $profile['thickness'] : 'Média';
             $needs = $profile['needs'] ?? [];
