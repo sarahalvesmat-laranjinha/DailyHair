@@ -177,7 +177,7 @@ $error = '';
 
                 Tipo de cabelo:
 
-                <select name="hair_type">
+                <select name="hair_type" id="register-hair-type" required>
 
                     <option>Liso</option>
                     <option>Ondulado</option>
@@ -192,26 +192,8 @@ $error = '';
 
                 Curvatura:
 
-                <select name="curl_pattern">
-
+                <select name="curl_pattern" id="register-curl-pattern" required>
                     <option value="">Selecione a curvatura</option>
-
-                    <option value="1A">1A</option>
-                    <option value="1B">1B</option>
-                    <option value="1C">1C</option>
-
-                    <option value="2A">2A</option>
-                    <option value="2B">2B</option>
-                    <option value="2C">2C</option>
-
-                    <option value="3A">3A</option>
-                    <option value="3B">3B</option>
-                    <option value="3C">3C</option>
-
-                    <option value="4A">4A</option>
-                    <option value="4B">4B</option>
-                    <option value="4C">4C</option>
-
                 </select>
 
             </label>
@@ -339,6 +321,21 @@ $error = '';
     </section>
 
 
+    <script>
+      (() => {
+        const type = document.getElementById('register-hair-type');
+        const curl = document.getElementById('register-curl-pattern');
+        const options = { Liso: ['1A','1B','1C'], Ondulado: ['2A','2B','2C'], Cacheado: ['3A','3B','3C'], Crespo: ['4A','4B','4C'] };
+        function updateCurvatures() {
+          const previous = curl.value;
+          curl.replaceChildren(new Option('Selecione a curvatura', ''));
+          for (const item of (options[type.value] || [])) curl.add(new Option(item, item));
+          curl.value = (options[type.value] || []).includes(previous) ? previous : '';
+        }
+        type.addEventListener('change', updateCurvatures);
+        updateCurvatures();
+      })();
+    </script>
     <script type="module" src="firebase-auth.js"></script>
 </body>
 
