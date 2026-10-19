@@ -16,7 +16,7 @@ $enviado = isset($_GET['sent']);
 <div class="page-title">
     <span class="eyebrow">COMUNIDADE DAILY HAIR</span>
     <h1>Cadastrar produto</h1>
-    <p>Não achou o produto que você usa? Cadastre aqui — ele passa por uma análise rápida antes de aparecer para todo mundo.</p>
+    <p>Não achou o produto que você usa? Cadastre aqui — ele passa por uma análise antes de aparecer para todo mundo. Informe nome e marca como aparecem na embalagem, escolha a categoria, descreva a finalidade e envie uma foto legível. As informações serão verificadas antes da publicação.</p>
 </div>
 
 <?php if ($erro): ?>
