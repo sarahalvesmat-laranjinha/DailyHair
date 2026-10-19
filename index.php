@@ -101,27 +101,101 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       <div class="dh-login-curve dh-login-right dh-login-top"><strong>Tipo 3 · Cacheado</strong><span><b>3A:</b> cachos largos. <b>3B:</b> espirais mais fechadas. <b>3C:</b> cachos pequenos e densos.</span></div>
       <div class="dh-login-curve dh-login-right dh-login-bottom"><strong>Tipo 4 · Crespo</strong><span><b>4A:</b> espirais pequenas. <b>4B:</b> curvas em zigue-zague. <b>4C:</b> curvas compactas, com pouca definição aparente.</span></div>
     </aside>
-    <style>
-      .dh-login-curves[hidden]{display:none!important}
-      .dh-login-curves{pointer-events:none}
-      .dh-login-curve{background:#fffaf6;color:#65473c;border:1px solid #d9a791;box-shadow:0 8px 22px #52352b13;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:7px;text-align:center;padding:18px}
-      .dh-login-curve strong{font:600 16px 'Playfair Display',serif;color:#a94427}
-      .dh-login-curve span{font-size:11px;line-height:1.5}
-      @media(min-width:1200px){
-        .dh-login-curve{position:fixed;z-index:1;width:clamp(155px,12vw,205px);height:clamp(155px,12vw,205px);border-radius:50%}
-        .dh-login-left{left:clamp(15px,5vw,95px)}
-        .dh-login-right{right:clamp(15px,5vw,95px)}
-        .dh-login-top{top:15vh}
-        .dh-login-bottom{bottom:8vh}
-        .dh-auth-entry>.auth-card{position:relative;z-index:2}
-      }
-      @media(max-width:1199px){
-        .dh-login-curves{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:0 20px 25px;max-width:840px;margin:auto}
-        .dh-login-curve{border-radius:18px}
-        .dh-login-curve span{font-size:13px}
-      }
-      @media(max-width:550px){.dh-login-curves{grid-template-columns:1fr}}
-    </style>
+   <style>
+  .dh-login-curves[hidden] {
+    display: none !important;
+  }
+
+  .dh-login-curves {
+    pointer-events: none;
+  }
+
+  .dh-login-curve {
+    background: #fffaf6;
+    color: #65473c;
+    border: 1.5px solid #d9a791;
+    box-shadow: 0 10px 26px rgba(82, 53, 43, 0.10);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    text-align: center;
+    padding: 24px 22px;
+  }
+
+  .dh-login-curve strong {
+    font: 600 20px 'Playfair Display', serif;
+    color: #a94427;
+    line-height: 1.2;
+  }
+
+  .dh-login-curve span {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+
+  @media (min-width: 1200px) {
+    .dh-login-curve {
+      position: fixed;
+      z-index: 1;
+      width: clamp(210px, 14vw, 250px);
+      height: clamp(210px, 14vw, 250px);
+      border-radius: 50%;
+    }
+
+    .dh-login-left {
+      left: clamp(18px, 4vw, 90px);
+    }
+
+    .dh-login-right {
+      right: clamp(18px, 4vw, 90px);
+    }
+
+    .dh-login-top {
+      top: 14vh;
+    }
+
+    .dh-login-bottom {
+      bottom: 10vh;
+    }
+
+    .dh-auth-entry > .auth-card {
+      position: relative;
+      z-index: 2;
+    }
+  }
+
+  @media (max-width: 1199px) {
+    .dh-login-curves {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      padding: 0 20px 28px;
+      max-width: 920px;
+      margin: auto;
+    }
+
+    .dh-login-curve {
+      border-radius: 20px;
+    }
+
+    .dh-login-curve strong {
+      font-size: 18px;
+    }
+
+    .dh-login-curve span {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  }
+
+  @media (max-width: 550px) {
+    .dh-login-curves {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
     <script>
       (() => {
         const guide = document.getElementById('dh-first-visit-curves');
