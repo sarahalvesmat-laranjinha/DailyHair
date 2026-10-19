@@ -46,6 +46,52 @@ $error = '';
 
     <div class="auth-top"></div>
 
+    <!-- Guia educativo visível para ajudar na escolha da curvatura durante o cadastro. -->
+    <aside class="dh-register-guides" aria-label="Guia de curvaturas capilares">
+      <div class="dh-register-bubble dh-register-left dh-register-top">
+        <strong>Tipo 1 · Liso</strong>
+        <span><b>1A:</b> fio bem reto e sem ondas. <b>1B:</b> liso com leve corpo. <b>1C:</b> liso mais encorpado, podendo apresentar pequenas curvas.</span>
+      </div>
+      <div class="dh-register-bubble dh-register-left dh-register-bottom">
+        <strong>Tipo 2 · Ondulado</strong>
+        <span><b>2A:</b> ondas suaves. <b>2B:</b> ondas em S mais visíveis. <b>2C:</b> ondas marcadas, às vezes próximas de cachos.</span>
+      </div>
+      <div class="dh-register-bubble dh-register-right dh-register-top">
+        <strong>Tipo 3 · Cacheado</strong>
+        <span><b>3A:</b> cachos largos. <b>3B:</b> espirais mais fechadas. <b>3C:</b> cachos pequenos e densos.</span>
+      </div>
+      <div class="dh-register-bubble dh-register-right dh-register-bottom">
+        <strong>Tipo 4 · Crespo</strong>
+        <span><b>4A:</b> espirais bem pequenas. <b>4B:</b> curvas em zigue-zague. <b>4C:</b> curvas muito compactas, com pouca definição aparente.</span>
+      </div>
+    </aside>
+    <style>
+      /* Exclusivo do cadastro: mantém a identidade visual e evita sobrepor os campos. */
+      .dh-register-bubble {
+        background:#fffaf6; color:#65473c; border:1.5px solid #d9a791;
+        box-shadow:0 10px 26px rgba(82,53,43,.10); box-sizing:border-box;
+        display:flex; flex-direction:column; align-items:center; justify-content:center;
+        gap:8px; text-align:center; padding:22px;
+      }
+      .dh-register-bubble strong { font:600 20px/1.2 'Playfair Display',serif; color:#a94427; }
+      .dh-register-bubble span { font-size:13px; line-height:1.5; }
+      body[data-auth-page="register"] .register-card { z-index:2; }
+      @media(min-width:1300px){
+        .dh-register-bubble { position:fixed; z-index:1; width:clamp(210px,16vw,250px); height:clamp(210px,16vw,250px); border-radius:50%; }
+        .dh-register-left {left:clamp(18px,3vw,55px)}
+        .dh-register-right {right:clamp(18px,3vw,55px)}
+        .dh-register-top {top:calc(50% - 270px)}
+        .dh-register-bottom {top:calc(50% + 20px)}
+      }
+      @media(max-width:1299px){
+        body[data-auth-page="register"] {flex-direction:column;gap:20px;}
+        .dh-register-guides {order:2;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));max-width:760px;width:100%;gap:14px;margin:0 auto;}
+        .dh-register-bubble {border-radius:22px;min-height:160px;}
+        body[data-auth-page="register"] .register-card {order:1;}
+      }
+      @media(max-width:600px){.dh-register-guides{grid-template-columns:1fr}}
+    </style>
+
     <section class="auth-card register-card">
 
         <div class="logo-circle">
