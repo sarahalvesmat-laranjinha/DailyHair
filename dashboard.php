@@ -19,6 +19,38 @@ $month_names = [
 ?>
 
 
+
+<!-- Guias fixos: ficam apenas nas faixas laterais, sem alterar os cartões centrais. -->
+<aside class="dh-hair-guides" aria-label="Guia sobre os tipos de cabelo">
+  <div class="dh-hair-bubble dh-guide-left dh-guide-top" tabindex="0">
+    <strong>01 · Liso</strong><span>Fios que caem sem formar ondas definidas. Curvaturas 1A, 1B e 1C; podem variar em volume e espessura.</span>
+  </div>
+  <div class="dh-hair-bubble dh-guide-left dh-guide-bottom" tabindex="0">
+    <strong>02 · Ondulado</strong><span>Ondas em formato de S, das mais suaves às marcadas. Curvaturas 2A, 2B e 2C; a definição varia ao longo dos fios.</span>
+  </div>
+  <div class="dh-hair-bubble dh-guide-right" tabindex="0">
+    <strong>03 · Cacheado e crespo</strong><span>Cacheados (3A–3C) formam espirais. Crespos (4A–4C) apresentam curvas bem fechadas ou em zigue-zague. Cada cabelo é único.</span>
+  </div>
+</aside>
+<style>
+/* Áreas laterais fixas do dashboard; não ocupam nem sobrepõem a coluna central. */
+@media (min-width: 1560px) {
+  .dh-hair-bubble {position:fixed;z-index:3;width:clamp(155px,12vw,210px);aspect-ratio:1;border:1.5px solid #d9a791;border-radius:50%;background:#fffaf6;box-shadow:0 9px 24px #52352b13;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px 19px;color:#65473c;gap:8px;overflow:hidden}
+  .dh-hair-bubble strong {font-family:'Playfair Display',serif;color:#a94427;font-size:17px}
+  .dh-hair-bubble span {font-size:11px;line-height:1.5}
+  .dh-guide-left {left:max(18px,calc((100vw - 1180px)/4 - 110px))}
+  .dh-guide-top {top:15vh}
+  .dh-guide-bottom {top:60vh}
+  .dh-guide-right {right:max(18px,calc((100vw - 1180px)/4 - 110px));top:41vh}
+}
+@media (max-width:1559px) {
+ .dh-hair-guides {display:flex;gap:12px;flex-wrap:wrap;margin:0 0 24px}
+ .dh-hair-bubble {flex:1 1 210px;padding:15px 18px;background:#fffaf6;border:1px solid #eaded4;border-radius:18px;display:flex;flex-direction:column;gap:7px;color:#65473c;box-shadow:0 4px 15px #52352b0c}
+ .dh-hair-bubble strong {color:#a94427;font-family:'Playfair Display',serif}
+ .dh-hair-bubble span {font-size:13px;line-height:1.5}
+}
+</style>
+
 <div class="hero">
     <div><span class="eyebrow">SEU CUIDADO, DO SEU JEITO</span>
         <h1>Olá, <?= e(explode(' ', $user['name'])[0]) ?>!</h1>
