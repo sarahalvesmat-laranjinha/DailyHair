@@ -30,9 +30,9 @@ header('Referrer-Policy: no-referrer');
 <div id="action-message" class="alert" role="status" aria-live="polite">Verificando seu link…</div>
 <form id="password-form" class="auth-form" hidden>
 <label for="new-password">Nova senha</label>
-<input id="new-password" type="password" autocomplete="new-password" minlength="8" required>
+<input id="new-password" type="password" autocomplete="new-password" minlength="8" required placeholder="Crie uma nova senha com pelo menos 8 caracteres">
 <label for="confirm-password">Confirmar nova senha</label>
-<input id="confirm-password" type="password" autocomplete="new-password" minlength="8" required>
+<input id="confirm-password" type="password" autocomplete="new-password" minlength="8" required placeholder="Confirme sua nova senha">
 <p class="password-hint">Use pelo menos 8 caracteres e siga os requisitos de senha da sua conta.</p>
 <button id="save-password" class="btn primary wide" type="submit">Salvar nova senha</button>
 </form>
