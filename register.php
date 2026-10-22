@@ -129,7 +129,7 @@ $error = '';
                 <input
                     name="name"
                     required
-                    value="<?= e($_POST['name'] ?? '') ?>" placeholder="Digite seu nome completo""
+                    value="<?= e($_POST['name'] ?? '') ?>" placeholder="Digite seu nome completo"
                 >
 
             </label>
@@ -142,7 +142,7 @@ $error = '';
                     name="email"
                     type="email"
                     required
-                    value="<?= e($_POST['email'] ?? '') ?>" placeholder="Digite seu e-mail (ex.: nome@exemplo.com)""
+                    value="<?= e($_POST['email'] ?? '') ?>" placeholder="Digite seu e-mail (ex.: nome@exemplo.com)"
                 >
 
             </label>
