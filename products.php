@@ -37,7 +37,7 @@ $products = $stmt->fetchAll();
         <input
             type="text"
             id="product-search"
-            placeholder="Pesquisar produto..."
+            placeholder="Pesquise pelo nome, marca ou característica do produto"
             autocomplete="off"
         >
 
