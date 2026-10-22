@@ -291,7 +291,7 @@ require_once __DIR__ . '/header.php';
                 id="name"
                 name="name"
                 required
-                placeholder="Nome"
+                placeholder="Digite seu nome como deseja que apareça no perfil"
                 value="<?= e($user['name'] ?? '') ?>"
             >
 
@@ -312,7 +312,7 @@ require_once __DIR__ . '/header.php';
                 type="text"
                 id="curl_pattern"
                 name="curl_pattern"
-                placeholder="Ex: 1B"
+                placeholder="Informe a curvatura do cabelo (ex.: 2C)"
                 value="<?= e($user['curl_pattern'] ?? '') ?>"
             >
 
@@ -334,7 +334,7 @@ require_once __DIR__ . '/header.php';
                 id="bio"
                 name="bio"
                 maxlength="150"
-                placeholder="Ex: Meu cabelo, meus cuidados e minhas descobertas"
+                placeholder="Conte um pouco sobre seu cabelo e seus cuidados"
                 value="<?= e($user['bio'] ?? '') ?>"
             >
 
