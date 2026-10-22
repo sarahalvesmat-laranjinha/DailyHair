@@ -82,9 +82,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="post" class="auth-form">
             <?= csrf_field() ?>
             <label for="email">Email:</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="Digite seu e-mail (ex.: nome@exemplo.com)">
             <label for="password">Senha:</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required>
+            <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Digite sua senha de acesso">
             <p class="create-account"><a href="senha.php">Esqueci minha senha</a></p>
             <button class="btn primary wide" type="submit">Entrar</button>
         </form>
