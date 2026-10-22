@@ -20,7 +20,7 @@ $_SESSION['auth_csrf'] ??= bin2hex(random_bytes(32));
         <div id="firebase-message" class="alert error" hidden></div>
         <form class="auth-form" method="post">
             <label for="email">E-mail:</label>
-            <input id="email" name="email" type="email" autocomplete="email" required>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="Digite seu e-mail (ex.: nome@exemplo.com)">
             <button class="btn primary wide" type="submit">Enviar link</button>
         </form>
         <p class="create-account"><a href="index.php">Voltar ao login</a></p>
