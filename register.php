@@ -129,7 +129,7 @@ $error = '';
                 <input
                     name="name"
                     required
-                    value="<?= e($_POST['name'] ?? '') ?>"
+                    value="<?= e($_POST['name'] ?? '') ? placeholder="Digite seu nome completo">"
                 >
 
             </label>
@@ -142,7 +142,7 @@ $error = '';
                     name="email"
                     type="email"
                     required
-                    value="<?= e($_POST['email'] ?? '') ?>"
+                    value="<?= e($_POST['email'] ?? '') ? placeholder="Digite seu e-mail (ex.: nome@exemplo.com)">"
                 >
 
             </label>
@@ -156,7 +156,7 @@ $error = '';
                     type="password"
                     minlength="6"
                     required
-                >
+                 placeholder="Crie uma senha com pelo menos 6 caracteres">
 
             </label>
 
@@ -169,7 +169,7 @@ $error = '';
                     type="password"
                     minlength="6"
                     required
-                >
+                 placeholder="Digite a senha novamente">
 
             </label>
 
