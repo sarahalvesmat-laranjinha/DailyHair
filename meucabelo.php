@@ -151,7 +151,7 @@ if (!empty($user['wash_days'])) {
 
             <input
                 name="curl_pattern"
-                value="<?= e($user['curl_pattern'] ?? '') ?>"
+                value="<?= e($user['curl_pattern'] ?? '') ? placeholder="Informe a curvatura do cabelo (ex.: 2C)">"
                 placeholder="Ex.: 3A"
             >
 
