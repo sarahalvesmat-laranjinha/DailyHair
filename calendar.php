@@ -1184,7 +1184,7 @@ if (isset($_GET['day'])):
                                     </span>
 
 
-                                    <input type="text" name="steps[]" value="<?= e($step['name']) ?>" placeholder="Nome da etapa">
+                                    <input type="text" name="steps[]" value="<?= e($step['name']) ? placeholder="Ex.: Hidratação ou aplicação de máscara">" placeholder="Nome da etapa">
 
 
                                     <button type="button" class="remove-step" onclick="removeStep(this)">
@@ -1443,7 +1443,7 @@ if (isset($_GET['day'])):
                 <input
                     type="text"
                     name="steps[]"
-                    placeholder="Ex.: Pré-shampoo"
+                    placeholder="Ex.: Hidratação ou aplicação de máscara"
                 >
 
                 <button
