@@ -416,7 +416,7 @@ foreach ($reviews as $r) {
                     name="comment"
                     rows="5"
                     required
-                    placeholder="O que você achou? Como seu cabelo ficou depois de usar?"
+                    placeholder="Conte sua experiência com o produto e os resultados no seu cabelo"
                 ></textarea>
 
             </div>
