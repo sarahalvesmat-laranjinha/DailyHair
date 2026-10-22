@@ -45,7 +45,7 @@ $enviado = isset($_GET['sent']);
                 id="name"
                 name="name"
                 required
-                placeholder="Ex.: Máscara de Hidratação"
+                placeholder="Informe o nome completo do produto"
                 value="<?= e($_POST['name'] ?? '') ?>"
             >
         </div>
@@ -57,7 +57,7 @@ $enviado = isset($_GET['sent']);
                 id="brand"
                 name="brand"
                 required
-                placeholder="Ex.: Lola Cosmetics"
+                placeholder="Digite a marca do produto (ex.: Lola Cosmetics)"
                 value="<?= e($_POST['brand'] ?? '') ?>"
             >
         </div>
@@ -94,7 +94,7 @@ $enviado = isset($_GET['sent']);
                 name="description"
                 rows="4"
                 required
-                placeholder="Para que serve o produto?"
+                placeholder="Descreva os benefícios, a indicação e o modo de uso do produto"
             ><?= e($_POST['description'] ?? '') ?></textarea>
         </div>
 
