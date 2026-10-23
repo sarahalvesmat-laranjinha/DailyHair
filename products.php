@@ -179,11 +179,11 @@ $products = $stmt->fetchAll();
 .dh-filter-label{font-size:12px;font-weight:700;color:var(--muted);white-space:nowrap}
 .dh-filter-control select{max-width:205px;min-width:165px;height:42px;padding:0 32px 0 14px;border-radius:24px;border:1px solid var(--line);background-color:var(--card);color:var(--text);font-size:13px;cursor:pointer;outline:none}
 .dh-filter-control select:focus-visible{border-color:var(--terracotta);box-shadow:0 0 0 3px rgba(198,83,47,.12)}
-.dh-result-count{font-size:12px;color:var(--muted);margin:-12px 0 17px}
+.dh-result-count{font-size:12px;color:var(--muted);margin:22px 0 17px}
 .dh-products-empty{background:var(--card);border:1px dashed var(--line);border-radius:16px;padding:26px;text-align:center;color:var(--muted)}
 .dh-products-empty[hidden]{display:none}
 @media(max-width:900px){.products-toolbar{flex-wrap:wrap}.product-search{flex:1 1 100%}.dh-filter-control{flex:1 1 auto}.dh-filter-control select{max-width:100%;width:100%}}
-@media(max-width:480px){.dh-filter-label{display:none}.dh-filter-control{min-width:0}.dh-filter-control select{min-width:0}.dh-result-count{margin-top:-8px}}
+@media(max-width:480px){.dh-filter-label{display:none}.dh-filter-control{min-width:0}.dh-filter-control select{min-width:0}.dh-result-count{margin-top:18px}}
 </style>
 
 <script>
