@@ -3403,3 +3403,22 @@ body[data-auth-page="login"] .auth-card h1 {
     .dh-site-footer .dh-footer-top { grid-template-columns: 1fr; gap: 26px; }
     .dh-site-footer .dh-footer-bottom { flex-direction: column; }
 }
+
+/* =====================================================
+   CAIXAS DOS PRODUTOS - SEM BORDA E QUADRADAS
+   Edite aqui a aparência dos cartões de produtos.
+===================================================== */
+.product-card,
+.products-grid .product-card,
+.products-grid.list-view .product-card {
+    border: none; /* Remove o contorno da caixa */
+    border-radius: 0; /* Cantos totalmente quadrados */
+    box-shadow: none; /* Remove a sombra da caixa */
+}
+.product-card:hover,
+.products-grid .product-card:hover {
+    box-shadow: none; /* Não cria borda/sombra ao passar o mouse */
+}
+.product-card .product-image {
+    border-radius: 0; /* Imagem também com cantos retos */
+}
