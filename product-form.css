@@ -107,7 +107,7 @@
     flex-shrink: 0;
     border-radius: 50%;
     overflow: hidden;
-    background: #ecd3c8;
+    background: #F1E4E7;
     display: grid;
     place-items: center;
     color: var(--terracotta);
@@ -251,7 +251,7 @@
     border-radius: 50%;
     object-fit: cover;
     display: block;
-    background: #ecd3c8;
+    background: #F1E4E7;
 }
 
 .review-avatar-letter {
