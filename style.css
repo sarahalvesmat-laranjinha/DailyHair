@@ -3230,16 +3230,18 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
    Altere os valores abaixo para personalizar a página.
 ===================================================== */
 .auth-page {
-    background: #FFFFFF; /* Fundo branco e limpo */
+    background: var(--cream); /* Fundo creme do Daily Hair */
     padding: 110px 24px 65px; /* Mais espaço ao redor do formulário */
 }
 .auth-top {
-    display: none; /* Remove a faixa vinho arredondada do topo */
+    display: block; /* Mantém a faixa vinho no topo */
+    background: var(--wine); /* Cor vinho do cabeçalho */
+    border-radius: 0 0 5px 5px; /* Cantos quase retos */
 }
 .auth-card {
     width: min(480px, 100%); /* Largura do formulário */
     border: 1px solid var(--line); /* Contorno discreto */
-    border-radius: 8px; /* Cantos menos arredondados */
+    border-radius: 5px; /* Cantos levemente arredondados */
     padding: 44px 42px; /* Espaço interno */
     box-shadow: none; /* Sem sombra pesada */
     text-align: left;
@@ -3257,7 +3259,7 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
 .auth-form input,
 .auth-form select {
     border: 1px solid var(--line); /* Borda padrão, sem laranja */
-    border-radius: 5px;
+    border-radius: 4px;
     background: #FFFFFF;
 }
 .auth-form input:focus,
@@ -3267,7 +3269,7 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
     outline: none;
 }
 .auth-form .btn {
-    border-radius: 5px; /* Botão menos arredondado */
+    border-radius: 4px; /* Botão quase quadrado */
 }
 @media (max-width: 560px) {
     .auth-page { padding: 65px 16px 30px; }
