@@ -19,7 +19,9 @@
 /* Paleta global: mudar um valor aqui altera todos os lugares que usam var(--nome). Cores escritas diretamente como #HEX em outras regras não mudam automaticamente. */
 
 :root {
-    /* Vinho principal: usado em botões, destaques e links. */
+        /* Vinho principal: usado em botões, destaques e links. */
+    --wine: #70283B;
+/* Vinho principal: usado em botões, destaques e links. */
         /* Vinho mais escuro: por exemplo, ao passar o mouse nos botões. */
     --wine-dark: #572032;
     /* Fundo claro geral da página (body). */
