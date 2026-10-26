@@ -3,15 +3,19 @@
 ===================================================== */
 
 :root {
-    --terracotta: #c6532f;
-    --terracotta-dark: #a94427;
-    --cream: #f8f1e9;
-    --cream-dark: #f1e7df;
-    --card: #fffaf6;
-    --text: #403331;
-    --muted: #876f65;
-    --line: #eaded4;
-    --shadow: 0 12px 30px rgba(67, 47, 40, .10);
+    --terracotta: #70283B;
+    --terracotta-dark: #572032;
+    --cream: #FAF8F6;
+    --cream-dark: #E5E1DF;
+    --card: #FFFFFF;
+    --text: #403638;
+    --muted: #80675D;
+    --line: #E5E1DF;
+    --shadow: 0 12px 30px rgba(64, 54, 56, .09);
+    --wine: #70283B;
+    --wine-soft: #A34E63;
+    --gold: #B99A58;
+    --charcoal: #292528;
 }
 
 
@@ -122,7 +126,7 @@ textarea {
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: #ecd3c8;
+    background: #F1E4E7;
     display: grid;
     place-items: center;
     color: var(--terracotta);
@@ -163,7 +167,7 @@ textarea {
 .hero {
     background: linear-gradient(
         120deg,
-        #fffaf6,
+        #FFFFFF,
         #f3e3d8
     );
     border-radius: 24px;
@@ -643,7 +647,7 @@ textarea {
     padding: 14px 16px;
     border: 1px solid var(--line);
     border-radius: 13px;
-    background: #fffaf6;
+    background: #FFFFFF;
     outline: none;
 }
 
@@ -658,7 +662,7 @@ textarea {
 }
 
 .pill {
-    background: #fffaf6;
+    background: #FFFFFF;
     border: 1px solid var(--line);
 }
 
@@ -717,7 +721,7 @@ textarea {
     height: 48px;
     border: 1px solid var(--line);
     border-radius: 13px;
-    background: #fffaf6;
+    background: #FFFFFF;
     padding: 0 45px;
     color: var(--text);
     outline: none;
@@ -754,7 +758,7 @@ textarea {
     height: 42px;
     border: 1px solid var(--line);
     border-radius: 11px;
-    background: #fffaf6;
+    background: #FFFFFF;
     color: var(--muted);
     cursor: pointer;
     font-size: 20px;
@@ -988,7 +992,7 @@ textarea {
     padding: 15px 16px;
     border: 1px solid var(--line);
     border-radius: 13px;
-    background: #fffaf6;
+    background: #FFFFFF;
     color: var(--text);
     font-family: inherit;
     font-size: 14px;
@@ -1255,7 +1259,7 @@ select[multiple] {
     padding: 0 12px;
     border: 1px solid #ee775c;
     border-radius: 12px;
-    background: #fffaf6;
+    background: #FFFFFF;
 }
 
 
@@ -1348,7 +1352,7 @@ select[multiple] {
     align-items: center;
     gap: 10px;
     padding: 10px 12px;
-    background: #fffaf6;
+    background: #FFFFFF;
     border: 1px solid var(--line);
     border-radius: 13px;
     cursor: grab;
@@ -1451,7 +1455,7 @@ select[multiple] {
 
 .auth-page {
     min-height: 100vh;
-    background: #f8f1e9;
+    background: #FAF8F6;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1474,8 +1478,8 @@ select[multiple] {
 .auth-card {
     position: relative;
     width: min(460px, 100%);
-    background: #fffaf6;
-    border: 1px solid #eaded4;
+    background: #FFFFFF;
+    border: 1px solid #E5E1DF;
     border-radius: 34px;
     padding: 38px 50px 32px;
     box-shadow:
@@ -1530,7 +1534,7 @@ select[multiple] {
     height: 56px;
     border: 1px solid #ee775c;
     border-radius: 17px;
-    background: #fffaf6;
+    background: #FFFFFF;
     padding: 0 15px;
     outline: none;
     margin-bottom: 5px;
@@ -2237,7 +2241,7 @@ select[multiple] {
     width: 42px;
     height: 42px;
     border-radius: 50%;
-    background: #ecd3c8;
+    background: #F1E4E7;
     color: var(--terracotta);
     display: grid;
     place-items: center;
@@ -2774,7 +2778,7 @@ select[multiple] {
     min-width: 120px;
     border-radius: 50%;
     overflow: hidden;
-    background: #ecd3c8;
+    background: #F1E4E7;
 
     display: flex;
     align-items: center;
@@ -2952,7 +2956,7 @@ select[multiple] {
     border-radius: 50%;
     overflow: hidden;
 
-    background: #ecd3c8;
+    background: #F1E4E7;
 
     display: flex;
     align-items: center;
@@ -3040,7 +3044,7 @@ select[multiple] {
     min-width: 90px;
     border-radius: 50%;
     overflow: hidden;
-    background: #ecd3c8;
+    background: #F1E4E7;
 
     display: flex;
     align-items: center;
@@ -3068,7 +3072,7 @@ select[multiple] {
 
     border: 1px dashed var(--line);
     border-radius: 15px;
-    background: #fffaf6;
+    background: #FFFFFF;
 
     display: flex;
     align-items: center;
@@ -3099,3 +3103,19 @@ select[multiple] {
     text-align: center;
     margin-top: 10px;
 }
+
+/* DAILY HAIR | Identidade visual vinho sofisticado */
+:root { color-scheme: light; }
+body { background: #FAF8F6; color: #403638; }
+.topbar { background: rgba(250,248,246,.97); box-shadow: 0 3px 22px rgba(41,37,40,.045); backdrop-filter: blur(12px); }
+.brand, h1, h2, h3 { color: #403638; }
+.nav a.active, .nav a:hover, a:hover { color: #70283B; }
+.btn.primary, button.primary, .primary.btn { background: #70283B; color: #fff; border-color: #70283B; }
+.btn.primary:hover, button.primary:hover { background: #572032; border-color: #572032; }
+button, .btn, a, input, select, textarea { transition: background-color .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease, transform .2s ease; }
+.btn:hover, button:hover { transform: translateY(-1px); }
+.btn:active, button:active { transform: translateY(0); }
+:where(a, button, input, select, textarea):focus-visible { outline: 3px solid #B99A58; outline-offset: 3px; }
+:where(input,select,textarea):focus { border-color: #A34E63; }
+::selection { background: #E9D6DC; color: #292528; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
