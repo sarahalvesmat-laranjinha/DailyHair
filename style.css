@@ -3512,3 +3512,14 @@ body[data-auth-page="login"] .auth-card h1 {
 .dashboard-grid .pill {
     border-radius: 4px; /* Etiquetas do perfil */
 }
+
+/* =====================================================
+   PRODUTOS - FILTRO "FILTRAR POR" QUADRADO
+   Controla o seletor de tipo de produto.
+===================================================== */
+.products-toolbar select,
+.products-toolbar .product-filter select,
+.products-toolbar .filter-select,
+.products-toolbar .filter-group select {
+    border-radius: 0 !important; /* Cantos totalmente quadrados */
+}
