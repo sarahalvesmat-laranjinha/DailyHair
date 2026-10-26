@@ -3317,3 +3317,89 @@ body[data-auth-page="login"] .auth-card .logo-circle img {
 body[data-auth-page="login"] .auth-card h1 {
     margin-top: 0;
 }
+
+/* =====================================================
+   RODAPÉ FINAL - VINHO MINIMALISTA
+   Aqui você muda a faixa final com Explore e Informações.
+===================================================== */
+.dh-site-footer {
+    width: 100%;
+    margin: 36px 0 0;
+    padding: 34px 26px 22px; /* Altura e espaço interno do rodapé */
+    background: var(--wine); /* Fundo vinho */
+    color: #FAF8F6; /* Letras creme */
+    border-radius: 22px 22px 0 0; /* Cantos superiores arredondados */
+    box-shadow: none;
+    box-sizing: border-box;
+}
+.dh-site-footer .dh-footer-inner {
+    width: min(1100px, 100%);
+    margin: 0 auto;
+}
+.dh-site-footer .dh-footer-top {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr 1fr;
+    gap: 38px;
+    align-items: start;
+}
+.dh-site-footer .dh-footer-logo {
+    display: inline-flex;
+    align-items: center;
+    color: #FAF8F6;
+    font-family: 'Playfair Display', serif;
+    font-size: 23px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.dh-site-footer .dh-footer-logo img {
+    display: none !important; /* Impede que a logo gigante reapareça */
+}
+.dh-site-footer .dh-footer-tagline {
+    max-width: 350px;
+    margin: 12px 0 0;
+    line-height: 1.6;
+    font-size: 13px;
+    color: #F2E4E8;
+}
+.dh-site-footer .dh-footer-heading {
+    color: #FAF8F6;
+    font-size: 15px;
+    margin: 0 0 14px;
+    font-weight: 700;
+}
+.dh-site-footer .dh-footer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.dh-site-footer .dh-footer-nav a {
+    color: #F2E4E8;
+    font-size: 13px;
+    text-decoration: none;
+}
+.dh-site-footer .dh-footer-nav a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+.dh-site-footer .dh-footer-rule {
+    height: 1px;
+    margin: 28px 0 16px;
+    background: rgba(255,255,255,.22);
+}
+.dh-site-footer .dh-footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px 20px;
+}
+.dh-site-footer .dh-footer-bottom p {
+    color: #F2E4E8;
+    font-size: 12px;
+    margin: 0;
+}
+.dh-site-footer .dh-footer-heart { color: #F6BFCB; }
+@media (max-width: 700px) {
+    .dh-site-footer { padding: 30px 22px 20px; border-radius: 18px 18px 0 0; }
+    .dh-site-footer .dh-footer-top { grid-template-columns: 1fr; gap: 26px; }
+    .dh-site-footer .dh-footer-bottom { flex-direction: column; }
+}
