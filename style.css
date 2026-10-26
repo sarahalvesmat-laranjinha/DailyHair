@@ -1318,7 +1318,7 @@ textarea {
 select[multiple] {
     height: 48px;
     padding: 0 12px;
-    border: 1px solid #ee775c;
+    border: 1px solid var(--line); /* Borda neutra; ao selecionar fica vinho */
     border-radius: 12px;
     background: #FFFFFF;
 }
@@ -1608,7 +1608,7 @@ select[multiple] {
 .auth-form input:focus,
 .auth-form select:focus {
     box-shadow:
-        0 0 0 3px rgba(198, 83, 47, .10);
+        0 0 0 3px rgba(112, 40, 59, .12);
 }
 
 .auth-form .btn {
@@ -3223,3 +3223,53 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
 :where(input,select,textarea):focus { border-color: #A34E63; }
 ::selection { background: #E9D6DC; color: #292528; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+
+/* =====================================================
+   LOGIN / CADASTRO - VISUAL MAIS ABERTO
+   Referência: fundo claro, cartão discreto e cantos suaves.
+   Altere os valores abaixo para personalizar a página.
+===================================================== */
+.auth-page {
+    background: #FFFFFF; /* Fundo branco e limpo */
+    padding: 110px 24px 65px; /* Mais espaço ao redor do formulário */
+}
+.auth-top {
+    display: none; /* Remove a faixa vinho arredondada do topo */
+}
+.auth-card {
+    width: min(480px, 100%); /* Largura do formulário */
+    border: 1px solid var(--line); /* Contorno discreto */
+    border-radius: 8px; /* Cantos menos arredondados */
+    padding: 44px 42px; /* Espaço interno */
+    box-shadow: none; /* Sem sombra pesada */
+    text-align: left;
+}
+.auth-card .logo-circle {
+    margin-bottom: 30px;
+}
+.auth-card h1 {
+    font-size: 32px;
+}
+.auth-subtitle {
+    color: var(--text);
+    margin-bottom: 26px;
+}
+.auth-form input,
+.auth-form select {
+    border: 1px solid var(--line); /* Borda padrão, sem laranja */
+    border-radius: 5px;
+    background: #FFFFFF;
+}
+.auth-form input:focus,
+.auth-form select:focus {
+    border-color: var(--wine); /* Vinho ao clicar no campo */
+    box-shadow: 0 0 0 3px rgba(112, 40, 59, .10); /* Brilho vinho suave */
+    outline: none;
+}
+.auth-form .btn {
+    border-radius: 5px; /* Botão menos arredondado */
+}
+@media (max-width: 560px) {
+    .auth-page { padding: 65px 16px 30px; }
+    .auth-card { padding: 32px 24px; }
+}
