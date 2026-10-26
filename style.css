@@ -3422,3 +3422,40 @@ body[data-auth-page="login"] .auth-card h1 {
 .product-card .product-image {
     border-radius: 0; /* Imagem também com cantos retos */
 }
+
+/* =====================================================
+   PESQUISA DE PRODUTOS - VISUAL QUADRADO E LIMPO
+   Campo de busca quadrado; filtro e opções sem caixas.
+===================================================== */
+.products-toolbar .product-search input {
+    border-radius: 0; /* Busca totalmente quadrada */
+}
+.products-toolbar .view-options,
+.products-toolbar .view-btn,
+.products-toolbar select,
+.products-toolbar .filters,
+.products-toolbar .pill {
+    background: transparent; /* Sem fundo nas opções */
+    border: 0; /* Sem caixas ou contornos */
+    border-radius: 0;
+    box-shadow: none;
+}
+.products-toolbar .view-btn,
+.products-toolbar .view-btn:hover,
+.products-toolbar .view-btn.active {
+    background: transparent;
+    border: 0;
+    color: var(--text);
+    box-shadow: none;
+}
+.products-toolbar .view-btn.active {
+    color: var(--wine); /* Apenas o ícone selecionado fica vinho */
+}
+.products-toolbar select:focus {
+    outline: 1px solid var(--wine);
+    outline-offset: 2px;
+}
+.products-toolbar .view-btn:focus-visible {
+    outline: 2px solid var(--wine);
+    outline-offset: 2px;
+}
