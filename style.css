@@ -3235,10 +3235,10 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
 }
 .auth-top {
     display: block;
-    height: 12px; /* Faixa vinho fina, sem ocupar o topo inteiro */
-    background: var(--wine);
-    border-radius: 0; /* Sem cantos arredondados na faixa */
-    box-shadow: none; /* Sem sombra */
+    height: 88px; /* Cabeçalho vinho alto */
+    background: var(--wine); /* Cor do cabeçalho */
+    border-radius: 0 0 30px 30px; /* Pontas inferiores arredondadas */
+    box-shadow: 0 7px 12px rgba(60, 35, 25, .16); /* Sombra suave */
 }
 .auth-card {
     width: min(480px, 100%); /* Largura do formulário */
@@ -3276,4 +3276,16 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
 @media (max-width: 560px) {
     .auth-page { padding: 65px 16px 30px; }
     .auth-card { padding: 32px 24px; }
+}
+
+/* Página inicial: faixa vinho fixa no topo da área principal, sem logo. */
+body[data-auth-page="login"] .dh-auth-entry > .auth-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+}
+body[data-auth-page="login"] .dh-auth-entry > .auth-card {
+    z-index: 1;
 }
