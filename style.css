@@ -20,9 +20,8 @@
 
 :root {
     /* Vinho principal: usado em botões, destaques e links. */
-    --terracotta: #70283B;
-    /* Vinho mais escuro: por exemplo, ao passar o mouse nos botões. */
-    --terracotta-dark: #572032;
+        /* Vinho mais escuro: por exemplo, ao passar o mouse nos botões. */
+    --wine-dark: #572032;
     /* Fundo claro geral da página (body). */
     --cream: #FAF8F6;
     /* Tom claro secundário para superfícies e detalhes. */
@@ -37,9 +36,8 @@
     --line: #E5E1DF;
     /* Sombra padrão de painéis e cartões; não é uma cor sólida. */
     --shadow: 0 12px 30px rgba(64, 54, 56, .09);
-    /* Outra variável de vinho; altere junto com terracotta para manter consistência. */
-    --wine: #70283B;
-    /* Vinho mais suave para destaques. */
+    /* Outra variável de vinho; altere junto com wine para manter consistência. */
+        /* Vinho mais suave para destaques. */
     --wine-soft: #A34E63;
     /* Tom dourado de detalhes. */
     --gold: #B99A58;
@@ -114,7 +112,7 @@ textarea {
 .logo-circle {
     display: grid;
     place-items: center;
-    background: var(--terracotta);
+    background: var(--wine);
     color: #fff;
     border-radius: 50%;
     font-weight: 700;
@@ -142,8 +140,8 @@ textarea {
 
 .nav a.active,
 .nav a:hover {
-    color: var(--terracotta);
-    border-color: var(--terracotta);
+    color: var(--wine);
+    border-color: var(--wine);
 }
 
 .user-menu {
@@ -160,7 +158,7 @@ textarea {
     background: #F1E4E7;
     display: grid;
     place-items: center;
-    color: var(--terracotta);
+    color: var(--wine);
     font-weight: 700;
     overflow: hidden;
     flex-shrink: 0;
@@ -215,7 +213,7 @@ textarea {
 .eyebrow {
     font-size: 11px;
     letter-spacing: 1.7px;
-    color: var(--terracotta);
+    color: var(--wine);
     font-weight: 700;
 }
 
@@ -258,12 +256,12 @@ textarea {
 }
 
 .btn.primary {
-    background: var(--terracotta);
+    background: var(--wine);
     color: #fff;
 }
 
 .btn.primary:hover {
-    background: var(--terracotta-dark);
+    background: var(--wine-dark);
 }
 
 .wide {
@@ -318,7 +316,7 @@ textarea {
 .panel-head > a,
 .section-head > a,
 .text-link {
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 13px;
     font-weight: 600;
 }
@@ -370,7 +368,7 @@ textarea {
 }
 
 .day.today {
-    outline: 2px solid var(--terracotta);
+    outline: 2px solid var(--wine);
     outline-offset: -2px;
     background: #fff4ef;
 }
@@ -577,7 +575,7 @@ textarea {
 
 .rating {
     font-size: 13px;
-    color: var(--terracotta);
+    color: var(--wine);
     font-weight: 700;
 }
 
@@ -630,7 +628,7 @@ textarea {
     display: grid;
     place-items: center;
     background: #f1e4dc;
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 22px;
 }
 
@@ -694,7 +692,7 @@ textarea {
 }
 
 .search-bar input:focus {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
 }
 
 .filters {
@@ -709,9 +707,9 @@ textarea {
 }
 
 .pill.selected {
-    background: var(--terracotta);
+    background: var(--wine);
     color: white;
-    border-color: var(--terracotta);
+    border-color: var(--wine);
 }
 
 .empty {
@@ -726,7 +724,7 @@ textarea {
     max-width: 1180px;
     margin: 0 auto 18px;
     padding: 0 28px;
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 13px;
 }
 
@@ -771,7 +769,7 @@ textarea {
 }
 
 .product-search input:focus {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
     box-shadow:
         0 0 0 3px rgba(198, 83, 47, .08);
 }
@@ -809,9 +807,9 @@ textarea {
 
 .view-btn:hover,
 .view-btn.active {
-    background: var(--terracotta);
+    background: var(--wine);
     color: #fff;
-    border-color: var(--terracotta);
+    border-color: var(--wine);
 }
 
 .products-grid.list-view {
@@ -877,7 +875,7 @@ textarea {
 
 .big-rating {
     font-size: 20px;
-    color: var(--terracotta);
+    color: var(--wine);
     font-weight: 700;
     margin: 12px 0 20px;
 }
@@ -1009,12 +1007,12 @@ textarea {
 }
 
 .star-rating label:hover span {
-    color: var(--terracotta);
+    color: var(--wine);
     transform: scale(1.08);
 }
 
 .star-rating input:checked + span {
-    color: var(--terracotta);
+    color: var(--wine);
 }
 
 
@@ -1058,7 +1056,7 @@ textarea {
 }
 
 .comment-field textarea:focus {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
     box-shadow:
         0 0 0 3px rgba(198, 83, 47, .08);
 }
@@ -1153,7 +1151,7 @@ textarea {
 
 .stars {
     display: block;
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 17px;
     line-height: 1;
     white-space: nowrap;
@@ -1189,7 +1187,7 @@ textarea {
     border: 1px solid #d9b8aa;
     border-radius: 10px;
     background: transparent;
-    color: var(--terracotta);
+    color: var(--wine);
     padding: 8px 12px;
     font-size: 12px;
     font-weight: 600;
@@ -1202,7 +1200,7 @@ textarea {
 
 .review-delete-btn:hover {
     background: #f8e9e1;
-    border-color: var(--terracotta);
+    border-color: var(--wine);
     transform: translateY(-1px);
 }
 
@@ -1220,7 +1218,7 @@ textarea {
     padding: 6px 11px;
     border-radius: 20px;
     background: #f3e5dc;
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 11px;
     font-weight: 600;
 }
@@ -1302,7 +1300,7 @@ textarea {
 .profile-form input:focus,
 .profile-form select:focus,
 .profile-form textarea:focus {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
 }
 
 .profile-form .btn {
@@ -1369,7 +1367,7 @@ select[multiple] {
 }
 
 .frequency-recommendation strong {
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 16px;
 }
 
@@ -1423,7 +1421,7 @@ select[multiple] {
 }
 
 .routine-step:hover {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
     box-shadow:
         0 4px 12px rgba(67, 47, 40, .06);
 }
@@ -1453,7 +1451,7 @@ select[multiple] {
     border: 0;
     border-radius: 50%;
     background: #f4e7df;
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 20px;
     cursor: pointer;
 }
@@ -1480,7 +1478,7 @@ select[multiple] {
 
 .routine-add {
     background: #f4e7df;
-    color: var(--terracotta);
+    color: var(--wine);
 }
 
 .routine-add:hover {
@@ -1534,7 +1532,7 @@ select[multiple] {
     right: 0;
     top: 0;
     height: 88px;
-    background: var(--terracotta);
+    background: var(--wine);
     border-radius: 0 0 35px 35px;
     box-shadow:
         0 7px 12px rgba(60, 35, 25, .22);
@@ -1635,7 +1633,7 @@ select[multiple] {
 }
 
 .create-account a {
-    color: var(--terracotta);
+    color: var(--wine);
     font-weight: 600;
 }
 
@@ -2065,7 +2063,7 @@ select[multiple] {
     align-self: flex-start;
     margin-top: 16px;
     padding: 10px 20px;
-    background: var(--terracotta);
+    background: var(--wine);
     color: #fff;
     border-radius: 9px;
     font-size: 12px;
@@ -2077,7 +2075,7 @@ select[multiple] {
 
 .recommended-product-link:hover,
 .recommended-product-body .btn:hover {
-    background: var(--terracotta-dark);
+    background: var(--wine-dark);
 }
 
 
@@ -2098,14 +2096,14 @@ select[multiple] {
 }
 
 .recommended-products-footer a {
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 13px;
     font-weight: 600;
 }
 
 .recommended-products-footer a:hover,
 .see-all-products:hover {
-    color: var(--terracotta-dark);
+    color: var(--wine-dark);
 }
 
 
@@ -2180,7 +2178,7 @@ select[multiple] {
 
 .product-step-selector select:hover,
 .product-step-selector select:focus {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
 }
 
 .product-step-selector select:focus {
@@ -2228,13 +2226,13 @@ select[multiple] {
 }
 
 .rating-field select:focus {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
     box-shadow: 0 0 0 3px rgba(198, 83, 47, .08);
 }
 
 .rating-field input[type="text"]:focus,
 .comment-field textarea:focus {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
     box-shadow: 0 0 0 3px rgba(198, 83, 47, .08);
 }
 
@@ -2262,7 +2260,7 @@ select[multiple] {
 }
 
 .upload-box:hover {
-    border-color: var(--terracotta);
+    border-color: var(--wine);
     background: #fff4ef;
 }
 
@@ -2271,7 +2269,7 @@ select[multiple] {
     height: 42px;
     border-radius: 50%;
     background: #f4e7df;
-    color: var(--terracotta);
+    color: var(--wine);
     display: grid;
     place-items: center;
     margin: 0 auto 10px;
@@ -2325,7 +2323,7 @@ select[multiple] {
     height: 42px;
     border-radius: 50%;
     background: #F1E4E7;
-    color: var(--terracotta);
+    color: var(--wine);
     display: grid;
     place-items: center;
     font-size: 15px;
@@ -2358,7 +2356,7 @@ select[multiple] {
 }
 
 .review-user:hover .review-user-info strong {
-    color: var(--terracotta);
+    color: var(--wine);
 }
 
 
@@ -2685,7 +2683,7 @@ select[multiple] {
     display: block;
     margin: 0 0 8px;
 
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 11px;
     font-weight: 600;
     letter-spacing: 1px;
@@ -2745,7 +2743,7 @@ select[multiple] {
 
     padding: 10px 20px;
 
-    background: var(--terracotta);
+    background: var(--wine);
     color: #fff;
 
     border: none;
@@ -2768,7 +2766,7 @@ select[multiple] {
 .recommended-product-link:hover,
 .recommended-product-body .btn:hover,
 .recommended-product-info .btn:hover {
-    background: var(--terracotta-dark);
+    background: var(--wine-dark);
     transform: translateY(-1px);
 }
 
@@ -2788,7 +2786,7 @@ select[multiple] {
 }
 
 .see-all-products:hover {
-    color: var(--terracotta);
+    color: var(--wine);
 }
 
 
@@ -2882,7 +2880,7 @@ select[multiple] {
     align-items: center;
     justify-content: center;
 
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 42px;
     font-weight: 700;
 }
@@ -3024,7 +3022,7 @@ select[multiple] {
 }
 
 .public-review-product-name:hover {
-    color: var(--terracotta);
+    color: var(--wine);
 }
 
 .public-review-rating {
@@ -3065,7 +3063,7 @@ select[multiple] {
     align-items: center;
     justify-content: center;
 
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 17px;
     font-weight: 700;
 }
@@ -3095,7 +3093,7 @@ select[multiple] {
 }
 
 .review-user:hover .review-user-info strong {
-    color: var(--terracotta);
+    color: var(--wine);
 }
 
 
@@ -3154,7 +3152,7 @@ select[multiple] {
     align-items: center;
     justify-content: center;
 
-    color: var(--terracotta);
+    color: var(--wine);
     font-size: 30px;
     font-weight: 700;
 }
