@@ -5,7 +5,6 @@
     <div class="dh-footer-top">
       <div class="dh-footer-about">
         <a class="dh-footer-logo" href="dashboard.php" aria-label="Daily Hair — ir para o início">
-          <img src="Logo.png" alt="" loading="lazy">
           <span>Daily Hair</span>
         </a>
         <p class="dh-footer-tagline">Seu cabelo, sua rotina. Um espaço para descobrir produtos, compartilhar experiências e cuidar dos seus fios do seu jeito.</p>
