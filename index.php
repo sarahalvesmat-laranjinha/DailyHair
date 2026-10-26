@@ -68,10 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <main class="dh-auth-entry">
     <div class="auth-top"></div>
     <section class="auth-card">
-        <div class="logo-circle">
-    <img src="Logo.png" alt="Daily Hair">
-</div>
-        <h1>Bem-vindo de volta!</h1>
+    <h1>Bem-vindo de volta!</h1>
         <p class="auth-subtitle">Faça login para continuar cuidando do<br>que é seu.</p>
         <?php if ($error): ?>
             <div class="alert error"><?= e($error) ?></div><?php endif; ?>
