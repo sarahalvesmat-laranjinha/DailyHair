@@ -3234,9 +3234,11 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
     padding: 110px 24px 65px; /* Mais espaço ao redor do formulário */
 }
 .auth-top {
-    display: block; /* Mantém a faixa vinho no topo */
-    background: var(--wine); /* Cor vinho do cabeçalho */
-    border-radius: 0 0 5px 5px; /* Cantos quase retos */
+    display: block;
+    height: 12px; /* Faixa vinho fina, sem ocupar o topo inteiro */
+    background: var(--wine);
+    border-radius: 0; /* Sem cantos arredondados na faixa */
+    box-shadow: none; /* Sem sombra */
 }
 .auth-card {
     width: min(480px, 100%); /* Largura do formulário */
