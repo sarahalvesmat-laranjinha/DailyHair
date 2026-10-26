@@ -1,20 +1,49 @@
+/* GUIA PARA EDITAR O DAILY HAIR
+   COMO LER: .classe indica qual elemento recebe o estilo.
+   background/background-color = fundo; color = cor do texto; border-color = borda.
+   width/height = largura/altura; padding = espaço interno; margin = espaço externo.
+   font-size = tamanho da letra; border-radius = cantos arredondados.
+   display/grid/flex = organização dos elementos; gap = distância entre itens.
+   :hover = quando o mouse passa; :focus = quando um campo está selecionado.
+   @media = ajustes para determinados tamanhos de tela.
+   var(--nome) = usa uma variável definida em :root.
+   IMPORTANTE: #FFFFFF, #fff, rgba(...) e linear-gradient(...) também definem cores,
+   mas diretamente naquele seletor, sem depender das variáveis.
+   Se uma regra aparece novamente mais abaixo, a última pode prevalecer.
+   Estes comentários são explicativos e não modificam o visual.
+*/
+
 /* =====================================================
    VARIÁVEIS
 ===================================================== */
+/* Paleta global: mudar um valor aqui altera todos os lugares que usam var(--nome). Cores escritas diretamente como #HEX em outras regras não mudam automaticamente. */
 
 :root {
+    /* Vinho principal: usado em botões, destaques e links. */
     --terracotta: #70283B;
+    /* Vinho mais escuro: por exemplo, ao passar o mouse nos botões. */
     --terracotta-dark: #572032;
+    /* Fundo claro geral da página (body). */
     --cream: #FAF8F6;
+    /* Tom claro secundário para superfícies e detalhes. */
     --cream-dark: #E5E1DF;
+    /* Fundo branco dos cartões e da barra superior. */
     --card: #FFFFFF;
+    /* Cor principal dos textos. */
     --text: #403638;
+    /* Cor dos textos secundários e descrições. */
     --muted: #80675D;
+    /* Cor das linhas divisórias e bordas. */
     --line: #E5E1DF;
+    /* Sombra padrão de painéis e cartões; não é uma cor sólida. */
     --shadow: 0 12px 30px rgba(64, 54, 56, .09);
+    /* Outra variável de vinho; altere junto com terracotta para manter consistência. */
     --wine: #70283B;
+    /* Vinho mais suave para destaques. */
     --wine-soft: #A34E63;
+    /* Tom dourado de detalhes. */
     --gold: #B99A58;
+    /* Tom escuro para textos e detalhes. */
     --charcoal: #292528;
 }
 
@@ -22,6 +51,7 @@
 /* =====================================================
    RESET
 ===================================================== */
+/* Regras gerais para elementos HTML, fontes, links e comportamento básico da página. */
 
 * {
     box-sizing: border-box;
@@ -55,6 +85,7 @@ textarea {
 /* =====================================================
    TOPBAR
 ===================================================== */
+/* Barra superior: altura, fundo, logo, navegação, avatar e saída. */
 
 .topbar {
     height: 76px;
@@ -151,6 +182,7 @@ textarea {
 /* =====================================================
    CONTAINER
 ===================================================== */
+/* Largura máxima e espaçamento do conteúdo principal. */
 
 .container {
     width: 100%;
@@ -163,6 +195,7 @@ textarea {
 /* =====================================================
    HERO
 ===================================================== */
+/* Destaque no topo da página: fundo em degradê, título e descrição. */
 
 .hero {
     background: linear-gradient(
@@ -203,6 +236,7 @@ textarea {
 /* =====================================================
    BOTÕES
 ===================================================== */
+/* Aparência dos botões: fundo, texto, bordas, espaçamento e efeito ao passar o mouse. */
 
 .btn {
     display: inline-flex;
@@ -240,6 +274,7 @@ textarea {
 /* =====================================================
    DASHBOARD
 ===================================================== */
+/* Grade e cartões do painel principal. */
 
 .dashboard-grid {
     display: grid;
@@ -292,6 +327,7 @@ textarea {
 /* =====================================================
    CALENDÁRIO
 ===================================================== */
+/* Dias, células e destaque da data atual. */
 
 .weekdays,
 .calendar-days {
@@ -343,6 +379,7 @@ textarea {
 /* =====================================================
    ÍCONES DO CALENDÁRIO
 ===================================================== */
+/* Tamanhos e posicionamento das imagens de ícones do calendário. */
 
 .calendar-icon {
     width: 50px;
@@ -415,6 +452,7 @@ textarea {
 /* =====================================================
    PERFIL
 ===================================================== */
+/* Cartão de perfil, textos e etiquetas. */
 
 .profile-card {
     display: flex;
@@ -452,6 +490,7 @@ textarea {
 /* =====================================================
    PRODUTOS
 ===================================================== */
+/* Grade, cartões, imagens, avaliações e etiquetas dos produtos. */
 
 .section-head {
     margin: 45px 0 17px;
@@ -557,6 +596,7 @@ textarea {
 /* =====================================================
    PAGE TITLE
 ===================================================== */
+/* Espaçamento do título de cada página. */
 
 .page-title {
     margin-bottom: 28px;
@@ -566,6 +606,7 @@ textarea {
 /* =====================================================
    CALENDÁRIO GRANDE
 ===================================================== */
+/* Versão ampliada do calendário e detalhes do dia. */
 
 .calendar-large {
     padding: 28px;
@@ -635,6 +676,7 @@ textarea {
 /* =====================================================
    BUSCA
 ===================================================== */
+/* Campo de busca, filtros e estados selecionados. */
 
 .search-bar {
     display: flex;
@@ -692,6 +734,7 @@ textarea {
 /* =====================================================
    BARRA DE PESQUISA DOS PRODUTOS
 ===================================================== */
+/* Busca de produtos e botões para alternar a visualização. */
 
 .products-toolbar {
     display: flex;
@@ -789,6 +832,7 @@ textarea {
 /* =====================================================
    PRODUTO DETALHADO
 ===================================================== */
+/* Layout da página de detalhes de um produto. */
 
 .product-detail {
     width: 100%;
@@ -862,6 +906,7 @@ textarea {
 /* =====================================================
    AVALIAÇÕES DO PRODUTO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review-section {
     width: 100%;
@@ -894,6 +939,7 @@ textarea {
 /* =====================================================
    FORMULÁRIO DE AVALIAÇÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review-form {
     width: 100%;
@@ -912,6 +958,7 @@ textarea {
 /* =====================================================
    CAMPO DE NOTA
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .rating-field {
     display: flex;
@@ -929,6 +976,7 @@ textarea {
 /* =====================================================
    ESTRELAS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .star-rating {
     display: flex;
@@ -973,6 +1021,7 @@ textarea {
 /* =====================================================
    CAMPO DE COMENTÁRIO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .comment-field {
     display: flex;
@@ -1018,6 +1067,7 @@ textarea {
 /* =====================================================
    BOTÃO PUBLICAR AVALIAÇÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review-form .btn.primary {
     width: fit-content;
@@ -1030,6 +1080,7 @@ textarea {
 /* =====================================================
    COMUNIDADE
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .community-reviews {
     width: 100%;
@@ -1051,6 +1102,7 @@ textarea {
 /* =====================================================
    CADA AVALIAÇÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review {
     width: 100%;
@@ -1067,6 +1119,7 @@ textarea {
 /* =====================================================
    PARTE SUPERIOR DA AVALIAÇÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review-top {
     display: flex;
@@ -1096,6 +1149,7 @@ textarea {
 /* =====================================================
    ESTRELAS DAS AVALIAÇÕES
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .stars {
     display: block;
@@ -1110,6 +1164,7 @@ textarea {
 /* =====================================================
    TEXTO DA AVALIAÇÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review > p {
     margin: 17px 0 0;
@@ -1122,6 +1177,7 @@ textarea {
 /* =====================================================
    EXCLUIR A PRÓPRIA AVALIAÇÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review-delete-form {
     display: flex;
@@ -1154,6 +1210,7 @@ textarea {
 /* =====================================================
    PERFIL SEMELHANTE
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .similar-badge {
     display: inline-flex;
@@ -1172,6 +1229,7 @@ textarea {
 /* =====================================================
    SEM AVALIAÇÕES
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .no-reviews {
     margin: 0 !important;
@@ -1183,6 +1241,7 @@ textarea {
 /* =====================================================
    ALERTAS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .alert {
     padding: 11px 14px;
@@ -1205,6 +1264,7 @@ textarea {
 /* =====================================================
    PERFIL / FORMULÁRIOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .profile-form {
     padding: 28px;
@@ -1253,6 +1313,7 @@ textarea {
 /* =====================================================
    SELECT MÚLTIPLO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 select[multiple] {
     height: 48px;
@@ -1266,6 +1327,7 @@ select[multiple] {
 /* =====================================================
    LAVAR - CALENDÁRIO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .wash-icon {
     width: 30px;
@@ -1320,6 +1382,7 @@ select[multiple] {
 /* =====================================================
    ROTINA DE LAVAGEM EDITÁVEL
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .routine-editor {
     width: 100%;
@@ -1439,6 +1502,7 @@ select[multiple] {
 /* =====================================================
    FOOTER
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .footer {
     text-align: center;
@@ -1452,6 +1516,7 @@ select[multiple] {
 /* =====================================================
    LOGIN / CADASTRO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .auth-page {
     min-height: 100vh;
@@ -1617,6 +1682,7 @@ select[multiple] {
 /* =====================================================
    RESPONSIVO - TABLET
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 @media (max-width: 850px) {
 
@@ -1658,6 +1724,7 @@ select[multiple] {
 /* =====================================================
    CELULAR
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 @media (max-width: 560px) {
 
@@ -1775,6 +1842,7 @@ select[multiple] {
 /* =====================================================
    LOGO DO TOPO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .brand-mark {
     width: 65px;
@@ -1799,6 +1867,7 @@ select[multiple] {
 /* =====================================================
    ÍCONES DO CALENDÁRIO GRANDE
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .day.large .calendar-icon {
     width: 38px;
@@ -1819,6 +1888,7 @@ select[multiple] {
 /* =====================================================
    SUGESTÕES DE PRODUTOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-products {
     width: 100%;
@@ -1855,6 +1925,7 @@ select[multiple] {
 /* =====================================================
    GRID DOS PRODUTOS SUGERIDOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-products-grid {
     width: 100%;
@@ -1869,6 +1940,7 @@ select[multiple] {
 /* =====================================================
    CARD
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-card {
     width: 100%;
@@ -1916,6 +1988,7 @@ select[multiple] {
 /* =====================================================
    INFORMAÇÕES
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-info,
 .recommended-product-body {
@@ -1931,6 +2004,7 @@ select[multiple] {
 /* =====================================================
    MARCA
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-brand,
 .recommended-product-body .product-brand {
@@ -1947,6 +2021,7 @@ select[multiple] {
 /* =====================================================
    NOME
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-info h3,
 .recommended-product-body h3 {
@@ -1961,6 +2036,7 @@ select[multiple] {
 /* =====================================================
    DESCRIÇÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-info p,
 .recommended-product-body p {
@@ -1979,6 +2055,7 @@ select[multiple] {
 /* =====================================================
    BOTÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-link,
 .recommended-product-body .btn {
@@ -2007,6 +2084,7 @@ select[multiple] {
 /* =====================================================
    VER TODOS OS PRODUTOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-products-footer {
     margin-top: 13px;
@@ -2034,6 +2112,7 @@ select[multiple] {
 /* =====================================================
    SEM PRODUTOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .no-recommended-products {
     background: var(--card);
@@ -2049,6 +2128,7 @@ select[multiple] {
 /* =====================================================
    SELETOR DE PRODUTOS DA ROTINA
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .product-step-selector {
     display: flex;
@@ -2116,6 +2196,7 @@ select[multiple] {
 /* =====================================================
    PRODUCT-FORM
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .rating-field input[type="text"] {
     width: 100%;
@@ -2161,6 +2242,7 @@ select[multiple] {
 /* =====================================================
    UPLOAD
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .upload-box {
     border: 1.5px dashed var(--line);
@@ -2228,6 +2310,7 @@ select[multiple] {
 /* =====================================================
    AVATAR DAS AVALIAÇÕES
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review-user {
     display: flex;
@@ -2282,6 +2365,7 @@ select[multiple] {
 /* =====================================================
    ADMINISTRAÇÃO DE PRODUTOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .admin-products {
     width: min(1100px, calc(100% - 40px));
@@ -2452,6 +2536,7 @@ select[multiple] {
 /* =====================================================
    BOTÕES ADMIN
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .admin-product-actions {
     display: grid;
@@ -2498,6 +2583,7 @@ select[multiple] {
 /* =====================================================
    TERMOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .termos-checkbox a:hover {
     color: #004999;
@@ -2512,6 +2598,7 @@ select[multiple] {
 /* =====================================================
    PRODUTOS SUGERIDOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-products {
     width: 100%;
@@ -2547,6 +2634,7 @@ select[multiple] {
 /* =====================================================
    IMAGEM
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-image {
     width: 100%;
@@ -2570,6 +2658,7 @@ select[multiple] {
 /* =====================================================
    INFORMAÇÕES
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-body,
 .recommended-product-info {
@@ -2589,6 +2678,7 @@ select[multiple] {
 /* =====================================================
    MARCA
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-body .product-brand,
 .recommended-product-info .recommended-product-brand {
@@ -2606,6 +2696,7 @@ select[multiple] {
 /* =====================================================
    NOME
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-body h3,
 .recommended-product-info h3 {
@@ -2622,6 +2713,7 @@ select[multiple] {
 /* =====================================================
    DESCRIÇÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-body p,
 .recommended-product-info p {
@@ -2638,6 +2730,7 @@ select[multiple] {
 /* =====================================================
    BOTÃO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .recommended-product-link,
 .recommended-product-body .btn,
@@ -2683,6 +2776,7 @@ select[multiple] {
 /* =====================================================
    VER TODOS OS PRODUTOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .see-all-products {
     display: inline-block;
@@ -2701,6 +2795,7 @@ select[multiple] {
 /* =====================================================
    SEM PRODUTOS
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .no-recommended-products {
     background: var(--card);
@@ -2718,6 +2813,7 @@ select[multiple] {
 /* =====================================================
    RESPONSIVO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 @media (max-width: 900px) {
 
@@ -2741,6 +2837,7 @@ select[multiple] {
 /* =====================================================
    PERFIL PÚBLICO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .public-profile {
     width: 100%;
@@ -2760,6 +2857,7 @@ select[multiple] {
 /* =====================================================
    CABEÇALHO DO PERFIL
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .public-profile-header {
     display: flex;
@@ -2822,6 +2920,7 @@ select[multiple] {
 /* =====================================================
    SEÇÕES
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .public-profile-section {
     width: 100%;
@@ -2832,6 +2931,7 @@ select[multiple] {
 /* =====================================================
    CARACTERÍSTICAS DO CABELO
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .hair-profile-grid {
     width: 100%;
@@ -2865,6 +2965,7 @@ select[multiple] {
 /* =====================================================
    NECESSIDADES
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .public-profile-section .profile-tags {
     display: flex;
@@ -2876,6 +2977,7 @@ select[multiple] {
 /* =====================================================
    AVALIAÇÕES DO PERFIL
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .public-reviews {
     width: 100%;
@@ -2940,6 +3042,7 @@ select[multiple] {
 /* =====================================================
    USUÁRIO DAS AVALIAÇÕES
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 .review-user {
     display: inline-flex;
@@ -2999,6 +3102,7 @@ select[multiple] {
 /* =====================================================
    CELULAR
 ===================================================== */
+/* Seção de estilos: os seletores abaixo controlam os elementos indicados pelo nome. Altere valores com cuidado e confira também regras posteriores e @media. */
 
 @media (max-width: 750px) {
 
