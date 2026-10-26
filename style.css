@@ -3491,3 +3491,24 @@ body[data-auth-page="login"] .auth-card h1 {
     }
     .products-grid.list-view .product-image { min-height: 140px; }
 }
+
+/* =====================================================
+   DASHBOARD - CANTOS MAIS QUADRADOS
+   Página inicial: boas-vindas, calendário e perfil capilar.
+===================================================== */
+.hero {
+    border-radius: 6px; /* Faixa de boas-vindas quase quadrada */
+}
+.dashboard-grid .panel,
+.dashboard-grid .calendar-mini,
+.dashboard-grid .profile-card {
+    border-radius: 6px; /* Caixas do calendário e perfil */
+}
+.dashboard-grid .day,
+.calendar-mini .day {
+    border-radius: 4px; /* Cada dia do calendário */
+}
+.dashboard-grid .profile-tags span,
+.dashboard-grid .pill {
+    border-radius: 4px; /* Etiquetas do perfil */
+}
