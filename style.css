@@ -3459,3 +3459,35 @@ body[data-auth-page="login"] .auth-card h1 {
     outline: 2px solid var(--wine);
     outline-offset: 2px;
 }
+
+/* =====================================================
+   PRODUTOS EM LISTA - FOTO MAIOR SEM FUNDO ALARANJADO
+   Aplica apenas ao modo enfileirado; grade permanece igual.
+===================================================== */
+.products-grid.list-view .product-image {
+    background: transparent !important; /* Remove fundo alaranjado */
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    min-height: 190px;
+    height: 100%;
+    overflow: hidden;
+}
+.products-grid.list-view .product-image img {
+    width: 100%; /* Foto ocupa a área disponível */
+    height: 100%;
+    max-width: none;
+    max-height: none;
+    object-fit: contain; /* Zoom proporcional, sem cortar o produto */
+    object-position: center;
+    display: block;
+}
+.products-grid.list-view .product-card {
+    grid-template-columns: 220px minmax(0, 1fr); /* Coluna maior para a foto */
+}
+@media (max-width: 560px) {
+    .products-grid.list-view .product-card {
+        grid-template-columns: 125px minmax(0, 1fr);
+    }
+    .products-grid.list-view .product-image { min-height: 140px; }
+}
