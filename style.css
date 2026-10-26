@@ -3289,3 +3289,31 @@ body[data-auth-page="login"] .dh-auth-entry > .auth-top {
 body[data-auth-page="login"] .dh-auth-entry > .auth-card {
     z-index: 1;
 }
+
+/* =====================================================
+   LOGIN INICIAL - CABEÇALHO MINIMALISTA E LOGO
+   Edite altura, arredondamento e tamanho da logo aqui.
+===================================================== */
+body[data-auth-page="login"] .dh-auth-entry > .auth-top {
+    height: 56px; /* Faixa vinho discreta */
+    border-radius: 0 0 18px 18px; /* Curva suave nas pontas inferiores */
+    background: var(--wine);
+    box-shadow: none; /* Sem sombra para um visual minimalista */
+}
+body[data-auth-page="login"] .auth-card .logo-circle {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0 auto 18px; /* Espaço entre logo e Bem-vindo */
+    justify-content: center;
+    background: transparent;
+}
+body[data-auth-page="login"] .auth-card .logo-circle img {
+    width: 105px; /* Tamanho da logo: altere aqui */
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+body[data-auth-page="login"] .auth-card h1 {
+    margin-top: 0;
+}
