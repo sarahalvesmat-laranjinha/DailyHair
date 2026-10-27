@@ -383,45 +383,50 @@ $reviews = $stmt->fetchAll();
 
 
 <style>
-/* Refinamento visual do perfil público */
-.public-profile { --perfil-vinho: #70283e; --perfil-suave: #f5e9ed; --perfil-borda: #eadfe2; }
-.public-profile .public-profile-header {
-    display: flex; align-items: center; gap: 28px;
-    padding: 28px 32px; border: 1px solid var(--perfil-borda);
-    border-radius: 12px; box-shadow: 0 10px 28px rgba(65,35,44,.055);
+/* Perfil público: identidade vinho e visual compacto */
+.public-profile { --vinho:#70283e; --vinho-claro:#f3e6eb; --borda:#e8dbe0; max-width:1000px; margin-inline:auto; }
+.public-profile .public-profile-header.panel {
+ display:flex; align-items:center; gap:26px; padding:26px 30px;
+ min-height:0; border:1px solid var(--borda); border-radius:8px;
+ box-shadow:0 6px 20px rgba(45,24,32,.045);
 }
-.public-profile .public-profile-photo { flex: 0 0 112px; width: 112px; height: 112px; }
-.public-profile .public-profile-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-.public-profile .public-profile-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
-.public-profile .public-profile-info h1, .public-profile .public-profile-info p { margin: 0; }
-.public-profile .public-profile-bio { line-height: 1.55; }
-.public-profile .public-profile-edit {
-    display: inline-flex; justify-content: center; align-items: center;
-    margin-top: 10px; padding: 10px 20px; border: 1px solid var(--perfil-vinho);
-    border-radius: 6px; color: var(--perfil-vinho); background: transparent;
-    font-size: 13px; font-weight: 600; text-decoration: none; transition: none;
+.public-profile .public-profile-photo { width:108px; height:108px; flex:0 0 108px; }
+.public-profile .public-profile-photo img { width:100%; height:100%; object-fit:cover; border-radius:50%; }
+.public-profile .public-profile-info { display:flex; flex-direction:column; align-items:flex-start; gap:7px; }
+.public-profile .public-profile-info h1 { margin:0; font-size:29px; line-height:1.2; }
+.public-profile .public-profile-info p { margin:0; }
+.public-profile .public-profile-info .public-profile-bio { line-height:1.5; }
+.public-profile .public-profile-edit,
+.public-profile .public-profile-edit:link,
+.public-profile .public-profile-edit:visited {
+ display:inline-flex; align-items:center; justify-content:center;
+ margin-top:12px; padding:11px 22px; min-height:40px;
+ background:var(--vinho); color:#fff; border:1px solid var(--vinho);
+ border-radius:4px; font-weight:600; font-size:13px; text-decoration:none;
+ box-shadow:none; transition:none; transform:none;
 }
-.public-profile .public-profile-edit:hover { color: var(--perfil-vinho); background: transparent; transform: none; }
-.public-profile .public-profile-section { margin-top: 38px; }
-.public-profile .hair-profile-card {
-    border: 1px solid var(--perfil-borda); border-radius: 10px;
-    box-shadow: 0 6px 18px rgba(65,35,44,.035); transition: none;
+.public-profile .public-profile-edit:hover { background:var(--vinho); color:#fff; transform:none; }
+.public-profile .public-profile-section { margin-top:32px; }
+.public-profile .hair-profile-grid { gap:14px; }
+.public-profile .hair-profile-card.panel {
+ padding:19px 20px; border:1px solid var(--borda); border-radius:7px;
+ box-shadow:none; background:#fff; transition:none; transform:none;
 }
-.public-profile .hair-profile-card span { display: block; margin-bottom: 8px; color: #806a72; }
-.public-profile .hair-profile-card strong { color: #392b32; }
-.public-profile .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.public-profile .hair-profile-card span { display:block; color:#836a73; margin-bottom:7px; font-size:12px; }
+.public-profile .hair-profile-card strong { color:#392b32; font-size:15px; }
+.public-profile .profile-tags { display:flex; flex-wrap:wrap; gap:9px; }
 .public-profile .profile-tags span {
-    display: inline-flex; align-items: center; padding: 7px 12px;
-    background: var(--perfil-suave); color: var(--perfil-vinho);
-    border: 1px solid #ecdae0; border-radius: 6px;
-    font-size: 12px; line-height: 1.3; transition: none;
+ display:inline-flex; align-items:center; padding:8px 12px;
+ border-radius:4px; background:var(--vinho-claro); color:var(--vinho);
+ border:1px solid #e8d6dd; font-size:12px; line-height:1.2; transition:none;
 }
-.public-profile .public-review { border-radius: 10px; border: 1px solid var(--perfil-borda); }
-@media (max-width: 600px) {
-    .public-profile .public-profile-header { padding: 22px 18px; gap: 18px; align-items: flex-start; }
-    .public-profile .public-profile-photo { flex-basis: 76px; width: 76px; height: 76px; }
-    .public-profile .public-profile-info h1 { font-size: 24px; }
-    .public-profile .public-profile-section { margin-top: 30px; }
+.public-profile .public-review.panel { border:1px solid var(--borda); border-radius:7px; box-shadow:none; }
+@media(max-width:600px) {
+ .public-profile .public-profile-header.panel { padding:20px; gap:16px; align-items:flex-start; }
+ .public-profile .public-profile-photo { width:76px; height:76px; flex-basis:76px; }
+ .public-profile .public-profile-info h1 { font-size:23px; }
+ .public-profile .hair-profile-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .public-profile .hair-profile-card.panel { padding:15px 12px; }
 }
 </style>
 <?php require_once __DIR__ . '/footer.php'; ?>
