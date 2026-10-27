@@ -24,7 +24,7 @@ $action = $_POST['action'] ?? 'create';
 
 
 /* =====================================================
-   EXCLUIR A PRÓPRIA AVALIAÇÃO
+   EXCLUIR AVALIAÇÃO PRÓPRIA OU COMO ADMIN
 ===================================================== */
 
 if ($action === 'delete') {
@@ -36,19 +36,20 @@ if ($action === 'delete') {
         exit;
     }
 
-    /*
-     * A condição user_id = ? é a proteção principal:
-     * mesmo que alguém altere o review_id no formulário,
-     * só consegue apagar uma avaliação que pertence à própria sessão.
-     */
-    $stmt = db()->prepare(
-        'DELETE FROM reviews
-         WHERE id = ? AND user_id = ? AND product_id = ?'
-    );
+    // A autorização é verificada no servidor, nunca apenas no botão.
+    $currentUser = current_user();
+    $isAdmin = $currentUser && !empty($currentUser['is_admin']);
+    $stmt = db()->prepare($isAdmin
+        ? 'DELETE FROM reviews WHERE id = ? AND product_id = ?'
+        : 'DELETE FROM reviews WHERE id = ? AND user_id = ? AND product_id = ?');
 
     $stmt->bindValue(1, $review_id, PDO::PARAM_INT);
-    $stmt->bindValue(2, $user_id, PDO::PARAM_INT);
-    $stmt->bindValue(3, $product_id, PDO::PARAM_INT);
+    if ($isAdmin) {
+        $stmt->bindValue(2, $product_id, PDO::PARAM_INT);
+    } else {
+        $stmt->bindValue(2, $user_id, PDO::PARAM_INT);
+        $stmt->bindValue(3, $product_id, PDO::PARAM_INT);
+    }
     $stmt->execute();
 
     header('Location: product.php?id=' . $product_id . '#avaliar');
