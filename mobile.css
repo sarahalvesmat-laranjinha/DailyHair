@@ -16,7 +16,7 @@ canvas {
     height: 44px;
     padding: 0;
     border: 1px solid var(--line);
-    border-radius: 12px;
+    border-radius: 3px;
     background: var(--card);
     color: var(--terracotta);
     cursor: pointer;
@@ -107,7 +107,7 @@ canvas {
         width: 100%;
         padding: 12px 14px;
         border: 0;
-        border-radius: 10px;
+        border-radius: 3px;
         font-size: 15px;
     }
 
@@ -125,7 +125,7 @@ canvas {
 
     .hero {
         padding: 28px 24px;
-        border-radius: 20px;
+        border-radius: 3px;
     }
 
     .hero h1,
@@ -455,7 +455,7 @@ canvas {
     .profile-card,
     .profile-form,
     .review-form {
-        border-radius: 16px;
+        border-radius: 3px;
     }
 
     .calendar-large {
@@ -530,7 +530,7 @@ canvas {
     }
 
     .product-card {
-        border-radius: 20px;
+        border-radius: 3px;
     }
 
     .product-image {
@@ -573,7 +573,7 @@ canvas {
     /* Calendário mais compacto e com mais espaço ao redor */
     .calendar-large {
         padding: 24px 18px 28px;
-        border-radius: 22px;
+        border-radius: 3px;
     }
 
     .calendar-toolbar {
@@ -611,7 +611,7 @@ canvas {
     .calendar-days .day.large {
         min-height: 58px;
         padding: 7px 3px;
-        border-radius: 10px;
+        border-radius: 3px;
     }
 
     .day.large > span {
