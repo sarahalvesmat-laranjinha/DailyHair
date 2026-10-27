@@ -56,6 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <script src="password-visibility.js" defer></script>
 </head>
 
 <body class="auth-page" data-auth-page="login">
@@ -82,7 +83,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <label for="email">Email:</label>
             <input id="email" name="email" type="email" autocomplete="email" required placeholder="Digite seu e-mail (ex.: nome@exemplo.com)">
             <label for="password">Senha:</label>
-            <input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Digite sua senha de acesso">
+            <span class="password-visibility-field"><input id="password" name="password" type="password" autocomplete="current-password" required placeholder="Digite sua senha de acesso"><button type="button" class="password-visibility-toggle" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></span>
             <p class="create-account"><a href="senha.php">Esqueci minha senha</a></p>
             <button class="btn primary wide" type="submit">Entrar</button>
         </form>
