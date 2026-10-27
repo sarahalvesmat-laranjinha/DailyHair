@@ -3616,3 +3616,9 @@ body[data-auth-page="login"] .auth-card h1 {
         transform: none !important;
     }
 }
+
+/* Mostrar ou ocultar senhas no login e cadastro */
+.password-visibility-field { position: relative; display: block; width: 100%; }
+.password-visibility-field input { width: 100%; padding-right: 96px !important; box-sizing: border-box; }
+.password-visibility-toggle { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: 0; background: transparent; color: var(--wine, #76243d); font: inherit; font-size: 13px; font-weight: 700; padding: 9px 6px; cursor: pointer; }
+.password-visibility-toggle:focus-visible { outline: 2px solid var(--wine, #76243d); outline-offset: 2px; }
