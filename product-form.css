@@ -11,7 +11,7 @@
     box-sizing: border-box;
     padding: 13px 15px;
     border: 1px solid var(--line);
-    border-radius: 13px;
+    border-radius: 3px;
     background: #ffffff;
     color: var(--text);
     outline: none;
@@ -28,7 +28,7 @@
     border: 1.5px dashed var(--line);
     width: 300px;
     height: 280px;
-    border-radius: 16px;
+    border-radius: 3px;
     background: #ffffff;
     padding: 50px 20px;
     margin: 0 auto 30px;
