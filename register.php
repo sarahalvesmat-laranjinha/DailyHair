@@ -39,6 +39,7 @@ $error = '';
     >
 
     <link rel="stylesheet" href="style.css">
+    <script src="password-visibility.js" defer></script>
 
 </head>
 
@@ -151,12 +152,12 @@ $error = '';
 
                 Senha:
 
-                <input
+                <span class="password-visibility-field"><input
                     name="password"
                     type="password"
                     minlength="6"
                     required
-                 placeholder="Crie uma senha com pelo menos 6 caracteres">
+                 placeholder="Crie uma senha com pelo menos 6 caracteres"><button type="button" class="password-visibility-toggle" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></span>
 
             </label>
 
@@ -164,12 +165,12 @@ $error = '';
 
                 Confirmar senha:
 
-                <input
+                <span class="password-visibility-field"><input
                     name="confirm"
                     type="password"
                     minlength="6"
                     required
-                 placeholder="Digite a senha novamente">
+                 placeholder="Digite a senha novamente"><button type="button" class="password-visibility-toggle" aria-label="Mostrar senha" aria-pressed="false">Mostrar</button></span>
 
             </label>
 
