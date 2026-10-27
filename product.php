@@ -747,23 +747,25 @@ foreach ($reviews as $r) {
 }
 .product-image-modal-close {
     position: fixed;
-    top: 18px;
-    right: 22px;
-    z-index: 1;
-    width: 40px;
-    height: 40px;
-    border: 0;
-    border-radius: 0;
-    background: transparent;
-    color: var(--text, #403331);
-    font-size: 34px;
+    top: 20px;
+    right: 50%;
+    transform: translateX(50%);
+    z-index: 10;
+    width: 64px;
+    height: 64px;
+    border: 2px solid var(--wine, #7b243d);
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--wine, #7b243d);
+    box-shadow: 0 3px 14px rgba(0,0,0,.16);
+    font-size: 42px;
     line-height: 1;
     cursor: pointer;
 }
-.product-image-modal-close:hover { background: transparent; }
+.product-image-modal-close:hover { background: #ffffff; }
 @media (max-width: 600px) {
     .product-image-modal { padding: 52px 12px 12px; }
-    .product-image-modal-close { top: 12px; right: 12px; }
+    .product-image-modal-close { top: 12px; right: 50%; }
     .product-image-zoom-hint { opacity: 1; }
 }
 </style>
