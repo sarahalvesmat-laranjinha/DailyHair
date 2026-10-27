@@ -203,7 +203,7 @@ textarea {
         #FFFFFF,
         #f3e3d8
     );
-    border-radius: 24px;
+    border-radius: 3px;
     padding: 34px 38px;
     display: flex;
     justify-content: space-between;
@@ -243,7 +243,7 @@ textarea {
     justify-content: center;
     align-items: center;
     border: 0;
-    border-radius: 13px;
+    border-radius: 3px;
     padding: 13px 22px;
     cursor: pointer;
     font-weight: 600;
@@ -285,7 +285,7 @@ textarea {
 .panel {
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 20px;
+    border-radius: 3px;
     box-shadow: var(--shadow);
 }
 
@@ -354,7 +354,7 @@ textarea {
     min-height: 62px;
     background: #fff;
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 3px;
     padding: 7px;
     display: flex;
     flex-direction: column;
@@ -505,7 +505,7 @@ textarea {
 .product-card {
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 18px;
+    border-radius: 3px;
     overflow: hidden;
     transition: .2s;
     box-shadow:
@@ -688,7 +688,7 @@ textarea {
     flex: 1;
     padding: 14px 16px;
     border: 1px solid var(--line);
-    border-radius: 13px;
+    border-radius: 3px;
     background: #FFFFFF;
     outline: none;
 }
@@ -763,7 +763,7 @@ textarea {
     width: 100%;
     height: 48px;
     border: 1px solid var(--line);
-    border-radius: 13px;
+    border-radius: 3px;
     background: #FFFFFF;
     padding: 0 45px;
     color: var(--text);
@@ -800,7 +800,7 @@ textarea {
     width: 42px;
     height: 42px;
     border: 1px solid var(--line);
-    border-radius: 11px;
+    border-radius: 3px;
     background: #FFFFFF;
     color: var(--muted);
     cursor: pointer;
@@ -888,7 +888,7 @@ textarea {
 
 .match-box {
     background: #f8e9e1;
-    border-radius: 14px;
+    border-radius: 3px;
     padding: 14px;
     margin: 20px 0;
     display: flex;
@@ -1040,7 +1040,7 @@ textarea {
     min-height: 130px;
     padding: 15px 16px;
     border: 1px solid var(--line);
-    border-radius: 13px;
+    border-radius: 3px;
     background: #FFFFFF;
     color: var(--text);
     font-family: inherit;
@@ -1187,7 +1187,7 @@ textarea {
 
 .review-delete-btn {
     border: 1px solid #d9b8aa;
-    border-radius: 10px;
+    border-radius: 3px;
     background: transparent;
     color: var(--wine);
     padding: 8px 12px;
@@ -1218,7 +1218,7 @@ textarea {
     width: fit-content;
     margin-top: 15px;
     padding: 6px 11px;
-    border-radius: 20px;
+    border-radius: 3px;
     background: #f3e5dc;
     color: var(--wine);
     font-size: 11px;
@@ -1245,7 +1245,7 @@ textarea {
 
 .alert {
     padding: 11px 14px;
-    border-radius: 11px;
+    border-radius: 3px;
     font-size: 13px;
     margin-bottom: 15px;
 }
@@ -1294,7 +1294,7 @@ textarea {
 .profile-form textarea {
     padding: 12px;
     border: 1px solid var(--line);
-    border-radius: 11px;
+    border-radius: 3px;
     background: #fff;
     outline: none;
 }
@@ -1319,7 +1319,7 @@ select[multiple] {
     height: 48px;
     padding: 0 12px;
     border: 1px solid var(--line); /* Borda neutra; ao selecionar fica vinho */
-    border-radius: 12px;
+    border-radius: 3px;
     background: #FFFFFF;
 }
 
@@ -1360,7 +1360,7 @@ select[multiple] {
     padding: 22px 24px;
     background: #f8e9e1;
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: 3px;
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -1417,7 +1417,7 @@ select[multiple] {
     padding: 10px 12px;
     background: #FFFFFF;
     border: 1px solid var(--line);
-    border-radius: 13px;
+    border-radius: 3px;
     cursor: grab;
     transition: .2s ease;
 }
@@ -1493,7 +1493,7 @@ select[multiple] {
     padding: 14px 18px;
     background: #eaf7ed;
     border: 1px solid #b9dfc1;
-    border-radius: 10px;
+    border-radius: 3px;
     color: #286638;
     font-weight: 600;
 }
@@ -1535,7 +1535,7 @@ select[multiple] {
     top: 0;
     height: 88px;
     background: var(--wine);
-    border-radius: 0 0 35px 35px;
+    border-radius: 3px;
     box-shadow:
         0 7px 12px rgba(60, 35, 25, .22);
 }
@@ -1545,7 +1545,7 @@ select[multiple] {
     width: min(460px, 100%);
     background: #FFFFFF;
     border: 1px solid #E5E1DF;
-    border-radius: 34px;
+    border-radius: 3px;
     padding: 38px 50px 32px;
     box-shadow:
         0 9px 20px rgba(61, 45, 39, .22);
@@ -1598,7 +1598,7 @@ select[multiple] {
     width: 100%;
     height: 56px;
     border: 1px solid #ee775c;
-    border-radius: 17px;
+    border-radius: 3px;
     background: #FFFFFF;
     padding: 0 15px;
     outline: none;
@@ -1613,7 +1613,7 @@ select[multiple] {
 
 .auth-form .btn {
     height: 60px;
-    border-radius: 17px;
+    border-radius: 3px;
     margin-top: 23px;
     font-size: 16px;
 }
@@ -1671,7 +1671,7 @@ select[multiple] {
 .grid-form input,
 .grid-form select {
     height: 48px;
-    border-radius: 12px;
+    border-radius: 3px;
 }
 
 .register-card h1 {
@@ -1948,7 +1948,7 @@ select[multiple] {
     box-sizing: border-box;
     background: var(--card);
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: 3px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
@@ -2067,7 +2067,7 @@ select[multiple] {
     padding: 10px 20px;
     background: var(--wine);
     color: #fff;
-    border-radius: 9px;
+    border-radius: 3px;
     font-size: 12px;
     font-weight: 600;
     text-decoration: none;
@@ -2117,7 +2117,7 @@ select[multiple] {
 .no-recommended-products {
     background: var(--card);
     border: 1px dashed var(--line);
-    border-radius: 14px;
+    border-radius: 3px;
     padding: 25px;
     text-align: center;
     color: var(--muted);
@@ -2150,7 +2150,7 @@ select[multiple] {
     min-width: 190px;
     padding: 11px 40px 11px 14px;
     border: 1px solid var(--line);
-    border-radius: 10px;
+    border-radius: 3px;
     background-color: var(--card);
     color: var(--text);
     font-family: inherit;
@@ -2203,7 +2203,7 @@ select[multiple] {
     box-sizing: border-box;
     padding: 13px 15px;
     border: 1px solid var(--line);
-    border-radius: 13px;
+    border-radius: 3px;
     background: #ffffff;
     color: var(--text);
     outline: none;
@@ -2217,7 +2217,7 @@ select[multiple] {
     box-sizing: border-box;
     padding: 13px 15px;
     border: 1px solid var(--line);
-    border-radius: 13px;
+    border-radius: 3px;
     background: #ffffff;
     color: var(--text);
     outline: none;
@@ -2403,7 +2403,7 @@ select[multiple] {
     padding: 45px 40px;
     background: #fffaf7;
     border: 1px solid #eaded7;
-    border-radius: 18px;
+    border-radius: 3px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(60, 40, 30, 0.08);
 }
@@ -2432,7 +2432,7 @@ select[multiple] {
     overflow: hidden;
     background: #fffaf7;
     border: 1px solid #eaded7;
-    border-radius: 18px;
+    border-radius: 3px;
     box-shadow: 0 10px 30px rgba(60, 40, 30, 0.08);
     transition:
         transform 0.2s ease,
@@ -2477,7 +2477,7 @@ select[multiple] {
     padding: 6px 11px;
     background: #f2dfd5;
     color: #a64b2a;
-    border-radius: 20px;
+    border-radius: 3px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.5px;
@@ -2527,7 +2527,7 @@ select[multiple] {
     padding: 4px 9px;
     background: #f7e8bf;
     color: #8a691d;
-    border-radius: 12px;
+    border-radius: 3px;
     font-size: 11px;
     font-weight: 700;
 }
@@ -2553,7 +2553,7 @@ select[multiple] {
     width: 100%;
     padding: 12px 18px;
     border: none;
-    border-radius: 9px;
+    border-radius: 3px;
     font-family: inherit;
     font-size: 14px;
     font-weight: 700;
@@ -2620,7 +2620,7 @@ select[multiple] {
     min-width: 0;
     box-sizing: border-box;
     border: 1px solid var(--line);
-    border-radius: 16px;
+    border-radius: 3px;
     overflow: hidden;
     background: var(--card);
 
@@ -2749,7 +2749,7 @@ select[multiple] {
     color: #fff;
 
     border: none;
-    border-radius: 9px;
+    border-radius: 3px;
 
     font-size: 12px;
     font-weight: 600;
@@ -2800,7 +2800,7 @@ select[multiple] {
 .no-recommended-products {
     background: var(--card);
     border: 1px dashed var(--line);
-    border-radius: 14px;
+    border-radius: 3px;
     padding: 25px;
 
     text-align: center;
@@ -3005,7 +3005,7 @@ select[multiple] {
     width: 65px;
     height: 65px;
     object-fit: contain;
-    border-radius: 12px;
+    border-radius: 3px;
     background: #fff;
     flex-shrink: 0;
 }
@@ -3175,7 +3175,7 @@ select[multiple] {
     position: relative;
 
     border: 1px dashed var(--line);
-    border-radius: 15px;
+    border-radius: 3px;
     background: #FFFFFF;
 
     display: flex;
@@ -3237,13 +3237,13 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
     display: block;
     height: 88px; /* Cabeçalho vinho alto */
     background: var(--wine); /* Cor do cabeçalho */
-    border-radius: 0 0 30px 30px; /* Pontas inferiores arredondadas */
+    border-radius: 3px; /* Pontas inferiores arredondadas */
     box-shadow: 0 7px 12px rgba(60, 35, 25, .16); /* Sombra suave */
 }
 .auth-card {
     width: min(480px, 100%); /* Largura do formulário */
     border: 1px solid var(--line); /* Contorno discreto */
-    border-radius: 5px; /* Cantos levemente arredondados */
+    border-radius: 3px; /* Cantos levemente arredondados */
     padding: 44px 42px; /* Espaço interno */
     box-shadow: none; /* Sem sombra pesada */
     text-align: left;
@@ -3261,7 +3261,7 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
 .auth-form input,
 .auth-form select {
     border: 1px solid var(--line); /* Borda padrão, sem laranja */
-    border-radius: 4px;
+    border-radius: 3px;
     background: #FFFFFF;
 }
 .auth-form input:focus,
@@ -3271,7 +3271,7 @@ button, .btn, a, input, select, textarea { transition: background-color .2s ease
     outline: none;
 }
 .auth-form .btn {
-    border-radius: 4px; /* Botão quase quadrado */
+    border-radius: 3px; /* Botão quase quadrado */
 }
 @media (max-width: 560px) {
     .auth-page { padding: 65px 16px 30px; }
@@ -3296,7 +3296,7 @@ body[data-auth-page="login"] .dh-auth-entry > .auth-card {
 ===================================================== */
 body[data-auth-page="login"] .dh-auth-entry > .auth-top {
     height: 56px; /* Faixa vinho discreta */
-    border-radius: 0 0 18px 18px; /* Curva suave nas pontas inferiores */
+    border-radius: 3px; /* Curva suave nas pontas inferiores */
     background: var(--wine);
     box-shadow: none; /* Sem sombra para um visual minimalista */
 }
@@ -3328,7 +3328,7 @@ body[data-auth-page="login"] .auth-card h1 {
     padding: 34px 26px 22px; /* Altura e espaço interno do rodapé */
     background: var(--wine); /* Fundo vinho */
     color: #FAF8F6; /* Letras creme */
-    border-radius: 22px 22px 0 0; /* Cantos superiores arredondados */
+    border-radius: 3px; /* Cantos superiores arredondados */
     box-shadow: none;
     box-sizing: border-box;
 }
@@ -3399,7 +3399,7 @@ body[data-auth-page="login"] .auth-card h1 {
 }
 .dh-site-footer .dh-footer-heart { color: #F6BFCB; }
 @media (max-width: 700px) {
-    .dh-site-footer { padding: 30px 22px 20px; border-radius: 18px 18px 0 0; }
+    .dh-site-footer { padding: 30px 22px 20px; border-radius: 3px; }
     .dh-site-footer .dh-footer-top { grid-template-columns: 1fr; gap: 26px; }
     .dh-site-footer .dh-footer-bottom { flex-direction: column; }
 }
@@ -3412,7 +3412,7 @@ body[data-auth-page="login"] .auth-card h1 {
 .products-grid .product-card,
 .products-grid.list-view .product-card {
     border: none; /* Remove o contorno da caixa */
-    border-radius: 0; /* Cantos totalmente quadrados */
+    border-radius: 3px; /* Cantos totalmente quadrados */
     box-shadow: none; /* Remove a sombra da caixa */
 }
 .product-card:hover,
@@ -3420,7 +3420,7 @@ body[data-auth-page="login"] .auth-card h1 {
     box-shadow: none; /* Não cria borda/sombra ao passar o mouse */
 }
 .product-card .product-image {
-    border-radius: 0; /* Imagem também com cantos retos */
+    border-radius: 3px; /* Imagem também com cantos retos */
 }
 
 /* =====================================================
@@ -3428,7 +3428,7 @@ body[data-auth-page="login"] .auth-card h1 {
    Campo de busca quadrado; filtro e opções sem caixas.
 ===================================================== */
 .products-toolbar .product-search input {
-    border-radius: 0; /* Busca totalmente quadrada */
+    border-radius: 3px; /* Busca totalmente quadrada */
 }
 .products-toolbar .view-options,
 .products-toolbar .view-btn,
@@ -3437,7 +3437,7 @@ body[data-auth-page="login"] .auth-card h1 {
 .products-toolbar .pill {
     background: transparent; /* Sem fundo nas opções */
     border: 0; /* Sem caixas ou contornos */
-    border-radius: 0;
+    border-radius: 3px;
     box-shadow: none;
 }
 .products-toolbar .view-btn,
@@ -3467,7 +3467,7 @@ body[data-auth-page="login"] .auth-card h1 {
 .products-grid.list-view .product-image {
     background: transparent !important; /* Remove fundo alaranjado */
     border: none;
-    border-radius: 0;
+    border-radius: 3px;
     padding: 0;
     min-height: 190px;
     height: 100%;
@@ -3497,20 +3497,20 @@ body[data-auth-page="login"] .auth-card h1 {
    Página inicial: boas-vindas, calendário e perfil capilar.
 ===================================================== */
 .hero {
-    border-radius: 6px; /* Faixa de boas-vindas quase quadrada */
+    border-radius: 3px; /* Faixa de boas-vindas quase quadrada */
 }
 .dashboard-grid .panel,
 .dashboard-grid .calendar-mini,
 .dashboard-grid .profile-card {
-    border-radius: 6px; /* Caixas do calendário e perfil */
+    border-radius: 3px; /* Caixas do calendário e perfil */
 }
 .dashboard-grid .day,
 .calendar-mini .day {
-    border-radius: 4px; /* Cada dia do calendário */
+    border-radius: 3px; /* Cada dia do calendário */
 }
 .dashboard-grid .profile-tags span,
 .dashboard-grid .pill {
-    border-radius: 4px; /* Etiquetas do perfil */
+    border-radius: 3px; /* Etiquetas do perfil */
 }
 
 /* =====================================================
@@ -3521,7 +3521,7 @@ body[data-auth-page="login"] .auth-card h1 {
 .products-toolbar .product-filter select,
 .products-toolbar .filter-select,
 .products-toolbar .filter-group select {
-    border-radius: 0 !important; /* Cantos totalmente quadrados */
+    border-radius: 3px; /* Cantos totalmente quadrados */
 }
 
 /* =====================================================
@@ -3622,3 +3622,15 @@ body[data-auth-page="login"] .auth-card h1 {
 .password-visibility-field input { width: 100%; padding-right: 96px !important; box-sizing: border-box; }
 .password-visibility-toggle { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); border: 0; background: transparent; color: var(--wine, #76243d); font: inherit; font-size: 13px; font-weight: 700; padding: 9px 6px; cursor: pointer; }
 .password-visibility-toggle:focus-visible { outline: 2px solid var(--wine, #76243d); outline-offset: 2px; }
+
+/* Padronização visual: cantos retos em todas as páginas, preservando avatares e elementos circulares. */
+.auth-card, .auth-form input, .auth-form select, .auth-form textarea, .auth-form button,
+.panel, .card, .hero, .calendar-large, .calendar-mini, .day, .profile-card,
+.product-card, .product-image, .detail-image, .detail-info, .review-section,
+.review-form, .review, .products-toolbar input, .products-toolbar select,
+.products-toolbar button, .routine-step, .routine-add, .recommended-product-card,
+.alert, .pill, .btn, dialog:not(.product-image-modal) {
+    border-radius: 3px !important;
+}
+.avatar, .avatar img, .logo-circle, .brand-mark, .product-image-modal-close,
+input[type="radio"], input[type="checkbox"] { border-radius: 50% !important; }
