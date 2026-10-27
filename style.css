@@ -3634,3 +3634,8 @@ body[data-auth-page="login"] .auth-card h1 {
 }
 .avatar, .avatar img, .logo-circle, .brand-mark, .product-image-modal-close,
 input[type="radio"], input[type="checkbox"] { border-radius: 50% !important; }
+
+/* Faixa vinho de autocuidado abaixo do cabeçalho */
+.dh-care-strip { width:100%; min-height:34px; padding:8px 16px; box-sizing:border-box; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:clamp(12px,3vw,44px); background:var(--wine,#76243d); color:#fff8f5; font-size:12px; font-weight:500; letter-spacing:.06em; text-align:center; }
+.dh-care-strip span:nth-child(even) { color:#e9bdc8; }
+@media(max-width:600px) { .dh-care-strip { gap:8px; font-size:11px; } .dh-care-strip span:nth-child(n+3) { display:none; } }
