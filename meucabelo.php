@@ -311,70 +311,38 @@ if (!empty($user['wash_days'])) {
 
 
 <style>
-
-.wash-days-section {
-    margin-top: 10px;
+/* Cores dos dias de lavagem alinhadas à paleta vinho do Daily Hair. */
+.profile-form .wash-day span {
+    background: #fffaf9;
+    color: #6f293e;
+    border: 1px solid #d9c5cc;
+    border-radius: 10px;
+    transition: none;
 }
-
-.wash-days-description {
-    margin: 6px 0 14px;
-    font-size: 14px;
-    opacity: 0.7;
+.profile-form .wash-day span:hover {
+    border-color: #6f293e;
 }
-
-.wash-days {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    gap: 10px;
+.profile-form .wash-day input:checked + span {
+    background: #6f293e;
+    border-color: #6f293e;
+    color: #fff;
 }
-
-.wash-day {
-    cursor: pointer;
-    margin: 0;
+.profile-form .wash-day input:focus-visible + span {
+    outline: 2px solid #6f293e;
+    outline-offset: 3px;
 }
-
-.wash-day input {
-    position: absolute;
-    opacity: 0;
-    pointer-events: none;
-}
-
+.wash-days-section { margin-top: 10px; }
+.wash-days-description { margin: 6px 0 14px; font-size: 14px; opacity: .7; }
+.wash-days { display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.wash-day { cursor: pointer; margin: 0; }
+.wash-day input { position: absolute; opacity: 0; width: 1px; height: 1px; }
 .wash-day span {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    height: 46px;
-
-    border: 1px solid #d8c5bd;
-    border-radius: 12px;
-
-    background: #fffaf7;
-    color: #403331;
-
-    font-size: 14px;
-
-    transition: 0.2s ease;
+    display: flex; align-items: center; justify-content: center;
+    height: 46px; font-size: 14px;
 }
-
-.wash-day span:hover {
-    border-color: #c6532f;
-}
-
-.wash-day input:checked + span {
-    background: #c6532f;
-    border-color: #c6532f;
-    color: white;
-}
-
 @media (max-width: 600px) {
-
-    .wash-days {
-        grid-template-columns: repeat(4, 1fr);
-    }
-
+    .wash-days { grid-template-columns: repeat(4, 1fr); }
 }
-
 </style>
 
 
