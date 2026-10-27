@@ -748,19 +748,19 @@ foreach ($reviews as $r) {
 .product-image-modal-close {
     position: fixed;
     top: 66px;
-    left: max(22px, calc(50vw - 280px));
-    right: auto;
+    left: auto;
+    right: max(22px, calc(50vw - 280px));
     transform: none;
     z-index: 10;
-    width: 58px;
-    height: 58px;
+    width: 76px;
+    height: 76px;
     padding: 0;
     border: 0;
     border-radius: 0;
     background: transparent !important;
     color: var(--wine, #7b243d);
     box-shadow: none;
-    font-size: 48px;
+    font-size: 64px;
     font-weight: 300;
     line-height: 1;
     display: flex;
@@ -778,7 +778,7 @@ foreach ($reviews as $r) {
 }
 @media (max-width: 600px) {
     .product-image-modal { padding: 52px 12px 12px; }
-    .product-image-modal-close { top: 58px; left: 12px; right: auto; }
+    .product-image-modal-close { top: 58px; left: auto; right: 12px; }
     .product-image-zoom-hint { opacity: 1; }
 }
 </style>
