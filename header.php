@@ -52,7 +52,7 @@ $page = basename($_SERVER['PHP_SELF']);
         <a class="brand" href="dashboard.php">
 
             <span class="brand-mark">
-                <img src="Logo.png" alt="Daily Hair">
+                <img src="Imagem%20do%20ChatGPT%2027%20de%20out.%20de%202026%2C%2014_26_48%20%281%29.png" alt="Daily Hair">
             </span>
 
             <span>Daily Hair</span>
