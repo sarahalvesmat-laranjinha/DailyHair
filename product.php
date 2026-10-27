@@ -616,13 +616,13 @@ foreach ($reviews as $r) {
 
                     <!-- EXCLUIR A PRÓPRIA AVALIAÇÃO -->
 
-                    <?php if ((int) $r['user_id'] === (int) $user['id']): ?>
+                    <?php if ((int) $r['user_id'] === (int) $user['id'] || !empty($user['is_admin'])): ?>
 
                         <form
                             class="review-delete-form"
                             method="post"
                             action="review.php"
-                            onsubmit="return confirm('Tem certeza que deseja excluir seu comentário?');"
+                            onsubmit="return confirm('Tem certeza que deseja excluir esta avaliação? Esta ação não pode ser desfeita.');"
                         >
                             <?= csrf_field() ?>
                             <input
