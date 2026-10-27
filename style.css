@@ -3647,3 +3647,11 @@ input[type="radio"], input[type="checkbox"] { border-radius: 50% !important; }
 .password-visibility-toggle:hover svg { transform: scale(1.08); }
 .password-visibility-toggle:active svg { transform: scale(.94); }
 @media (prefers-reduced-motion: reduce) { .password-visibility-toggle, .password-visibility-toggle svg { transition: none; } }
+
+/* Correção: botão de olho estável, sem saltos ao clicar ou passar o mouse. */
+.password-visibility-field .password-visibility-toggle { box-sizing: border-box; flex: none; margin: 0; line-height: 1; transform: translateY(-50%) !important; transition: color .16s ease !important; -webkit-tap-highlight-color: transparent; }
+.password-visibility-field .password-visibility-toggle svg,
+.password-visibility-field .password-visibility-toggle:hover svg,
+.password-visibility-field .password-visibility-toggle:active svg { transform: none !important; width: 21px; height: 21px; transition: none !important; }
+.password-visibility-field .password-visibility-toggle:focus { outline: none; }
+.password-visibility-field .password-visibility-toggle:focus-visible { outline: 2px solid var(--wine, #76243d); outline-offset: 1px; }
