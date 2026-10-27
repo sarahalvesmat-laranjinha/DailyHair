@@ -3571,3 +3571,48 @@ body[data-auth-page="login"] .auth-card h1 {
         max-height: 190px;
     }
 }
+
+/* =====================================================
+   CABEÇALHO - DISTRIBUIÇÃO UNIFORME DAS PÁGINAS
+   Os cinco links dividem igualmente o espaço entre a logo e o perfil.
+   No celular, o menu mantém sua apresentação vertical.
+===================================================== */
+@media (min-width: 851px) {
+    .topbar { gap: clamp(14px, 2vw, 36px); }
+    .nav {
+        flex: 1 1 auto;
+        min-width: 0;
+        gap: 0;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    .nav a {
+        flex: 1 1 0;
+        text-align: center;
+        white-space: nowrap;
+        padding-left: 4px;
+        padding-right: 4px;
+    }
+    .user-menu { flex-shrink: 0; }
+}
+
+/* =====================================================
+   INTERAÇÕES SEM ANIMAÇÕES
+   Remove movimentos, transições e efeitos animados
+   inclusive ao passar o mouse; mantém foco e seleção.
+===================================================== */
+*, *::before, *::after {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+}
+@media (hover: hover) {
+    .product-card:hover,
+    .products-grid .product-card:hover,
+    .btn:hover,
+    .review-delete-btn:hover,
+    .routine-step:hover,
+    .star-rating label:hover span {
+        transform: none !important;
+    }
+}
