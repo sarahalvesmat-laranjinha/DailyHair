@@ -173,8 +173,9 @@ $reviews = $stmt->fetchAll();
 
             <?php endif; ?>
 
-            <br>
-            <p class="create-account"><a href="perfil.php">Editar perfil</a></p>
+            <?php if ((int) ($_SESSION['user_id'] ?? 0) === (int) $profile['id']): ?>
+                <a class="public-profile-edit" href="perfil.php">Editar perfil</a>
+            <?php endif; ?>
 
         </div>
 
@@ -380,4 +381,47 @@ $reviews = $stmt->fetchAll();
 </div>
 
 
+
+<style>
+/* Refinamento visual do perfil público */
+.public-profile { --perfil-vinho: #70283e; --perfil-suave: #f5e9ed; --perfil-borda: #eadfe2; }
+.public-profile .public-profile-header {
+    display: flex; align-items: center; gap: 28px;
+    padding: 28px 32px; border: 1px solid var(--perfil-borda);
+    border-radius: 12px; box-shadow: 0 10px 28px rgba(65,35,44,.055);
+}
+.public-profile .public-profile-photo { flex: 0 0 112px; width: 112px; height: 112px; }
+.public-profile .public-profile-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.public-profile .public-profile-info { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
+.public-profile .public-profile-info h1, .public-profile .public-profile-info p { margin: 0; }
+.public-profile .public-profile-bio { line-height: 1.55; }
+.public-profile .public-profile-edit {
+    display: inline-flex; justify-content: center; align-items: center;
+    margin-top: 10px; padding: 10px 20px; border: 1px solid var(--perfil-vinho);
+    border-radius: 6px; color: var(--perfil-vinho); background: transparent;
+    font-size: 13px; font-weight: 600; text-decoration: none; transition: none;
+}
+.public-profile .public-profile-edit:hover { color: var(--perfil-vinho); background: transparent; transform: none; }
+.public-profile .public-profile-section { margin-top: 38px; }
+.public-profile .hair-profile-card {
+    border: 1px solid var(--perfil-borda); border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(65,35,44,.035); transition: none;
+}
+.public-profile .hair-profile-card span { display: block; margin-bottom: 8px; color: #806a72; }
+.public-profile .hair-profile-card strong { color: #392b32; }
+.public-profile .profile-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+.public-profile .profile-tags span {
+    display: inline-flex; align-items: center; padding: 7px 12px;
+    background: var(--perfil-suave); color: var(--perfil-vinho);
+    border: 1px solid #ecdae0; border-radius: 6px;
+    font-size: 12px; line-height: 1.3; transition: none;
+}
+.public-profile .public-review { border-radius: 10px; border: 1px solid var(--perfil-borda); }
+@media (max-width: 600px) {
+    .public-profile .public-profile-header { padding: 22px 18px; gap: 18px; align-items: flex-start; }
+    .public-profile .public-profile-photo { flex-basis: 76px; width: 76px; height: 76px; }
+    .public-profile .public-profile-info h1 { font-size: 24px; }
+    .public-profile .public-profile-section { margin-top: 30px; }
+}
+</style>
 <?php require_once __DIR__ . '/footer.php'; ?>
