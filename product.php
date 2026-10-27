@@ -721,45 +721,49 @@ foreach ($reviews as $r) {
 .product-image-zoom-trigger:hover .product-image-zoom-hint,
 .product-image-zoom-trigger:focus-visible .product-image-zoom-hint { opacity: 1; }
 .product-image-zoom-trigger:focus-visible { outline: 3px solid var(--terracotta); outline-offset: -4px; }
+/* Ampliação sem caixa: somente a fotografia e o botão de fechar. */
 .product-image-modal {
     position: fixed;
     inset: 0;
-    width: min(94vw, 950px);
-    max-width: 950px;
-    max-height: 94vh;
-    padding: 35px;
+    width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 52px 24px 24px;
     border: 0;
-    border-radius: 18px;
-    background: #fffaf6;
-    box-shadow: 0 18px 70px rgba(0,0,0,.25);
-    overflow: auto;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+    overflow: hidden;
+    box-sizing: border-box;
 }
-.product-image-modal::backdrop { background: rgba(24, 17, 14, .78); }
+.product-image-modal::backdrop { background: transparent; }
 .product-image-modal img {
     display: block;
     width: 100%;
-    max-height: calc(94vh - 70px);
+    height: 100%;
+    max-height: 100%;
     object-fit: contain;
 }
 .product-image-modal-close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
+    position: fixed;
+    top: 18px;
+    right: 22px;
     z-index: 1;
-    width: 36px;
-    height: 36px;
+    width: 40px;
+    height: 40px;
     border: 0;
-    border-radius: 50%;
-    background: #f1e7df;
-    color: #403331;
-    font-size: 28px;
+    border-radius: 0;
+    background: transparent;
+    color: var(--text, #403331);
+    font-size: 34px;
     line-height: 1;
     cursor: pointer;
 }
-.product-image-modal-close:hover { background: #e6d5c9; }
+.product-image-modal-close:hover { background: transparent; }
 @media (max-width: 600px) {
-    .product-image-modal { width: 96vw; max-height: 90vh; padding: 35px 12px 16px; }
-    .product-image-modal img { max-height: calc(90vh - 55px); }
+    .product-image-modal { padding: 52px 12px 12px; }
+    .product-image-modal-close { top: 12px; right: 12px; }
     .product-image-zoom-hint { opacity: 1; }
 }
 </style>
