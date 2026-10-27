@@ -3639,3 +3639,11 @@ input[type="radio"], input[type="checkbox"] { border-radius: 50% !important; }
 .dh-care-strip { width:100%; min-height:34px; padding:8px 16px; box-sizing:border-box; display:flex; align-items:center; justify-content:center; flex-wrap:wrap; gap:clamp(12px,3vw,44px); background:var(--wine,#76243d); color:#fff8f5; font-size:12px; font-weight:500; letter-spacing:.06em; text-align:center; }
 .dh-care-strip span:nth-child(even) { color:#e9bdc8; }
 @media(max-width:600px) { .dh-care-strip { gap:8px; font-size:11px; } .dh-care-strip span:nth-child(n+3) { display:none; } }
+
+/* Visibilidade da senha: ícone clássico discreto, sem alterar o formato dos campos. */
+.password-visibility-field input { padding-right: 48px !important; }
+.password-visibility-toggle { right: 9px; display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px; padding: 7px; border-radius: 0; color: var(--wine, #76243d); transition: color .2s ease, opacity .2s ease; }
+.password-visibility-toggle svg { width: 21px; height: 21px; display: block; transition: transform .18s ease, opacity .18s ease; }
+.password-visibility-toggle:hover svg { transform: scale(1.08); }
+.password-visibility-toggle:active svg { transform: scale(.94); }
+@media (prefers-reduced-motion: reduce) { .password-visibility-toggle, .password-visibility-toggle svg { transition: none; } }
