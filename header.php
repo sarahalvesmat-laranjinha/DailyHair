@@ -155,4 +155,5 @@ $page = basename($_SERVER['PHP_SELF']);
     </header>
 
 
+    <div class="dh-care-strip"><span>Seu cabelo, sua essência</span><span>✦</span><span>Cuidar de si é um ato de amor</span><span>✦</span><span>Beleza em cada fio</span></div>
     <main class="container">
