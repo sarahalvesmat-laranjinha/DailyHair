@@ -97,7 +97,7 @@ $error = '';
 
         <div class="logo-circle">
 
-            <img src="Logo.png" alt="Daily Hair">
+            <img src="Imagem%20do%20ChatGPT%2027%20de%20out.%20de%202026%2C%2014_26_48%20%281%29.png" alt="Daily Hair">
 
         </div>
 
