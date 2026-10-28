@@ -27,7 +27,7 @@ $days = (int) date(
 );
 
 $first = (int) date(
-    'N',
+    'w',
     strtotime("$year-$month-01")
 );
 
@@ -678,20 +678,20 @@ $monthName = $monthNames[$month];
 
     <div class="weekdays">
 
+        <span>Dom</span>
         <span>Seg</span>
         <span>Ter</span>
         <span>Qua</span>
         <span>Qui</span>
         <span>Sex</span>
         <span>Sáb</span>
-        <span>Dom</span>
 
     </div>
 
 
     <div class="calendar-days large">
 
-        <?php for ($i = 1; $i < $first; $i++): ?>
+        <?php for ($i = 0; $i < $first; $i++): ?>
 
             <span></span>
 
