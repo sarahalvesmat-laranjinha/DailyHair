@@ -69,12 +69,12 @@ $error = '';
     <style>
       /* Exclusivo do cadastro: mantém a identidade visual e evita sobrepor os campos. */
       .dh-register-bubble {
-        background:#fffaf6; color:#65473c; border:1.5px solid #d9a791;
+        background:#fbf6f2; color:#65473c; border:1.5px solid #8e5262;
         box-shadow:0 10px 26px rgba(82,53,43,.10); box-sizing:border-box;
         display:flex; flex-direction:column; align-items:center; justify-content:center;
         gap:8px; text-align:center; padding:22px;
       }
-      .dh-register-bubble strong { font:600 20px/1.2 'Playfair Display',serif; color:#a94427; }
+      .dh-register-bubble strong { font:600 20px/1.2 'Playfair Display',serif; color:#72283d; }
       .dh-register-bubble span { font-size:13px; line-height:1.5; }
       body[data-auth-page="register"] .register-card { z-index:2; }
       @media(min-width:1300px){
