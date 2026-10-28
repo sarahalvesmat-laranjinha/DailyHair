@@ -285,6 +285,7 @@ require_once __DIR__ . '/header.php';
 
 
                             <form method="POST">
+                                <?= csrf_field() ?>
 
                                 <input type="hidden" name="request_id" value="<?= (int) $produto['id'] ?>">
 
