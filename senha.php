@@ -14,7 +14,7 @@ $_SESSION['auth_csrf'] ??= bin2hex(random_bytes(32));
 <body class="auth-page" data-auth-page="reset">
     <div class="auth-top"></div>
     <section class="auth-card">
-        <div class="logo-circle"><img src="Logo.png" alt="Daily Hair"></div>
+        <div class="logo-circle"><img src="Imagem%20do%20ChatGPT%2027%20de%20out.%20de%202026%2C%2014_26_48%20%281%29.png" alt="Daily Hair"></div>
         <h1>Recuperar senha</h1>
         <p class="auth-subtitle">Receba um link de redefinição pelo e-mail cadastrado no Firebase.</p>
         <div id="firebase-message" class="alert error" hidden></div>
