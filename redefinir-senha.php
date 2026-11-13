@@ -1,6 +1,3 @@
-<?php
-// Página pública: o Firebase valida o código de recuperação no navegador.
-?>
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -8,43 +5,40 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Redefinir senha — Daily Hair</title>
 <link rel="icon" type="image/png" href="Logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-/* Estilos exclusivos da página de redefinição de senha. */
-body.dh-reset-page{margin:0;min-height:100vh;background:#f8f2e9;color:#382a30;font-family:"DM Sans",Arial,sans-serif;display:grid;place-items:center;padding:24px;box-sizing:border-box}
-.dh-reset-card{width:min(100%,430px);box-sizing:border-box;background:#fff;padding:36px 30px;border:1px solid #e9dfe0;border-radius:4px;box-shadow:0 8px 30px #542e3812}
-.dh-reset-brand{text-align:center;color:#762f48;font-family:"Playfair Display",Georgia,serif;font-size:25px;margin:0 0 24px}
-.dh-reset-card h1{font-size:25px;color:#762f48;margin:0 0 10px;text-align:center}
-.dh-reset-card p{line-height:1.6;text-align:center}
-.dh-reset-form{display:grid;gap:12px;margin-top:24px}
-.dh-reset-form label{font-size:14px;font-weight:600}
-.dh-reset-field{display:flex;align-items:center;border:1px solid #bdaab0;border-radius:3px;background:#fff}
-.dh-reset-field:focus-within{outline:2px solid #762f48;outline-offset:1px}
-.dh-reset-field input{width:100%;min-width:0;padding:13px;border:0;outline:0;background:transparent;color:#382a30;font:inherit}
-.dh-reset-field button{border:0;background:transparent;color:#762f48;padding:10px;cursor:pointer;font:inherit;font-size:13px}
-.dh-reset-submit{margin-top:10px;padding:14px;border:0;border-radius:3px;background:#762f48;color:white;font:inherit;font-weight:700;cursor:pointer}
-.dh-reset-submit:disabled{opacity:.65;cursor:wait}
-.dh-reset-message{padding:12px;border-radius:3px;text-align:center;font-size:14px}
-.dh-reset-message.error{background:#fff0f0;color:#912c37}
-.dh-reset-message.success{background:#edf6ef;color:#235b38}
-.dh-reset-back{display:block;margin-top:22px;text-align:center;color:#762f48;text-decoration:underline}
-@media(max-width:480px){.dh-reset-card{padding:28px 20px}}
+/* Apenas ajustes necessários ao formulário de redefinição; o visual vem do style.css do Daily Hair. */
+.dh-reset-entry{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:110px 20px 55px;position:relative}
+.dh-reset-entry .auth-top{z-index:0}
+.dh-reset-entry [hidden]{display:none!important}
+.dh-reset-entry .auth-form>label{margin-top:15px}
+.dh-reset-entry .password-visibility-field input{border-color:var(--line)}
+.dh-reset-entry .password-visibility-field input:focus{border-color:var(--wine)}
+.dh-reset-entry .dh-reset-message{margin:15px 0}
+.dh-reset-entry .auth-card{max-width:460px}
+@media(max-width:480px){.dh-reset-entry .auth-card{padding:30px 24px}}
 </style>
 </head>
-<body class="dh-reset-page">
-<main class="dh-reset-card">
-<div class="dh-reset-brand">Daily Hair</div>
+<body class="auth-page" data-auth-page="password-confirm">
+<main class="dh-reset-entry">
+<div class="auth-top"></div>
+<section class="auth-card">
+<div class="logo-circle"><img src="Imagem%20do%20ChatGPT%2027%20de%20out.%20de%202026%2C%2014_26_48%20%281%29.png" alt="Daily Hair"></div>
 <h1>Redefinir senha</h1>
-<p>Escolha uma nova senha para acessar sua conta.</p>
-<div id="reset-message" class="dh-reset-message" role="status" aria-live="polite" hidden></div>
-<form id="reset-form" class="dh-reset-form" hidden>
-<label for="new-password">Nova senha</label>
-<div class="dh-reset-field"><input id="new-password" type="password" autocomplete="new-password" minlength="6" required><button type="button" data-toggle="new-password" aria-label="Mostrar nova senha">Mostrar</button></div>
-<label for="confirm-password">Confirmar nova senha</label>
-<div class="dh-reset-field"><input id="confirm-password" type="password" autocomplete="new-password" minlength="6" required><button type="button" data-toggle="confirm-password" aria-label="Mostrar confirmação de senha">Mostrar</button></div>
-<button class="dh-reset-submit" type="submit">Salvar nova senha</button>
+<p class="auth-subtitle">Escolha uma nova senha para continuar cuidando do que é seu.</p>
+<div id="reset-message" class="alert dh-reset-message" role="status" aria-live="polite" hidden></div>
+<form id="reset-form" class="auth-form" hidden>
+<label for="new-password">Nova senha:</label>
+<span class="password-visibility-field"><input id="new-password" type="password" autocomplete="new-password" minlength="6" required placeholder="Digite sua nova senha"><button class="password-visibility-toggle" type="button" data-toggle="new-password" aria-label="Mostrar nova senha">Mostrar</button></span>
+<label for="confirm-password">Confirmar nova senha:</label>
+<span class="password-visibility-field"><input id="confirm-password" type="password" autocomplete="new-password" minlength="6" required placeholder="Confirme sua nova senha"><button class="password-visibility-toggle" type="button" data-toggle="confirm-password" aria-label="Mostrar confirmação de senha">Mostrar</button></span>
+<button class="btn primary wide" type="submit">Salvar nova senha</button>
 </form>
-<a class="dh-reset-back" href="index.php">Voltar para o login</a>
+<p class="create-account"><a href="index.php">Voltar para o login</a></p>
+</section>
 </main>
 <script type="module" src="redefinir-senha.js"></script>
 </body>
