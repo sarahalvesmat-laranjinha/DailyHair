@@ -529,7 +529,7 @@ foreach ($reviews as $r) {
                                         <span hidden><?= e($review_avatar_initial) ?></span>
                                     <?php else: ?>
                                         <span><?= e($review_avatar_initial) ?></span>
-                                    <?php endif; %}
+                                    <?php endif; ?>
                                 </span>
 
 
