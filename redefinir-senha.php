@@ -10,16 +10,20 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 <style>
-/* Apenas ajustes necessários ao formulário de redefinição; o visual vem do style.css do Daily Hair. */
-.dh-reset-entry{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:110px 20px 55px;position:relative}
-.dh-reset-entry .auth-top{z-index:0}
+/* A mesma estrutura visual do login, com a faixa vinho presa ao topo da tela. */
+body.auth-page[data-auth-page="password-confirm"]{display:block;min-height:100vh;padding:0;background:var(--cream)}
+.dh-reset-entry{min-height:100vh;width:100%;display:flex;align-items:center;justify-content:center;padding:116px 20px 48px;position:static}
+body.auth-page[data-auth-page="password-confirm"] .auth-top{position:absolute;top:0;left:0;right:0;width:100%;height:88px;border-radius:0;z-index:0}
+.dh-reset-entry .auth-card{width:min(460px,100%);max-width:460px;margin:0 auto;padding:38px 44px 34px;z-index:1}
+.dh-reset-entry .auth-card h1{text-align:center}
+.dh-reset-entry .auth-subtitle{text-align:center;line-height:1.5}
 .dh-reset-entry [hidden]{display:none!important}
-.dh-reset-entry .auth-form>label{margin-top:15px}
-.dh-reset-entry .password-visibility-field input{border-color:var(--line)}
+.dh-reset-entry .auth-form>label{margin:16px 0 6px}
+.dh-reset-entry .password-visibility-field input{border-color:var(--line);margin-bottom:8px}
 .dh-reset-entry .password-visibility-field input:focus{border-color:var(--wine)}
-.dh-reset-entry .dh-reset-message{margin:15px 0}
-.dh-reset-entry .auth-card{max-width:460px}
-@media(max-width:480px){.dh-reset-entry .auth-card{padding:30px 24px}}
+.dh-reset-entry .dh-reset-message{margin:16px 0;padding:12px;text-align:center;line-height:1.5}
+.dh-reset-entry .create-account{text-align:center}
+@media(max-width:480px){.dh-reset-entry{padding:110px 16px 30px}.dh-reset-entry .auth-card{padding:30px 22px}}
 </style>
 </head>
 <body class="auth-page" data-auth-page="password-confirm">
