@@ -785,19 +785,18 @@ canvas {
 
 
 /* =====================================================
-   CALENDÁRIO DA PÁGINA INICIAL — CELULAR
-   Aproveita melhor a largura e dá espaço aos dias e ícones.
-   Não altera o calendário completo nem o desktop.
+   CALENDÁRIO INICIAL — CELULAR
+   Células mais altas, ícones legíveis e semanas separadas.
 ===================================================== */
 @media (max-width: 600px) {
     .dashboard-grid .calendar-mini {
-        padding: 22px 12px 26px;
+        padding: 22px 8px 32px;
         min-width: 0;
     }
 
     .calendar-mini .panel-head {
-        gap: 10px;
-        margin: 0 6px 20px;
+        gap: 12px;
+        margin: 0 8px 22px;
     }
 
     .calendar-mini .panel-head h2 {
@@ -814,36 +813,38 @@ canvas {
     .calendar-mini .calendar-days {
         width: 100%;
         grid-template-columns: repeat(7, minmax(0, 1fr));
-        gap: 5px;
+        column-gap: 6px;
     }
 
     .calendar-mini .weekdays {
         margin-top: 0;
-        margin-bottom: 10px;
+        margin-bottom: 14px;
     }
 
     .calendar-mini .weekdays span {
-        font-size: 11px;
+        font-size: 12px;
         font-weight: 600;
     }
 
     .calendar-mini .calendar-days {
         margin-top: 0;
-        row-gap: 9px;
+        row-gap: 15px;
     }
 
     .calendar-mini .day {
         min-width: 0;
-        min-height: 82px;
-        padding: 9px 2px 7px;
+        min-height: 108px;
+        padding: 12px 2px 10px;
         align-items: center;
-        gap: 6px;
+        justify-content: space-between;
+        gap: 8px;
     }
 
     .calendar-mini .day b {
         align-self: flex-start;
-        margin-left: 5px;
-        font-size: 14px;
+        margin-left: 4px;
+        font-size: 15px;
+        line-height: 1.2;
     }
 
     .calendar-mini .day small {
@@ -852,11 +853,12 @@ canvas {
         justify-content: center;
         width: 100%;
         min-width: 0;
+        margin: auto 0;
     }
 
     .calendar-mini .calendar-icon {
-        width: 30px;
-        height: 30px;
+        width: 36px;
+        height: 36px;
         max-width: 100%;
         margin: 0 auto;
     }
@@ -864,21 +866,21 @@ canvas {
 
 @media (max-width: 380px) {
     .dashboard-grid .calendar-mini {
-        padding-left: 9px;
-        padding-right: 9px;
+        padding-left: 6px;
+        padding-right: 6px;
     }
 
     .calendar-mini .weekdays,
     .calendar-mini .calendar-days {
-        gap: 4px;
+        column-gap: 4px;
     }
 
     .calendar-mini .day {
-        min-height: 76px;
+        min-height: 96px;
     }
 
     .calendar-mini .calendar-icon {
-        width: 25px;
-        height: 25px;
+        width: 30px;
+        height: 30px;
     }
 }
