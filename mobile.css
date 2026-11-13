@@ -782,3 +782,103 @@ canvas {
         min-width: 0;
     }
 }
+
+
+/* =====================================================
+   CALENDÁRIO DA PÁGINA INICIAL — CELULAR
+   Aproveita melhor a largura e dá espaço aos dias e ícones.
+   Não altera o calendário completo nem o desktop.
+===================================================== */
+@media (max-width: 600px) {
+    .dashboard-grid .calendar-mini {
+        padding: 22px 12px 26px;
+        min-width: 0;
+    }
+
+    .calendar-mini .panel-head {
+        gap: 10px;
+        margin: 0 6px 20px;
+    }
+
+    .calendar-mini .panel-head h2 {
+        font-size: clamp(24px, 6vw, 30px);
+        line-height: 1.2;
+    }
+
+    .calendar-mini .panel-head > a {
+        font-size: 13px;
+        white-space: nowrap;
+    }
+
+    .calendar-mini .weekdays,
+    .calendar-mini .calendar-days {
+        width: 100%;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 5px;
+    }
+
+    .calendar-mini .weekdays {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+
+    .calendar-mini .weekdays span {
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+    .calendar-mini .calendar-days {
+        margin-top: 0;
+        row-gap: 9px;
+    }
+
+    .calendar-mini .day {
+        min-width: 0;
+        min-height: 82px;
+        padding: 9px 2px 7px;
+        align-items: center;
+        gap: 6px;
+    }
+
+    .calendar-mini .day b {
+        align-self: flex-start;
+        margin-left: 5px;
+        font-size: 14px;
+    }
+
+    .calendar-mini .day small {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-width: 0;
+    }
+
+    .calendar-mini .calendar-icon {
+        width: 30px;
+        height: 30px;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 380px) {
+    .dashboard-grid .calendar-mini {
+        padding-left: 9px;
+        padding-right: 9px;
+    }
+
+    .calendar-mini .weekdays,
+    .calendar-mini .calendar-days {
+        gap: 4px;
+    }
+
+    .calendar-mini .day {
+        min-height: 76px;
+    }
+
+    .calendar-mini .calendar-icon {
+        width: 25px;
+        height: 25px;
+    }
+}
