@@ -2379,7 +2379,7 @@ select[multiple] {
 .admin-products-header .eyebrow {
     display: block;
     margin-bottom: 12px;
-    color: #a64b2a;
+    color: var(--wine);
     font-size: 12px;
     font-weight: 700;
     letter-spacing: 2px;
@@ -2387,7 +2387,7 @@ select[multiple] {
 
 .admin-products-header h1 {
     margin: 0 0 12px;
-    color: #2f2a28;
+    color: var(--text);
     font-size: 34px;
     line-height: 1.2;
 }
@@ -2401,8 +2401,8 @@ select[multiple] {
 
 .admin-empty {
     padding: 45px 40px;
-    background: #fffaf7;
-    border: 1px solid #eaded7;
+    background: var(--card);
+    border: 1px solid var(--line);
     border-radius: 3px;
     text-align: center;
     box-shadow: 0 10px 30px rgba(60, 40, 30, 0.08);
@@ -2430,8 +2430,8 @@ select[multiple] {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    background: #fffaf7;
-    border: 1px solid #eaded7;
+    background: var(--card);
+    border: 1px solid var(--line);
     border-radius: 3px;
     box-shadow: 0 10px 30px rgba(60, 40, 30, 0.08);
     transition:
@@ -2440,8 +2440,8 @@ select[multiple] {
 }
 
 .admin-product-card:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 14px 35px rgba(60, 40, 30, 0.12);
+    transform: none;
+    box-shadow: 0 10px 30px rgba(60, 40, 30, 0.08);
 }
 
 .admin-product-image {
@@ -2450,7 +2450,7 @@ select[multiple] {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #f4ebe5;
+    background: #F1E4E7;
     overflow: hidden;
 }
 
@@ -2475,8 +2475,8 @@ select[multiple] {
     display: inline-block;
     margin-bottom: 10px;
     padding: 6px 11px;
-    background: #f2dfd5;
-    color: #a64b2a;
+    background: #F1E4E7;
+    color: var(--wine);
     border-radius: 3px;
     font-size: 11px;
     font-weight: 700;
@@ -2486,14 +2486,14 @@ select[multiple] {
 
 .admin-product-content h2 {
     margin: 0 0 5px;
-    color: #302825;
+    color: var(--text);
     font-size: 22px;
     line-height: 1.3;
 }
 
 .admin-product-content .product-brand {
     margin: 0 0 16px;
-    color: #a64b2a;
+    color: var(--wine);
     font-size: 14px;
     font-weight: 600;
 }
@@ -2507,8 +2507,8 @@ select[multiple] {
 
 .product-info {
     padding: 17px 0;
-    border-top: 1px solid #eaded7;
-    border-bottom: 1px solid #eaded7;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
 }
 
 .product-info p {
@@ -2525,8 +2525,8 @@ select[multiple] {
     display: inline-block;
     margin-left: 4px;
     padding: 4px 9px;
-    background: #f7e8bf;
-    color: #8a691d;
+    background: #F1E4E7;
+    color: var(--wine-dark);
     border-radius: 3px;
     font-size: 11px;
     font-weight: 700;
@@ -2564,19 +2564,19 @@ select[multiple] {
 }
 
 .admin-product-actions button:hover {
-    transform: translateY(-1px);
-    opacity: 0.9;
+    transform: none;
+    opacity: 1;
 }
 
 .btn-approve {
-    background: #a64b2a;
+    background: var(--wine);
     color: white;
 }
 
 .btn-reject {
     background: transparent;
-    color: #a64b2a;
-    border: 1px solid #c9957d !important;
+    color: var(--wine);
+    border: 1px solid var(--wine-soft) !important;
 }
 
 
