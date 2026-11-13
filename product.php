@@ -512,28 +512,24 @@ foreach ($reviews as $r) {
                                 <!-- FOTO -->
 
                                 <span class="review-avatar">
+                                    <?php
+                                        $review_avatar_url = profile_image_url($r);
+                                        $review_avatar_initial = mb_strtoupper(
+                                            mb_substr((string) $r['name'], 0, 1)
+                                        );
+                                    ?>
 
-                                    <?php if (!empty($r['profile_image'])): ?>
-
+                                    <?php if ($review_avatar_url): ?>
                                         <img
-                                            src="uploads/profiles/<?= e($r['profile_image']) ?>"
-                                            alt="<?= e($r['name']) ?>"
+                                            src="<?= e($review_avatar_url) ?>"
+                                            alt=""
+                                            loading="lazy"
+                                            onerror="this.hidden=true; this.nextElementSibling.hidden=false;"
                                         >
-
+                                        <span hidden><?= e($review_avatar_initial) ?></span>
                                     <?php else: ?>
-
-                                        <?= e(
-                                            mb_strtoupper(
-                                                mb_substr(
-                                                    $r['name'],
-                                                    0,
-                                                    1
-                                                )
-                                            )
-                                        ) ?>
-
-                                    <?php endif; ?>
-
+                                        <span><?= e($review_avatar_initial) ?></span>
+                                    <?php endif; %}
                                 </span>
 
 
