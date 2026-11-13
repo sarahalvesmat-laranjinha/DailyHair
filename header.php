@@ -33,7 +33,7 @@ $page = basename($_SERVER['PHP_SELF']);
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="mobile.css">
+    <link rel="stylesheet" href="mobile.css?v=<?= filemtime(__DIR__ . '/mobile.css') ?>">
 
     <?php if (!empty($extra_css) && $extra_css !== 'style.css'): ?>
         <link rel="stylesheet" href="<?= e($extra_css) ?>">
