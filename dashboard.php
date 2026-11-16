@@ -11,7 +11,8 @@ $calendarToday = new DateTimeImmutable('now', new DateTimeZone('America/Sao_Paul
 $month = (int) $calendarToday->format('n');
 $year = (int) $calendarToday->format('Y');
 $days = (int) $calendarToday->format('t');
-$first = (int) date('N', strtotime("$year-$month-01"));
+// Domingo = 0, sábado = 6, como no calendário completo.
+$first = (int) date('w', strtotime("$year-$month-01"));
 $types = ['Hidratação', 'Nutrição', 'Umectação', 'Reconstrução'];
 $month_names = [
     1 => 'Janeiro', 2 => 'Fevereiro', 3 => 'Março', 4 => 'Abril',
@@ -38,10 +39,10 @@ $month_names = [
             </div><a href="calendar.php">Ver tudo →</a>
         </div>
         <div class="weekdays">
-            <span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span>
+            <span>Dom</span><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span>
         </div>
         <div class="calendar-days">
-            <?php for ($i = 1; $i < $first; $i++): ?><span></span><?php endfor; ?>
+            <?php for ($i = 0; $i < $first; $i++): ?><span></span><?php endfor; ?>
             <?php for ($d = 1; $d <= $days; $d++):
                 $t = $types[($d - 1) % count($types)]; ?><a href="calendar.php?day=<?= $d ?>"
                     class="day <?= $d === (int) $calendarToday->format('j') ? 'today' : '' ?>"><b><?= $d ?></b><small><?= $t === 'Hidratação' ? '<img src="outras.png/hidrata.png" class="calendar-icon">' : ($t === 'Nutrição' ? '<img src="outras.png/nutri.png" class="calendar-icon">' : '<img src="outras.png/reconst.png" class="calendar-icon">') ?></small></a><?php endfor; ?>
