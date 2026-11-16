@@ -98,6 +98,9 @@ $page = basename($_SERVER['PHP_SELF']);
                 Cadastro de produtos
             </a>
 
+            <!-- Opção de sair acessível no menu do celular. -->
+            <a class="mobile-logout" href="logout.php">Sair da conta</a>
+
         </nav>
 
 
