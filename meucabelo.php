@@ -264,14 +264,16 @@ if (!empty($user['wash_days'])) {
 
     <div class="wash-days">
         <?php
+        // Exibição de domingo a sábado, preservando os valores já salvos
+        // (1 = segunda-feira e 7 = domingo).
         $days = [
+            7 => 'Dom',
             1 => 'Seg',
             2 => 'Ter',
             3 => 'Qua',
             4 => 'Qui',
             5 => 'Sex',
-            6 => 'Sáb',
-            7 => 'Dom'
+            6 => 'Sáb'
         ];
         ?>
 
