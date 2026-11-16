@@ -47,6 +47,11 @@ canvas {
     transform: translateY(-7px) rotate(-45deg);
 }
 
+/* A opção de sair no menu de navegação é exclusiva do celular. */
+.nav .mobile-logout {
+    display: none;
+}
+
 @media (max-width: 850px) {
     .topbar {
         min-height: 70px;
@@ -101,6 +106,14 @@ canvas {
 
     .nav.is-open {
         display: flex;
+    }
+
+    .nav .mobile-logout {
+        display: block;
+        margin-top: 8px;
+        border-top: 1px solid var(--line);
+        color: #70283e;
+        font-weight: 700;
     }
 
     .nav a {
