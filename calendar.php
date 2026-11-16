@@ -550,11 +550,14 @@ if (empty($sequence)) {
 |--------------------------------------------------------------------------
 */
 
-$today = (int) date('j');
+// A data atual do calendário deve seguir o horário de Brasília,
+// independentemente do fuso configurado no servidor.
+$calendarToday = new DateTimeImmutable('now', new DateTimeZone('America/Sao_Paulo'));
+$today = (int) $calendarToday->format('j');
 
 $isCurrent =
-    $month === (int) date('n') &&
-    $year === (int) date('Y');
+    $month === (int) $calendarToday->format('n') &&
+    $year === (int) $calendarToday->format('Y');
 
 /*
 |--------------------------------------------------------------------------
