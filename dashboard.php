@@ -6,9 +6,11 @@ require_once __DIR__ . '/header.php';
 $user = current_user();
 $conn = db();
 $products = $conn->query('SELECT p.*, COALESCE(AVG(r.rating),0) avg_rating, COUNT(r.id) review_count FROM products p LEFT JOIN reviews r ON r.product_id=p.id GROUP BY p.id ORDER BY avg_rating DESC, p.name LIMIT 4')->fetchAll();
-$month = date('n');
-$year = date('Y');
-$days = (int) date('t');
+// Usa o horário de Brasília para identificar corretamente o dia atual.
+$calendarToday = new DateTimeImmutable('now', new DateTimeZone('America/Sao_Paulo'));
+$month = (int) $calendarToday->format('n');
+$year = (int) $calendarToday->format('Y');
+$days = (int) $calendarToday->format('t');
 $first = (int) date('N', strtotime("$year-$month-01"));
 $types = ['Hidratação', 'Nutrição', 'Umectação', 'Reconstrução'];
 $month_names = [
@@ -42,7 +44,7 @@ $month_names = [
             <?php for ($i = 1; $i < $first; $i++): ?><span></span><?php endfor; ?>
             <?php for ($d = 1; $d <= $days; $d++):
                 $t = $types[($d - 1) % count($types)]; ?><a href="calendar.php?day=<?= $d ?>"
-                    class="day <?= $d == (int) date('j') ? 'today' : '' ?>"><b><?= $d ?></b><small><?= $t === 'Hidratação' ? '<img src="outras.png/hidrata.png" class="calendar-icon">' : ($t === 'Nutrição' ? '<img src="outras.png/nutri.png" class="calendar-icon">' : '<img src="outras.png/reconst.png" class="calendar-icon">') ?></small></a><?php endfor; ?>
+                    class="day <?= $d === (int) $calendarToday->format('j') ? 'today' : '' ?>"><b><?= $d ?></b><small><?= $t === 'Hidratação' ? '<img src="outras.png/hidrata.png" class="calendar-icon">' : ($t === 'Nutrição' ? '<img src="outras.png/nutri.png" class="calendar-icon">' : '<img src="outras.png/reconst.png" class="calendar-icon">') ?></small></a><?php endfor; ?>
         </div>
     </div>
 
