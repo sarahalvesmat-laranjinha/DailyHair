@@ -88,7 +88,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <button class="btn primary wide" type="submit">Entrar</button>
         </form>
         <button id="google-login" class="btn wide" type="button">Entrar com Google</button>
-        <p class="create-account"><a href="index.php?legacy=1">Entrar com conta anterior</a></p>
         <p class="create-account">Ainda nao tem uma conta? <a href="register.php">Criar conta</a></p>
     </section>
     </main>
